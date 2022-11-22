@@ -1,12 +1,19 @@
+
+.answerContainer { 
+    width: 100%;
+    display: flex; 
+    flex-direction: row; 
+}
+
 .btnAnswerOption { 
+    display: flex;
     border: 1px solid rgb(230, 230, 230);
     transition: box-shadow 0.3s;
     width: 100%;
+    height: 75px;
     box-shadow: 0 0 1px 0 hsla(0,0%,8%,.1),0 1px 8px -1px hsla(0,0%,8%,.2) !important;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
-
-
 
 .btnAnswerOption:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
@@ -16,5 +23,15 @@
     width: 100%; 
 }
 .imgContainer { 
-    max-width: 200px;
+    max-width: 75px;
+}
+
+.answerText { 
+    width: 100%;
+    font-size: 100%;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

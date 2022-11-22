@@ -113,15 +113,34 @@ const App = (props) => {
         {(matches) =>
           matches.small ? (
             <>
+              <HeaderMobile
+                updateTheme={updateTheme}
+                dataTheme={dataTheme}
+                logout={logout}
+                token={token}
+              ></HeaderMobile>
               <button onClick={getKanyeTopSongs}>Get Top Songs</button>
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
-              
+              <LoginPageMobile
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
+            CLIENT_ID={CLIENT_ID}
+            REDIRECT_URI={REDIRECT_URI}
+              RESPONSE_TYPE={RESPONSE_TYPE}
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}
+              ></LoginPageMobile>
               
             </>
           ) : (
             <>
+              
               <button onClick={getKanyeTopSongs}>Get Top Songs</button>
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
+              <LoginPageDesktop
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
+              CLIENT_ID={CLIENT_ID}
+              REDIRECT_URI={REDIRECT_URI}
+                RESPONSE_TYPE={RESPONSE_TYPE}
+                SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
               
             </>
           )
