@@ -1,0 +1,43 @@
+.padding {
+  height: 100vh;
+}
+.contentContainer {
+  background-color: var(--primary);
+  height: 100%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentWrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bigTitle {
+  color: var(--secondary);
+  font-size: 280%;
+  font-weight: 800;
+  margin-bottom: 3%;
+}
+
+.smallTitle {
+  font-size: 150%;
+  color: grey;
+  margin-bottom: 8%;
+}
+.btn {
+  width: 250px !important;
+  height: 50px !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  border-radius: 10px !important;
+  background-color: var(--primary-green) !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
