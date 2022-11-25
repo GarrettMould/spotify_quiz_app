@@ -1,17 +1,14 @@
-import HeaderDesktop from "../components/HeaderDesktop/HeaderDesktop";
-import HeaderMobile from "../components/HeaderMobile/HeaderMobile";
 import LoginPageDesktop from "../components/LoginPageDesktop/LoginPageDesktop";
 import LoginPageMobile from "../components/LoginPageMobile/LoginPageMobile";
 
 
-import 'swiper/css';
 import Media from "react-media";
-import { format, add } from "date-fns";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./App.module.css";
 import DisplaySongs from "../components/DisplaySongs/DisplaySongs";
+import { SelectArtist } from "../components/SelectArtist/SelectArtist";
 
 
 const App = (props) => {
@@ -36,6 +33,16 @@ const App = (props) => {
   const [gotSongs, setGotSongs] = useState(null); 
   const [topSongs, setTopSongs] = useState(null);
 
+  const [artistID, setArtistID] = useState("5K4W6rqBFWDnAN6FQUkS6x");
+
+
+console.log(artistID);
+
+  // Function to update the artist ID 
+  const handleArtistChange = (id) => { 
+    setArtistID(id); 
+    console.log(id);
+  }
 
   // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
   const getUserID = async () => {
@@ -50,13 +57,12 @@ const App = (props) => {
     setUserID(data.id);
   };
 
-
   // Calls the getUserID function when the token changes (new user)
   useEffect(() => {
     getUserID();
   }, [token]);
 
-
+  
   // Fetches the token from the spotify url
   useEffect(() => {
     const hash = window.location.hash;
@@ -75,32 +81,32 @@ const App = (props) => {
     setToken(token);
     console.log(token);
   });
-
-
-  // Function to update the color theme
-  const updateTheme = () => {
-    dataTheme === "light" ? setDataTheme("dark") : setDataTheme("light");
-  };
+  
   // Function to clear token and clear results display
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
   };
 
-  
-  const getKanyeTopSongs = async (e) => {
-    e.preventDefault()
-    const {data} = await axios.get("https://api.spotify.com/v1/artists/5K4W6rqBFWDnAN6FQUkS6x/top-tracks?market=VN", {
+// Function to display the top songs of the chosen artist
+
+useEffect((e) => { 
+  getTopSongs(e);
+}, [artistID]);
+
+
+  const getTopSongs = async () => {
+    
+    const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=VN`, {
         headers: {
             Authorization: `Bearer ${token}`
         },
         
     })
-
+    console.log(artistID);
+    console.log(data.tracks);
     setGotSongs(true);
     setTopSongs(data.tracks);
-
-   
    
 }
 
@@ -113,13 +119,7 @@ const App = (props) => {
         {(matches) =>
           matches.small ? (
             <>
-              <HeaderMobile
-                updateTheme={updateTheme}
-                dataTheme={dataTheme}
-                logout={logout}
-                token={token}
-              ></HeaderMobile>
-              <button onClick={getKanyeTopSongs}>Get Top Songs</button>
+              <button onClick={getTopSongs}>Get Top Songs</button>
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
               <LoginPageMobile
               AUTH_ENDPOINT={AUTH_ENDPOINT}
@@ -132,8 +132,14 @@ const App = (props) => {
             </>
           ) : (
             <>
+            <button onClick={logout}>Logout</button>
+            <button onClick={getTopSongs}>Get Top Songs</button>
+             <button onClick={() => setArtistID("46SHBwWsqBkxI7EeeBEQG7")}>Kodak Black</button>
+             <button onClick={() => setArtistID("50co4Is1HCEo8bhOyUWKpn")}>Young Thug</button>
+             <button onClick={() => setArtistID("1RyvyyTE3xzB2ZywiAwp0i")}>Future</button>
+             <button onClick={() => setArtistID("2YZyLoL8N0Wb9xBt1NhZWg")}>Kendrick Lamar</button>
               
-              <button onClick={getKanyeTopSongs}>Get Top Songs</button>
+             <input onSubmit={(e) => setArtistID(e.currentTarget.value)}></input>
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
