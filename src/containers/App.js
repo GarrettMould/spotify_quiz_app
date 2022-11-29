@@ -48,10 +48,11 @@ console.log(artistID);
 
 // Classes for THIS IS Quiz 
 
-function SongThisIs(name, img, uri) {
+function SongThisIs(name, img, uri, answerOptions) {
   this.name = name;
   this.img = img; 
   this.uri = uri;
+  this.answerOptions = answerOptions;
 }
 
   // Function to update the artist ID 
@@ -113,13 +114,14 @@ useEffect((e) => {
 }, [artistID]);
 
 
+// Function that sets artistID to the user input value
 const handleCustomArtistSubmit = () => { 
   var id = document.getElementById('input_id').value;
   console.log(id);
   setArtistID(id);
 }
   
-// Function to 
+// Function takes an artist ID and returns their top songs 
 const getTopSongs = async () => {
     
     const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=VN`, {
@@ -130,12 +132,12 @@ const getTopSongs = async () => {
     })
     console.log(artistID);
     console.log(data.tracks);
-    setGotSongs(true);
+    //setGotSongs(true);
     setTopSongs(data.tracks);
    
 }
 
-// Function to get 
+// Function takes in a playlist ID, returns an array of objects for ten random songs from that playlist
 const getPlaylistSongs = async () => {
     
   const {data} = await axios.get("https://api.spotify.com/v1/playlists/37i9dQZF1DWZAkrucRF6Gq/tracks", {
@@ -145,30 +147,42 @@ const getPlaylistSongs = async () => {
       
   })
 
+  
   getPlaylistInfo();
   setGotThisIs(true);
+
+
   const shuffled = data.items.sort(() => 0.5 - Math.random());
   let selected = shuffled.slice(0, 10);
   
   var selectedSongs = [];
-  
-  selected.forEach((item) => { 
-    var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
-    selectedSongs.push(i);
-  })
-
-  console.log(selectedSongs)
-
   var items = data.items 
 
   let allSongs = []; 
   
+  // Fill allSongs array with all the songs from "This Is" playlist
   items.forEach((item) => { 
     allSongs.push(item.track.name);
   });
 
   setThisIsFullSongList(allSongs);
   console.log(allSongs)
+
+  // 
+  selected.forEach((item) => { 
+  
+    let shuffled = allSongs.sort(() => 0.5 - Math.random());
+    let select = shuffled.slice(0,3);
+    select.push(item.track.name);
+    var selectShuffled = select.sort(() => 0.5 - Math.random());
+    var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url, selectShuffled)
+    selectedSongs.push(i);
+   
+  }) 
+
+  console.log(selectedSongs)
+
+  
 
 }
 
