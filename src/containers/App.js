@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./App.module.css";
 import DisplaySongs from "../components/DisplaySongs/DisplaySongs";
 import { SelectArtist } from "../components/SelectArtist/SelectArtist";
+import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 
 
 const App = (props) => {
@@ -24,19 +25,34 @@ const App = (props) => {
     "user-read-email",
     "playlist-modify-public",
     "playlist-modify-private",
+
+
   ];
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
   const [dataTheme, setDataTheme] = useState("dark");
   const [token, setToken] = useState("");
   // User ID
   const [userID, setUserID] = useState("");
-  const [gotSongs, setGotSongs] = useState(null); 
+  const [gotSongs, setGotSongs] = useState(false); 
   const [topSongs, setTopSongs] = useState(null);
+  const [gotThisIs, setGotThisIs] = useState(false); 
+  const [thisIsFullSongList, setThisIsFullSongList] = useState(null)
+  const [thisIsName, setThisIsName] = useState(null);
+  const [thisIsImage, setThisIsImage] = useState(null);
 
   const [artistID, setArtistID] = useState("5K4W6rqBFWDnAN6FQUkS6x");
 
 
 console.log(artistID);
+
+
+// Classes for THIS IS Quiz 
+
+function SongThisIs(name, img, uri) {
+  this.name = name;
+  this.img = img; 
+  this.uri = uri;
+}
 
   // Function to update the artist ID 
   const handleArtistChange = (id) => { 
@@ -86,6 +102,8 @@ console.log(artistID);
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    setGotSongs(false); 
+    setGotThisIs(false);
   };
 
 // Function to display the top songs of the chosen artist
@@ -95,7 +113,14 @@ useEffect((e) => {
 }, [artistID]);
 
 
-  const getTopSongs = async () => {
+const handleCustomArtistSubmit = () => { 
+  var id = document.getElementById('input_id').value;
+  console.log(id);
+  setArtistID(id);
+}
+  
+// Function to 
+const getTopSongs = async () => {
     
     const {data} = await axios.get(`https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=VN`, {
         headers: {
@@ -108,6 +133,59 @@ useEffect((e) => {
     setGotSongs(true);
     setTopSongs(data.tracks);
    
+}
+
+// Function to get 
+const getPlaylistSongs = async () => {
+    
+  const {data} = await axios.get("https://api.spotify.com/v1/playlists/37i9dQZF1DWZAkrucRF6Gq/tracks", {
+      headers: {
+          Authorization: `Bearer ${token}`
+      },
+      
+  })
+
+  getPlaylistInfo();
+  setGotThisIs(true);
+  const shuffled = data.items.sort(() => 0.5 - Math.random());
+  let selected = shuffled.slice(0, 10);
+  
+  var selectedSongs = [];
+  
+  selected.forEach((item) => { 
+    var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
+    selectedSongs.push(i);
+  })
+
+  console.log(selectedSongs)
+
+  var items = data.items 
+
+  let allSongs = []; 
+  
+  items.forEach((item) => { 
+    allSongs.push(item.track.name);
+  });
+
+  setThisIsFullSongList(allSongs);
+  console.log(allSongs)
+
+}
+
+const getPlaylistInfo = async () => { 
+
+  const {data} = await axios.get("https://api.spotify.com/v1/playlists/37i9dQZF1DWZAkrucRF6Gq", {
+      headers: {
+          Authorization: `Bearer ${token}`
+      },
+      
+  })
+  
+  setThisIsName(data.name); 
+  setThisIsImage(data.images[0].url)
+  console.log(data.images[0].url);
+
+  
 }
 
   return (
@@ -138,8 +216,13 @@ useEffect((e) => {
              <button onClick={() => setArtistID("50co4Is1HCEo8bhOyUWKpn")}>Young Thug</button>
              <button onClick={() => setArtistID("1RyvyyTE3xzB2ZywiAwp0i")}>Future</button>
              <button onClick={() => setArtistID("2YZyLoL8N0Wb9xBt1NhZWg")}>Kendrick Lamar</button>
+             <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
               
-             <input onSubmit={(e) => setArtistID(e.currentTarget.value)}></input>
+             <form>
+                <input type="text" id="input_id"></input>
+                <input type="button" value="Submit" onClick={handleCustomArtistSubmit} />
+            </form>
+            {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
