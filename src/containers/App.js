@@ -40,10 +40,9 @@ const App = (props) => {
   const [thisIsName, setThisIsName] = useState(null);
   const [thisIsImage, setThisIsImage] = useState(null);
   const [selectedThisIsSongs, setSelectedThisIsSongs] = useState(null)
-  const [artistID, setArtistID] = useState("5K4W6rqBFWDnAN6FQUkS6x");
+  const [playlistID, setPlaylistID] = useState("37i9dQZF1DX5EkyRFIV92g");
+  const [artistID, setArtistID] = useState("37i9dQZF1DX5EkyRFIV92g");
 
-
-console.log(artistID);
 
 
 // Classes for THIS IS Quiz 
@@ -53,6 +52,11 @@ function SongThisIs(name, img, uri, answerOptions) {
   this.img = img; 
   this.uri = uri;
   this.answerOptions = answerOptions;
+}
+
+// Function that returns boolean for correct / incorrect quiz response
+const handleAnswer = (e) => { 
+  console.log(e.currentTarget.value)
 }
 
   // Function to update the artist ID 
@@ -113,12 +117,17 @@ useEffect((e) => {
   getTopSongs(e);
 }, [artistID]);
 
+useEffect((e) => { 
+  getPlaylistSongs(e);
+}, [playlistID]);
+
+
 
 // Function that sets artistID to the user input value
-const handleCustomArtistSubmit = () => { 
+const handleCustomPlaylistSubmit = () => { 
   var id = document.getElementById('input_id').value;
   console.log(id);
-  setArtistID(id);
+  setPlaylistID(id);
 }
   
 // Function takes an artist ID and returns their top songs 
@@ -137,10 +146,11 @@ const getTopSongs = async () => {
    
 }
 
+
 // Function takes in a playlist ID, returns an array of objects for ten random songs from that playlist
 const getPlaylistSongs = async () => {
     
-  const {data} = await axios.get("https://api.spotify.com/v1/playlists/37i9dQZF1DWZAkrucRF6Gq/tracks", {
+  const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
       headers: {
           Authorization: `Bearer ${token}`
       },
@@ -153,8 +163,11 @@ const getPlaylistSongs = async () => {
 
 
   const shuffled = data.items.sort(() => 0.5 - Math.random());
-  let selected = shuffled.slice(0, 10);
-  
+  const noURIRemoved = shuffled.filter(function( obj ) {
+    return obj.track.preview_url;
+  });
+  let selected = noURIRemoved.slice(0, 10);
+  console.log(selected);
   var selectedSongs = [];
   var items = data.items 
 
@@ -171,9 +184,15 @@ const getPlaylistSongs = async () => {
 
   // 
   selected.forEach((item) => { 
-  
+    
     let shuffled = allSongs.sort(() => 0.5 - Math.random());
-    let select = shuffled.slice(0,3);
+    let songRemoved = shuffled.filter(function( obj ) {
+      return obj.name !== item.track.name;
+    });
+
+    let select = songRemoved.slice(0,3);
+    
+
     var iSong = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
     select.push(iSong);
     var selectShuffled = select.sort(() => 0.5 - Math.random());
@@ -191,7 +210,7 @@ const getPlaylistSongs = async () => {
 
 const getPlaylistInfo = async () => { 
 
-  const {data} = await axios.get("https://api.spotify.com/v1/playlists/37i9dQZF1DWZAkrucRF6Gq", {
+  const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${playlistID}`, {
       headers: {
           Authorization: `Bearer ${token}`
       },
@@ -228,19 +247,14 @@ const getPlaylistInfo = async () => {
           ) : (
             <>
             <button onClick={logout}>Logout</button>
-            <button onClick={getTopSongs}>Get Top Songs</button>
-             <button onClick={() => setArtistID("46SHBwWsqBkxI7EeeBEQG7")}>Kodak Black</button>
-             <button onClick={() => setArtistID("50co4Is1HCEo8bhOyUWKpn")}>Young Thug</button>
-             <button onClick={() => setArtistID("1RyvyyTE3xzB2ZywiAwp0i")}>Future</button>
-             <button onClick={() => setArtistID("2YZyLoL8N0Wb9xBt1NhZWg")}>Kendrick Lamar</button>
-             <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+            <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
               
              <form>
-                <input type="text" id="input_id"></input>
-                <input type="button" value="Submit" onClick={handleCustomArtistSubmit} />
+                <input type="text" id="input_id" placeholder="Playlist ID"></input>
+                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
             </form>
-              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
-              {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
+              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}

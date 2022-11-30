@@ -18,6 +18,7 @@ const DisplayThisIs = (props) => {
               type="radio"
               name={correctAnswer}
               value={song.name === correctAnswer ? true : false}
+              onClick={props.handleAnswer}
               
             ><div className={classes.imgContainer}><img src={song.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}>{song.name}</div></button>
             </div>
