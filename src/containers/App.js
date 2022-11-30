@@ -39,7 +39,7 @@ const App = (props) => {
   const [thisIsFullSongList, setThisIsFullSongList] = useState(null)
   const [thisIsName, setThisIsName] = useState(null);
   const [thisIsImage, setThisIsImage] = useState(null);
-
+  const [selectedThisIsSongs, setSelectedThisIsSongs] = useState(null)
   const [artistID, setArtistID] = useState("5K4W6rqBFWDnAN6FQUkS6x");
 
 
@@ -162,7 +162,8 @@ const getPlaylistSongs = async () => {
   
   // Fill allSongs array with all the songs from "This Is" playlist
   items.forEach((item) => { 
-    allSongs.push(item.track.name);
+    var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
+    allSongs.push(i);
   });
 
   setThisIsFullSongList(allSongs);
@@ -173,7 +174,8 @@ const getPlaylistSongs = async () => {
   
     let shuffled = allSongs.sort(() => 0.5 - Math.random());
     let select = shuffled.slice(0,3);
-    select.push(item.track.name);
+    var iSong = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
+    select.push(iSong);
     var selectShuffled = select.sort(() => 0.5 - Math.random());
     var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url, selectShuffled)
     selectedSongs.push(i);
@@ -181,8 +183,9 @@ const getPlaylistSongs = async () => {
   }) 
 
   console.log(selectedSongs)
+  setSelectedThisIsSongs(selectedSongs);
 
-  
+
 
 }
 
@@ -236,7 +239,7 @@ const getPlaylistInfo = async () => {
                 <input type="text" id="input_id"></input>
                 <input type="button" value="Submit" onClick={handleCustomArtistSubmit} />
             </form>
-            {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayThisIs> : null}
+              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
