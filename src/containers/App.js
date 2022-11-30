@@ -10,6 +10,7 @@ import classes from "./App.module.css";
 import DisplaySongs from "../components/DisplaySongs/DisplaySongs";
 import { SelectArtist } from "../components/SelectArtist/SelectArtist";
 import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
+import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
 
 
 const App = (props) => {
@@ -63,6 +64,12 @@ const handleAnswer = (e) => {
   const handleArtistChange = (id) => { 
     setArtistID(id); 
     console.log(id);
+  }
+
+  // Function to update the artist ID 
+  const handlePlaylistChange = (e) => { 
+    setPlaylistID(e.currentTarget.id); 
+    console.log(e.currentTarget.id)
   }
 
   // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
@@ -253,6 +260,7 @@ const getPlaylistInfo = async () => {
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
             </form>
+              <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
