@@ -7,10 +7,6 @@ const DisplaySongs = (props) => {
         this.uri = uri;
     }
 
-    const handleAnswer = (e) => { 
-        console.log(e.currentTarget.value)
-    }
-
     const songData = props.topSongs; 
 
     console.log(songData)
@@ -54,7 +50,7 @@ const DisplaySongs = (props) => {
                   type="radio"
                   name={correctAnswer}
                   value={song.name === correctAnswer ? true : false}
-                  onClick={handleAnswer}
+                  onClick={props.handleAnswer}
                 ><div className={classes.imgContainer}><img src={song.img.url} className={classes.img} alt="album"></img></div><div className={classes.answerText}>{song.name}</div></button>
                 </div>
                 </>
