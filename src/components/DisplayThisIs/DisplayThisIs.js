@@ -12,7 +12,7 @@ const DisplayThisIs = (props) => {
         return (
             <>
             <div className={classes.answerContainer}>
-            
+  
             <button
               className={classes.btnAnswerOption}
               type="radio"
@@ -41,8 +41,8 @@ const DisplayThisIs = (props) => {
 
   return (
     <>
-    <div><img src={props.thisIsImage} alt="playlist"></img></div>
-    <div>{props.thisIsName}</div>
+    <div><img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img></div>
+    
     {mappedSongs}
     </>
   )
