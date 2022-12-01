@@ -1,12 +1,70 @@
 .container { 
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.swiperSlide { 
+    max-width: 250px;
+}
+
+.allPlaylistsContainer { 
+    display: flex;
+    overflow-x: scroll;
 }
 
 .playlistContainer { 
-    margin-right: 20px;
+    display: flex; 
+    justify-content: center;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 250px;
+    background-color: #232323;
+    border-radius: 4px;
+}
+
+.contentContainer {
+    width: 200px; 
+    margin-bottom: 20px;
+   
 }
 
 .img { 
-    max-width: 150px;
+    border-radius: 4px;
+    max-width: 100%;
+    margin: 20px 0px;
+}
+
+.imageContainer { 
+    margin: 0; 
+    padding: 0;
+}
+
+.btn { 
+    border-radius: 4px;
+    border: none; 
+    outline: none;
+    
+}
+
+.textContainer { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name { 
+    font-family: CircularBold; 
+    font-size: 100%; 
+    color: var(--secondary);
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.description { 
+    font-family: CircularBook;
+    font-size: 90%;
+    color: var(--grey);
+    text-align: start;
+
 }

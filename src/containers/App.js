@@ -7,7 +7,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./App.module.css";
+import Header from "../components/Header/Header";
 import DisplaySongs from "../components/DisplaySongs/DisplaySongs";
+import { Spacer } from "../elements/Spacer/Spacer";
 import { SelectArtist } from "../components/SelectArtist/SelectArtist";
 import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
@@ -233,7 +235,7 @@ const getPlaylistInfo = async () => {
 
   return (
     <div className={classes.wrapper}>
-    <div data-theme={dataTheme}>
+    
       
      
       <Media queries={{ small: { maxWidth: 599 } }}>
@@ -253,13 +255,14 @@ const getPlaylistInfo = async () => {
             </>
           ) : (
             <>
-            <button onClick={logout}>Logout</button>
-            <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+            <Header></Header>
+            <Spacer></Spacer>
+            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
               
              <form>
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
-            </form>
+          </form>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
@@ -267,15 +270,14 @@ const getPlaylistInfo = async () => {
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
-                RESPONSE_TYPE={RESPONSE_TYPE}
-                SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
-              
+              RESPONSE_TYPE={RESPONSE_TYPE}
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
+              <button className={classes.btn} onClick={logout}>Logout</button>
             </>
           )
         }
       </Media>
-        </div>
-      </div>
+    </div>
     
   );
 };

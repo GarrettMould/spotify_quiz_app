@@ -1,12 +1,4 @@
 :root {
-  --primary: #ffffff;
-  --secondary: #121212;
-  --primary-green: #1db954;
-  --hover-green: #1bcb59; 
-  --grey: grey;
-}
-
-[data-theme="dark"] {
   --primary: #121212;
   --secondary: #ffffff;
   --primary-green: #1db954;
