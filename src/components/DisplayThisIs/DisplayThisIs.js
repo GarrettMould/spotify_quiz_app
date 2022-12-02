@@ -41,7 +41,13 @@ const DisplayThisIs = (props) => {
 
   return (
     <>
-    <div><img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img></div>
+    <div className={classes.quizInfoContainer}>
+      <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
+      <div className={classes.infoTextContainer}>
+        <div className={classes.thisIsName}>{props.thisIsName}</div>
+        <div className={classes.scoreIdentifier}><span>Score:</span> 1 of 10</div>
+      </div>
+    </div>
     
     {mappedSongs}
     </>

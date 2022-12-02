@@ -79,5 +79,13 @@ export var playlists = [
         description: "This is The Beatles. Essential tracks all in one playlist.", 
         tags: ["pop", "popular"]
     }, 
+    { 
+        artist: "Frank Ocean",
+        name: "This is Frank Ocean", 
+        img: "https://i.scdn.co/image/ab67706f000000033fc91b90ebec9607f4c0b5ab", 
+        id: "37i9dQZF1DXdyjMX5o2vCq",
+        description: "Get to know the shape-shifting, forward thinking, the one and only, Frank Ocean.", 
+        tags: ["pop"]
+    }, 
 
 ]

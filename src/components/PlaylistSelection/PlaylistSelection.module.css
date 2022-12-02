@@ -4,8 +4,8 @@
     max-width: 100%;
 }
 
-.swiperSlide { 
-    max-width: 250px;
+.section { 
+    margin: 20px 0px;
 }
 
 .allPlaylistsContainer { 
@@ -24,14 +24,17 @@
 }
 
 .contentContainer {
-    width: 200px; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    width: 250px; 
     margin-bottom: 20px;
    
 }
 
 .img { 
     border-radius: 4px;
-    max-width: 100%;
+    max-width: 200px;
     margin: 20px 0px;
 }
 
@@ -51,6 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 200px;
 }
 
 .name { 
@@ -66,5 +70,6 @@
     font-size: 90%;
     color: var(--grey);
     text-align: start;
+    overflow-y: hidden;
 
 }

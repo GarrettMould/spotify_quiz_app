@@ -1,8 +1,33 @@
 .thisIsImage { 
-    max-width: 300px;
-    margin: 50px 0px;
+    max-width: 75px;
+    margin: 50px 20px 50px 0px;
 }
 
+.thisIsName { 
+    font-family: CircularBold;
+    font-size: 130%;
+}
+
+.quizInfoContainer { 
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.infoTextContainer { 
+    display: flex; 
+    flex-direction: column;
+}
+span { 
+    font-family: CircularBold;
+}
+
+.scoreIdentifier { 
+    color: var(--grey); 
+    font-family: CircularBook;
+    font-size: 110%;
+}
 
 .answerContainer { 
     width: 100%;
@@ -35,3 +60,26 @@
     align-items: center;
 
 }
+
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+
+    .imgContainer { 
+        max-width: 75px;
+        margin-right: 20px;
+    }
+    .answerText { 
+        font-size: 90%;
+        font-family: CircularBook;
+        white-space:nowrap;
+        overflow-x: hidden;
+        font-weight: 600;
+        display: flex;
+        justify-content: flex-start;
+    
+    }
+
+  }
+  

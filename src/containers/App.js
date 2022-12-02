@@ -242,16 +242,24 @@ const getPlaylistInfo = async () => {
         {(matches) =>
           matches.small ? (
             <>
-              <button onClick={getTopSongs}>Get Top Songs</button>
-              {gotSongs ? <DisplaySongs topSongs={topSongs}></DisplaySongs> : null}
-              <LoginPageMobile
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
-            CLIENT_ID={CLIENT_ID}
-            REDIRECT_URI={REDIRECT_URI}
-              RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}
-              ></LoginPageMobile>
+            <Header></Header>
+            <Spacer></Spacer>
+            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
               
+             <form>
+                <input type="text" id="input_id" placeholder="Playlist ID"></input>
+                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
+          </form>
+              <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
+              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              <LoginPageDesktop
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
+              CLIENT_ID={CLIENT_ID}
+              REDIRECT_URI={REDIRECT_URI}
+              RESPONSE_TYPE={RESPONSE_TYPE}
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
+              <button className={classes.btn} onClick={logout}>Logout</button>
             </>
           ) : (
             <>
