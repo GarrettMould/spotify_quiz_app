@@ -15,6 +15,7 @@ import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
 
 
+
 const App = (props) => {
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
@@ -32,24 +33,32 @@ const App = (props) => {
 
   ];
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
-  const [dataTheme, setDataTheme] = useState("dark");
   const [token, setToken] = useState("");
   // User ID
   const [userID, setUserID] = useState("");
+  // Boolean - true if a artist has been selected
   const [gotSongs, setGotSongs] = useState(false); 
   const [topSongs, setTopSongs] = useState(null);
+  // Boolean - true if a playlist has been selected
   const [gotThisIs, setGotThisIs] = useState(false); 
+  // Array of all the songs from the selected This Is playlist
   const [thisIsFullSongList, setThisIsFullSongList] = useState(null)
+  // Name and IMG of the selected This Is playlist
   const [thisIsName, setThisIsName] = useState(null);
   const [thisIsImage, setThisIsImage] = useState(null);
+  // Array of 10 songs from the selected This Is playlist
   const [selectedThisIsSongs, setSelectedThisIsSongs] = useState(null)
+  // ID of the selected playlist or artist
   const [playlistID, setPlaylistID] = useState("37i9dQZF1DX5EkyRFIV92g");
   const [artistID, setArtistID] = useState("37i9dQZF1DX5EkyRFIV92g");
+  // Keeps track of User's quiz score
+  const [userScore, setUserScore] = useState(0);
+  // Keeps track of quiz round 
+  const [round, setRound] = useState(1); 
 
 
 
-// Classes for THIS IS Quiz 
-
+// Class for Individual Quiz Song -- Includes name, img, uri, and an array of 4 answer options
 function SongThisIs(name, img, uri, answerOptions) {
   this.name = name;
   this.img = img; 
@@ -57,24 +66,28 @@ function SongThisIs(name, img, uri, answerOptions) {
   this.answerOptions = answerOptions;
 }
 
-// Function that returns boolean for correct / incorrect quiz response
+// Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (e) => { 
+  if (e.currentTarget.value === true) {setUserScore(userScore + 100)}
+  setRound(round + 1);
   console.log(e.currentTarget.value)
+  console.log(userScore)
 }
 
-  // Function to update the artist ID 
+
+// Function to update the artist ID 
   const handleArtistChange = (id) => { 
     setArtistID(id); 
     console.log(id);
   }
 
-  // Function to update the artist ID 
+// Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
     setPlaylistID(e.currentTarget.id); 
     console.log(e.currentTarget.id)
   }
 
-  // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
+// Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
   const getUserID = async () => {
     const { data } = await axios.get(`https://api.spotify.com/v1/me`, {
       headers: {
@@ -120,6 +133,7 @@ const handleAnswer = (e) => {
     setGotThisIs(false);
   };
 
+
 // Function to display the top songs of the chosen artist
 
 useEffect((e) => { 
@@ -132,7 +146,7 @@ useEffect((e) => {
 
 
 
-// Function that sets artistID to the user input value
+// Function that sets playlistID to the user input value
 const handleCustomPlaylistSubmit = () => { 
   var id = document.getElementById('input_id').value;
   console.log(id);
@@ -165,16 +179,18 @@ const getPlaylistSongs = async () => {
       },
       
   })
-
   
   getPlaylistInfo();
   setGotThisIs(true);
 
-
+  // Shuffles the This Is playlist songs
   const shuffled = data.items.sort(() => 0.5 - Math.random());
+  // Removes songs from the array if they do not have a preview uri
   const noURIRemoved = shuffled.filter(function( obj ) {
     return obj.track.preview_url;
   });
+
+  // Selects ten songs from the array of playlist songs 
   let selected = noURIRemoved.slice(0, 10);
   console.log(selected);
   var selectedSongs = [];
@@ -191,7 +207,7 @@ const getPlaylistSongs = async () => {
   setThisIsFullSongList(allSongs);
   console.log(allSongs)
 
-  // 
+  // For each item in the selected array, creates an array of three random songs and the correct song, adds them to the SongThisIs object
   selected.forEach((item) => { 
     
     let shuffled = allSongs.sort(() => 0.5 - Math.random());
@@ -201,7 +217,6 @@ const getPlaylistSongs = async () => {
 
     let select = songRemoved.slice(0,3);
     
-
     var iSong = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
     select.push(iSong);
     var selectShuffled = select.sort(() => 0.5 - Math.random());
@@ -213,10 +228,10 @@ const getPlaylistSongs = async () => {
   console.log(selectedSongs)
   setSelectedThisIsSongs(selectedSongs);
 
-
-
 }
 
+
+// Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist
 const getPlaylistInfo = async () => { 
 
   const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${playlistID}`, {
@@ -229,15 +244,11 @@ const getPlaylistInfo = async () => {
   setThisIsName(data.name); 
   setThisIsImage(data.images[0].url)
   console.log(data.images[0].url);
-
-  
 }
 
   return (
     <div className={classes.wrapper}>
-    
-      
-     
+
       <Media queries={{ small: { maxWidth: 599 } }}>
         {(matches) =>
           matches.small ? (
@@ -251,7 +262,7 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotThisIs ? <DisplayThisIs round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
@@ -272,7 +283,7 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs ? <DisplayThisIs thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotThisIs ? <DisplayThisIs round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}

@@ -1,3 +1,9 @@
+/* Audio Panel Styling */ 
+audio::-webkit-media-controls-panel {
+    background-color: red;
+  }
+
+
 .thisIsImage { 
     max-width: 75px;
     margin: 50px 20px 50px 0px;
@@ -10,6 +16,9 @@
 
 .quizInfoContainer { 
     width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 4px;
+    height: 125px;
     display: flex; 
     flex-direction: row;
     align-items: center;

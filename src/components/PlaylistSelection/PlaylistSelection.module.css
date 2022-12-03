@@ -19,7 +19,7 @@
     margin-right: 30px;
     margin-bottom: 30px;
     width: 250px;
-    background-color: #232323;
+    background-color: var(--darkGrey);
     border-radius: 4px;
 }
 
