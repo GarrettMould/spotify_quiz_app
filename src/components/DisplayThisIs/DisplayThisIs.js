@@ -12,8 +12,9 @@ const changeSrc = () => {
 
 
   const handleAnswer = (e) => { 
+    var value = e.currentTarget.value
     changeSrc(); 
-    props.handleAnswer(e);
+    props.handleAnswer(value);
   }
 
 
@@ -22,8 +23,9 @@ const changeSrc = () => {
      // Map over selectedSongs and create a UI for the test questions
   const mappedSongs = selectedSongs.map((song) => { 
     var correctAnswer = song.name
+    console.log(correctAnswer)
 
-    const mappedAnswerOptions = song.answerOptions.map( (song, i) => { 
+    const mappedAnswerOptions = song.answerOptions.map( (track, i) => { 
         return (
             <>
             <div className={classes.answerContainer}>
@@ -32,10 +34,10 @@ const changeSrc = () => {
               className={classes.btnAnswerOption}
               type="radio"
               name={correctAnswer}
-              value={song.name === correctAnswer ? true : false}
+              value={track.name === correctAnswer ? "blah" : false}
               onClick={handleAnswer}
               
-            ><div className={classes.imgContainer}><img src={song.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}>{song.name}</div></button>
+            ><div className={classes.imgContainer}><img src={track.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}>{track.name}</div></button>
             </div>
             </>
             
@@ -64,7 +66,7 @@ console.log(selectedSongs)
       <div className={classes.infoTextContainer}>
         <div className={classes.thisIsName}>{props.thisIsName}</div>
         <div className={classes.scoreIdentifier}><span>Score:</span> {props.userScore}</div>
-        {props.round}
+        {props.round + 1}
       </div>
     </div>
     

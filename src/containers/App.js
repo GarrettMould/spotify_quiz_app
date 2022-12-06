@@ -54,7 +54,7 @@ const App = (props) => {
   // Keeps track of User's quiz score
   const [userScore, setUserScore] = useState(0);
   // Keeps track of quiz round 
-  const [round, setRound] = useState(1); 
+  const [round, setRound] = useState(0); 
 
 
 
@@ -66,11 +66,18 @@ function SongThisIs(name, img, uri, answerOptions) {
   this.answerOptions = answerOptions;
 }
 
+
+const resetQuiz = () => { 
+  setGotThisIs(false); 
+  setRound(0); 
+  setUserScore(0);
+}
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
-const handleAnswer = (e) => { 
-  if (e.currentTarget.value === true) {setUserScore(userScore + 100)}
+const handleAnswer = (value) => { 
+ 
+  if (value === "blah") setUserScore(userScore + 100)
+  console.log(value)
   setRound(round + 1);
-  console.log(e.currentTarget.value)
   console.log(userScore)
 }
 
@@ -78,13 +85,12 @@ const handleAnswer = (e) => {
 // Function to update the artist ID 
   const handleArtistChange = (id) => { 
     setArtistID(id); 
-    console.log(id);
   }
 
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
     setPlaylistID(e.currentTarget.id); 
-    console.log(e.currentTarget.id)
+    resetQuiz();
   }
 
 // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
@@ -131,6 +137,8 @@ const handleAnswer = (e) => {
     window.localStorage.removeItem("token");
     setGotSongs(false); 
     setGotThisIs(false);
+    resetQuiz(); 
+  
   };
 
 
@@ -149,7 +157,6 @@ useEffect((e) => {
 // Function that sets playlistID to the user input value
 const handleCustomPlaylistSubmit = () => { 
   var id = document.getElementById('input_id').value;
-  console.log(id);
   setPlaylistID(id);
 }
   
@@ -162,8 +169,6 @@ const getTopSongs = async () => {
         },
         
     })
-    console.log(artistID);
-    console.log(data.tracks);
     //setGotSongs(true);
     setTopSongs(data.tracks);
    
@@ -204,8 +209,9 @@ const getPlaylistSongs = async () => {
     allSongs.push(i);
   });
 
+  console.log(allSongs);
+
   setThisIsFullSongList(allSongs);
-  console.log(allSongs)
 
   // For each item in the selected array, creates an array of three random songs and the correct song, adds them to the SongThisIs object
   selected.forEach((item) => { 
@@ -216,12 +222,15 @@ const getPlaylistSongs = async () => {
     });
 
     let select = songRemoved.slice(0,3);
+    console.log(select)
     
     var iSong = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
     select.push(iSong);
+  
     var selectShuffled = select.sort(() => 0.5 - Math.random());
     var i = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url, selectShuffled)
     selectedSongs.push(i);
+    
    
   }) 
 
@@ -243,7 +252,6 @@ const getPlaylistInfo = async () => {
   
   setThisIsName(data.name); 
   setThisIsImage(data.images[0].url)
-  console.log(data.images[0].url);
 }
 
   return (
@@ -292,6 +300,7 @@ const getPlaylistInfo = async () => {
               RESPONSE_TYPE={RESPONSE_TYPE}
               SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
               <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
             </>
           )
         }
