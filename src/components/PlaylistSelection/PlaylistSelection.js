@@ -21,10 +21,7 @@ const PlaylistSelection = (props) => {
       rockPlaylists.push(playlist)
     }
   })
-
-  console.log(rapPlaylists)
-  console.log(popPlaylists)
-  
+ 
 
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return (    
