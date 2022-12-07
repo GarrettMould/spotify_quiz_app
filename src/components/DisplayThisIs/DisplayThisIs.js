@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './DisplayThisIs.module.css'
+import Countdown from "react-countdown";
 
 const DisplayThisIs = (props) => {
 
@@ -8,13 +9,21 @@ const changeSrc = () => {
     const source = document.getElementById("audioSrc");
     source.src = mappedSongs[props.round].uri
     audio.load();
+    audio.play();
   }
+
 
 
   const handleAnswer = (e) => { 
     var value = e.currentTarget.value
     changeSrc(); 
     props.handleAnswer(value);
+  }
+
+  const handleNoAnswer = () => {
+    changeSrc(); 
+    props.handleNoAnswer();
+
   }
 
 
@@ -50,6 +59,7 @@ const changeSrc = () => {
         <audio id="audio" controls="controls">
         <source id="audioSrc" src={song.uri} type="audio/mpeg"/>
         </audio>
+        <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>
         {mappedAnswerOptions}
         
         </>

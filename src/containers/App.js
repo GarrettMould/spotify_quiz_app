@@ -74,13 +74,15 @@ const resetQuiz = () => {
 }
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (value) => { 
- 
   if (value === "blah") setUserScore(userScore + 100)
   console.log(value)
   setRound(round + 1);
   console.log(userScore)
 }
 
+const handleNoAnswer = () => { 
+  setRound(round + 1);
+}
 
 // Function to update the artist ID 
   const handleArtistChange = (id) => { 
@@ -291,7 +293,7 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs ? <DisplayThisIs round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}

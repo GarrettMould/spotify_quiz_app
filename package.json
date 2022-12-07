@@ -12,6 +12,7 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-countdown": "^2.3.5",
     "react-dom": "^18.1.0",
     "react-media": "^1.10.0",
     "react-router": "^6.3.0",
