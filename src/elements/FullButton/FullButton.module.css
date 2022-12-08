@@ -1,0 +1,7 @@
+.btn { 
+    width: 100%; 
+    border-radius: 4px;
+    background-color: var(--primary-green);
+    height: 30px;
+    font-family: CircularBook;
+}

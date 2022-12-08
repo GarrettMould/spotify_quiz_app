@@ -1,0 +1,68 @@
+.container { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.displayScoreContainer { 
+    width: 50%; 
+    display: flex; 
+    flex-direction: column;
+    background-color: var(--darkGrey);
+    border-radius: 4px;
+}
+
+.displayScoreRowOneContainer { 
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.displayScoreRowTwoContainer { 
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.score { 
+    margin-left: 30px;
+    font-family: CircularBold;
+    font-size: 175%;
+}
+
+.medalBackground { 
+    background-color: var(--primary);
+    width: 75px; 
+    height: 75px;
+    border-radius: 4px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.medal {
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px; 
+    background-color: yellow;
+}
+.playlistImage { 
+    max-width: 75px; 
+}
+
+.playlistName { 
+    font-size: 130%;
+    font-family: CircularBold;
+    justify-self: center;
+}
+
+.iconContainer { 
+    justify-self: flex-end;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}

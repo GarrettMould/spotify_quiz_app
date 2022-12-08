@@ -13,6 +13,7 @@ import { Spacer } from "../elements/Spacer/Spacer";
 import { SelectArtist } from "../components/SelectArtist/SelectArtist";
 import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
+import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
 
 
 
@@ -272,7 +273,7 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs ? <DisplayThisIs round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
@@ -281,6 +282,7 @@ const getPlaylistInfo = async () => {
               RESPONSE_TYPE={RESPONSE_TYPE}
               SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
               <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
             </>
           ) : (
             <>
@@ -295,6 +297,7 @@ const getPlaylistInfo = async () => {
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              <DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
