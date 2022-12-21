@@ -297,7 +297,7 @@ const getPlaylistInfo = async () => {
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              <DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>
+              {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}

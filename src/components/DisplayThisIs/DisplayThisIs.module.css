@@ -1,12 +1,17 @@
-/* Audio Panel Styling */ 
-audio::-webkit-media-controls-panel {
-    background-color: red;
-  }
+
+
+.wrapper { 
+    display: flex; 
+    justify-content: center;
+}
+  .quizSectionContainer{ 
+    width: 75%;   
+}
 
 
 .thisIsImage { 
     max-width: 75px;
-    margin: 50px 20px 50px 0px;
+    margin: 50px 20px 50px 20px;
 }
 
 .thisIsName { 
@@ -38,24 +43,34 @@ span {
     font-size: 110%;
 }
 
+.answers { 
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+
 .answerContainer { 
-    width: 100%;
+    padding-bottom: 10px;
+    width: 50%;
     display: flex; 
     flex-direction: row; 
+    
 }
 
 .btnAnswerOption { 
     display: flex;
     width: 100%;
     height: 75px;
-    margin-bottom: 1rem;
+    border-radius: 4px;
 }
 
 
 
 .img { 
     width: 100%; 
+    border-radius: 4px;
 }
+
 .imgContainer { 
     max-width: 75px;
 }
@@ -75,12 +90,54 @@ span {
 
 @media screen and (max-width: 768px) {
 
-    .imgContainer { 
+    .wrapper { 
+        display: flex; 
+    
+    }
+
+    .quizSectionContainer{ 
+        width: 95%;   
+    }
+
+    .thisIsImage { 
         max-width: 75px;
-        margin-right: 20px;
+        margin: 50px 20px 50px 20px;
+    }
+    
+    .thisIsName { 
+        font-family: CircularBold;
+        font-size: 110%;
+    }
+
+    .scoreIdentifier { 
+        color: var(--grey); 
+        font-family: CircularBook;
+        font-size: 100%;
+    }
+    
+
+    .answers { 
+        display: flex; 
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .answerContainer { 
+        width: 100%;
+        display: flex; 
+        align-items: center;
+        flex-direction: row; 
+        
+    }
+    .imgContainer { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 60px;
+        margin: 0px 15px 0px 5px;
     }
     .answerText { 
-        font-size: 90%;
+        font-size: 85%;
         font-family: CircularBook;
         white-space:nowrap;
         overflow-x: hidden;

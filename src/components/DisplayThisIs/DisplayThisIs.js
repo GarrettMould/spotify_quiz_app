@@ -1,8 +1,12 @@
 import React from 'react'
 import classes from './DisplayThisIs.module.css'
 import Countdown from "react-countdown";
+import ReactHowler from 'react-howler'
+import CountdownBar from '../../elements/CountdownBar/CountdownBar';
 
 const DisplayThisIs = (props) => {
+
+  
 
 const changeSrc = () => {
     const audio = document.getElementById("audio");
@@ -34,7 +38,8 @@ const changeSrc = () => {
     var correctAnswer = song.name
     console.log(correctAnswer)
 
-    const mappedAnswerOptions = song.answerOptions.map( (track, i) => { 
+    const mappedAnswerOptions = song.answerOptions.map( (track, i) => {    
+      
         return (
             <>
             <div className={classes.answerContainer}>
@@ -56,12 +61,16 @@ const changeSrc = () => {
 
     return (
         <>
-        <audio id="audio" controls="controls">
-        <source id="audioSrc" src={song.uri} type="audio/mpeg"/>
-        </audio>
-        <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>
-        {mappedAnswerOptions}
         
+        <audio id="audio" controls="controls" hidden="hidden">
+        <source id="audioSrc" src={song.uri} type="audio/mpeg" hidden="hidden"/>
+        </audio>
+        
+        <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>
+
+        <CountdownBar></CountdownBar>
+
+        <div className={classes.answers}>{mappedAnswerOptions}</div>        
         </>
     )
 })
@@ -71,16 +80,20 @@ console.log(selectedSongs)
 
   return (
     <>
-    <div className={classes.quizInfoContainer}>
-      <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
-      <div className={classes.infoTextContainer}>
-        <div className={classes.thisIsName}>{props.thisIsName}</div>
-        <div className={classes.scoreIdentifier}><span>Score:</span> {props.userScore}</div>
-        {props.round + 1}
+    <div className={classes.wrapper}>
+      <div className={classes.quizSectionContainer}>
+        <div className={classes.quizInfoContainer}>
+          <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
+          <div className={classes.infoTextContainer}>
+            <div className={classes.thisIsName}>{props.thisIsName}</div>
+            <div className={classes.scoreIdentifier}><span>Score:</span> {props.userScore}</div>
+            {props.round + 1}
+          </div>
+        </div>
+        
+        {mappedSongs[props.round]}
       </div>
     </div>
-    
-    {mappedSongs[props.round]}
     </>
   )
 }
