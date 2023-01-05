@@ -1,0 +1,42 @@
+.container { 
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px;
+}
+
+.gameInfoContainer { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.roundContainer { 
+    font-size: 120%;
+    font-family: CircularBold;    
+}
+
+.scoreContainer { 
+    font-size: 120%;
+    font-family: CircularBold;
+}
+
+.span { 
+    color: var(--grey);
+}
+
+@media screen and (max-width: 768px) {
+
+    .roundContainer { 
+        font-size: 100%;
+        font-family: CircularBold;    
+    }
+    
+    .scoreContainer { 
+        font-size: 100%;
+        font-family: CircularBold;
+    }
+
+  }
+  

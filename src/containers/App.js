@@ -14,6 +14,7 @@ import { SelectArtist } from "../components/SelectArtist/SelectArtist";
 import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
 import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
+import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/PlaylistSelectionInfoBox";
 
 
 
@@ -75,6 +76,7 @@ const resetQuiz = () => {
 }
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (value) => { 
+    
   if (value === "blah") setUserScore(userScore + 100)
   console.log(value)
   setRound(round + 1);
@@ -288,12 +290,13 @@ const getPlaylistInfo = async () => {
             <>
             <Header></Header>
             <Spacer></Spacer>
-            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
+            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
               
              <form>
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
+          */}
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}

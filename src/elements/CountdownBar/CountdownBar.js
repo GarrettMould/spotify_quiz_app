@@ -5,7 +5,7 @@ const CountDownBar = () => {
   return (
     <div className={classes.countdownBarContainer}>
         <div key={Date.now()}className={classes.countdownBar}></div>
-        <div key={Date.now()}className={classes.countdownBall}></div>
+        <div key={Date.now()} id="countdownBall" className={classes.countdownBall}></div>
     </div>
   )
 }

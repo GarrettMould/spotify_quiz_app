@@ -76,13 +76,16 @@ span {
 }
 
 .answerText { 
-    width: 100%;
+    width: 80%;
     font-size: 100%;
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.track { 
+    width: 85%;
 }
 
 
@@ -138,13 +141,15 @@ span {
     }
     .answerText { 
         font-size: 85%;
-        font-family: CircularBook;
-        white-space:nowrap;
-        overflow-x: hidden;
+        font-family: CircularLight;
         font-weight: 600;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
     
+    }
+
+    .track { 
+        width: 90%;
     }
 
   }

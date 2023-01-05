@@ -4,6 +4,7 @@ import classes from "./PlaylistSelection.module.css"
 import { playlists } from '../../Playlists'
 import Headline from '../../elements/Headline/Headline'
 import { Spacer } from '../../elements/Spacer/Spacer'
+import PlaylistSelectionInfoBox from '../PlaylistSelectionInfoBox/PlaylistSelectionInfoBox'
 
 
 const PlaylistSelection = (props) => {
@@ -61,14 +62,14 @@ const PlaylistSelection = (props) => {
   return (
     <div className={classes.container}>
       <section className={classes.section}>
-      <Headline text="Top Rap Quizzes"></Headline>
+      <PlaylistSelectionInfoBox></PlaylistSelectionInfoBox>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedRapPlaylists}
       </div>
       </section>
       <section  className={classes.section}>
-      <Headline text="Top Pop Quizzes"></Headline>
+      <PlaylistSelectionInfoBox></PlaylistSelectionInfoBox>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedPopPlaylists}

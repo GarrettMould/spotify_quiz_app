@@ -1,0 +1,35 @@
+.container {
+    width: 35%; 
+    display: flex; 
+    flex-direction: column;
+    margin: 0px 70px 0px 0px;
+}
+
+.categoryHeadline { 
+    font-family: CircularBold; 
+    font-size: 130%;
+    padding-bottom: 2%;
+    color: var(--primary-green);
+}
+
+.mainHeadline { 
+    font-family: CircularBold;
+    line-height: 110%;
+    font-size: 300%;
+    padding-bottom: 2%;
+}
+
+.description { 
+    font-family: CircularBook;
+    font-size: 100%;
+    margin-bottom: 5%;
+    color: var(--grey);
+}
+
+.btn { 
+    background-color: var(--primary-green);
+    color: var(--secondary); 
+    border-radius: 4px;
+    height: 35px;
+
+}

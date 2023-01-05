@@ -4,16 +4,17 @@
     align-items: center;
     position: relative; 
     height: 10px; 
-    background-color: var(--darkGrey);
-    border-radius: 4px;
+    background-color: var(--grey);
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
 .countdownBar { 
     position: absolute; 
     height: 10px; 
+    border-radius: 8px;
     
-    background-color: greenyellow;
+    background-color: var(--primary-green);
     
     /* for chrome and safari*/
     -webkit-animation-duration: 10s;
@@ -85,3 +86,16 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+
+    .countdownBarContainer {  
+        height: 8px; 
+    }
+
+    .countdownBar { 
+        height: 8px;   
+        
+    }
+
+  }
+  

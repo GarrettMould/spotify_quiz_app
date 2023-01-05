@@ -3,6 +3,7 @@ import classes from './DisplayThisIs.module.css'
 import Countdown from "react-countdown";
 import ReactHowler from 'react-howler'
 import CountdownBar from '../../elements/CountdownBar/CountdownBar';
+import GamePanel from '../GamePanel/GamePanel';
 
 const DisplayThisIs = (props) => {
 
@@ -51,7 +52,7 @@ const changeSrc = () => {
               value={track.name === correctAnswer ? "blah" : false}
               onClick={handleAnswer}
               
-            ><div className={classes.imgContainer}><img src={track.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}>{track.name}</div></button>
+            ><div className={classes.imgContainer}><img src={track.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>{track.name}</div></div></button>
             </div>
             </>
             
@@ -66,9 +67,7 @@ const changeSrc = () => {
         <source id="audioSrc" src={song.uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
         
-        <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>
-
-        <CountdownBar></CountdownBar>
+       {/* <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>*/}
 
         <div className={classes.answers}>{mappedAnswerOptions}</div>        
         </>
@@ -86,10 +85,9 @@ console.log(selectedSongs)
           <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
           <div className={classes.infoTextContainer}>
             <div className={classes.thisIsName}>{props.thisIsName}</div>
-            <div className={classes.scoreIdentifier}><span>Score:</span> {props.userScore}</div>
-            {props.round + 1}
           </div>
         </div>
+        <GamePanel userScore={props.userScore} round={props.round}></GamePanel>
         
         {mappedSongs[props.round]}
       </div>
