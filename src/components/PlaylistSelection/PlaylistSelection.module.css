@@ -5,19 +5,23 @@
 }
 
 .section { 
-    margin: 20px 0px;
+    margin: 30px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 
 .allPlaylistsContainer { 
     display: flex;
-    overflow-x: scroll;
+    
+    
 }
 
 .playlistContainer { 
     display: flex; 
     justify-content: center;
     margin-right: 30px;
-    margin-bottom: 30px;
     width: 250px;
     background-color: var(--darkGrey);
     border-radius: 4px;
