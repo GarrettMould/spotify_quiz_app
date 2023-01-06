@@ -267,6 +267,14 @@ const getPlaylistInfo = async () => {
           matches.small ? (
             <>
             <Header></Header>
+            <LoginPageDesktop
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
+              CLIENT_ID={CLIENT_ID}
+              REDIRECT_URI={REDIRECT_URI}
+              RESPONSE_TYPE={RESPONSE_TYPE}
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
+              <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
             <Spacer></Spacer>
             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
               
@@ -277,7 +285,11 @@ const getPlaylistInfo = async () => {
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              <LoginPageDesktop
+            </>
+          ) : (
+            <>
+            <Header></Header>
+            <LoginPageDesktop
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
@@ -285,10 +297,6 @@ const getPlaylistInfo = async () => {
               SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
               <button className={classes.btn} onClick={logout}>Logout</button>
               <button className={classes.btn} onClick={resetQuiz}>Reset</button>
-            </>
-          ) : (
-            <>
-            <Header></Header>
             <Spacer></Spacer>
             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
               
@@ -301,14 +309,7 @@ const getPlaylistInfo = async () => {
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
-              <LoginPageDesktop
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
-              CLIENT_ID={CLIENT_ID}
-              REDIRECT_URI={REDIRECT_URI}
-              RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
-              <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
+              
             </>
           )
         }

@@ -80,16 +80,18 @@ console.log(selectedSongs)
   return (
     <>
     <div className={classes.wrapper}>
-      <div className={classes.quizSectionContainer}>
-        <div className={classes.quizInfoContainer}>
-          <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
-          <div className={classes.infoTextContainer}>
-            <div className={classes.thisIsName}>{props.thisIsName}</div>
+      <div className={classes.quizPanelWrapper}>
+        <div className={classes.quizSectionContainer}>
+          <div className={classes.quizInfoContainer}>
+            <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
+            <div className={classes.infoTextContainer}>
+              <div className={classes.thisIsName}>{props.thisIsName}</div>
+            </div>
           </div>
+          <GamePanel userScore={props.userScore} round={props.round}></GamePanel>
+          
+          {mappedSongs[props.round]}
         </div>
-        <GamePanel userScore={props.userScore} round={props.round}></GamePanel>
-        
-        {mappedSongs[props.round]}
       </div>
     </div>
     </>
