@@ -6,7 +6,7 @@
 }
 
 .quizPanelWrapper {
-    width: 70%;
+    width: 85%;
     border-radius: 4px;
     background-color: #343434;
     display: flex; 
@@ -79,6 +79,7 @@ span {
 .img { 
     width: 100%; 
     border-radius: 4px;
+    
 }
 
 .imgContainer { 
@@ -109,7 +110,7 @@ span {
     }
 
     .quizPanelWrapper {
-        width: 90%;
+        width: 95%;
         border-radius: 4px;
         background-color: #343434;
         display: flex; 

@@ -1,7 +1,8 @@
 :root {
   --primary: #121212;
   --secondary: #ffffff;
-  --darkGrey: #232323;
+  --darkGrey: #1b1b1b;
+  --darkGreyHover: #232323;
   --primary-green: #1db954;
   --hover-green: #1bcb59;
   --grey: rgb(177, 176, 176);

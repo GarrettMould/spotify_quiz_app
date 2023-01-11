@@ -20,7 +20,7 @@
 .categoryHeadline { 
     font-family: CircularBold; 
     font-size: 115%;
-    padding-bottom: 2%;
+    padding-bottom: 4%;
     color: var(--primary-green);
 }
 
@@ -28,7 +28,7 @@
     font-family: CircularBold;
     line-height: 110%;
     font-size: 220%;
-    padding-bottom: 2%;
+    padding-bottom: 4%;
 }
 
 .description { 
