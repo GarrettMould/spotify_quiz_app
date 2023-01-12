@@ -15,6 +15,7 @@ import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
 import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
 import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/PlaylistSelectionInfoBox";
+import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/PlaylistSelectionMobile";
 
 
 
@@ -278,11 +279,14 @@ const getPlaylistInfo = async () => {
             <Spacer></Spacer>
             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
               
+             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+              
              <form>
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
-              <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
+          */}
+              <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
             </>

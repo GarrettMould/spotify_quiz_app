@@ -1,0 +1,28 @@
+.container { 
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.section { 
+    margin: 20px 0px 30px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    padding-bottom: 20px;
+    overflow-x: scroll;
+    
+}
+
+.allPlaylistsContainer { 
+    display: flex;
+}
+    
+.image {
+    width: 108.183px; 
+    height: 108.183px;
+    border-radius: 4px;
+}
+
+  
