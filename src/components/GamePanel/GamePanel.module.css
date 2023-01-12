@@ -23,6 +23,7 @@
 }
 
 .span { 
+    margin-left: 5px;
     color: var(--grey);
 }
 

@@ -1,5 +1,5 @@
 import classes from "./PlaylistSelectionMobile.module.css"
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { ArrowCircleRight } from "phosphor-react";
 import { playlists } from '../../Playlists'
 import Headline from "../../elements/Headline/Headline";
 import { Spacer } from "../../elements/Spacer/Spacer";
@@ -21,6 +21,7 @@ var rapPlaylists = [];
     }
   })
  
+
 
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return ( 
@@ -56,12 +57,24 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRapPlaylists}
+            <button className={classes.viewAllBtn}>
+            <div className={classes.contentContainer}>
+                <div className={classes.viewAllText}>View All</div>
+                <ArrowCircleRight size={30} color="#c0c0c0"  />
+            </div>
+            </button>
             </div>
             </section>
             <Headline text="Pop"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedPopPlaylists}
+            <button className={classes.viewAllBtn}>
+            <div className={classes.contentContainer}>
+                <div className={classes.viewAllText}>View All</div>
+                <ArrowCircleRight size={30} color="#c0c0c0" />
+            </div>
+            </button>
             </div>
             </section>
         </div>
