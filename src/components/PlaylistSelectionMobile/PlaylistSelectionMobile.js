@@ -60,7 +60,7 @@ var rapPlaylists = [];
             <button className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
-                <ArrowCircleRight size={30} color="#c0c0c0"  />
+                <ArrowCircleRight size={40} color="#c0c0c0"  />
             </div>
             </button>
             </div>
@@ -72,7 +72,7 @@ var rapPlaylists = [];
             <button className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
-                <ArrowCircleRight size={30} color="#c0c0c0" />
+                <ArrowCircleRight size={40} color="#c0c0c0" />
             </div>
             </button>
             </div>
