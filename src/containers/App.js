@@ -23,6 +23,7 @@ const App = (props) => {
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
   const REDIRECT_URI = "http://localhost:3000/";
+  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -77,11 +78,14 @@ const resetQuiz = () => {
 }
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (value) => { 
+
+  const element = document.querySelectorAll(".countdownBar")
     
   if (value === "blah") setUserScore(userScore + 100)
   console.log(value)
   setRound(round + 1);
   console.log(userScore)
+  element.remove();
 }
 
 const handleNoAnswer = () => { 

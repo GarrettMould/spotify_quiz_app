@@ -74,6 +74,11 @@ span {
     width: 100%;
     height: 75px;
     border-radius: 4px;
+    background-color: var(--darkGrey);
+}
+
+.btnAnswerOption:hover, .btnAnswerOption:active { 
+    background-color: var(--darkGreyHover);
 }
 
 
@@ -165,8 +170,8 @@ span {
         padding: 0px;
     }
     .answerText { 
-        font-size: 85%;
-        font-family: CircularLight;
+        font-size: 90%;
+        font-family: CircularBold;
         font-weight: 600;
         display: flex;
         justify-content: center;
