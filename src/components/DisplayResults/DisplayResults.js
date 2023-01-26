@@ -18,11 +18,11 @@ export const DisplayResults = (props) => {
                 <div className={classes.percentageDisplayContainer}>
                 <div className={classes.contentWrapper}>
                     <div className={classes.percentageContainer}>
-                        <div className={classes.percentage}>70.4</div>
+                        <div className={classes.percentage}>70.4%</div>
                     </div>
                     <div className={classes.noteAndIconsContainer}>
                         <div className={classes.noteContainer}>
-                            <div className={classes.note}>Congratulations, you are a true Stan! You are in the top 70.4 per cent of Drake fans.</div>
+                            <div className={classes.note}>Congratulations, you are a true Stan! You are in the top 70.4 percent of Drake fans.</div>
                         </div>
                     </div>
                     </div>
@@ -32,13 +32,13 @@ export const DisplayResults = (props) => {
                 <div className={classes.titleContainer}><div className={classes.title}><span className={classes.span}>Quick</span> Stats</div></div>
                 <div className={classes.statsContainer}>
                     <div className={classes.statLine}> <span className={classes.span}>Score:</span> 732</div>
-                    <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span>3</div>
-                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question</span> 5.7 seconds</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span> 3</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span> 5.7 seconds</div>
                 </div>
             </div>
           </div>
           <div className={classes.rowButtons}>
-            <FullButton text="Close"></FullButton>
+            <FullButton text="Share"></FullButton>
           </div>
           
           
