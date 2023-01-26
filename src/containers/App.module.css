@@ -21,7 +21,8 @@
 
 .wrapper { 
   padding: 20px;
-  background-color: var(--primary)
+  background-color: var(--primary);
+  background: linear-gradient(#2c2c2c, #121212 30%);
 }
 
 button { 

@@ -16,6 +16,7 @@ import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection
 import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
 import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/PlaylistSelectionInfoBox";
 import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/PlaylistSelectionMobile";
+import { DisplayResults } from "../components/DisplayResults/DisplayResults";
 
 
 
@@ -314,7 +315,7 @@ const getPlaylistInfo = async () => {
           </form>
           */}
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               
