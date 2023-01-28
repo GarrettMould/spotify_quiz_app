@@ -61,15 +61,15 @@ const PlaylistSelection = (props) => {
   })
   return (
     <div className={classes.container}>
+      <Headline text="Hip Hop Quizzes"></Headline>
       <section className={classes.section}>
-      <PlaylistSelectionInfoBox></PlaylistSelectionInfoBox>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedRapPlaylists}
       </div>
       </section>
+      <Headline text="Pop Quizzes"></Headline>
       <section  className={classes.section}>
-      <PlaylistSelectionInfoBox></PlaylistSelectionInfoBox>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedPopPlaylists}

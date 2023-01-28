@@ -29,7 +29,7 @@ export const DisplayResults = (props) => {
                 </div>
                 
             <div className={classes.statsDisplayContainer}>
-                <div className={classes.titleContainer}><div className={classes.title}><span className={classes.span}>Quick</span> Stats</div></div>
+                <div className={classes.titleContainer}><div className={classes.title}>Quick Stats</div></div>
                 <div className={classes.statsContainer}>
                     <div className={classes.statLine}> <span className={classes.span}>Score:</span> 732</div>
                     <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span> 3</div>
@@ -38,7 +38,7 @@ export const DisplayResults = (props) => {
             </div>
           </div>
           <div className={classes.rowButtons}>
-            <FullButton text="Share"></FullButton>
+            <button className={classes.btn}>Close</button>
           </div>
           
           

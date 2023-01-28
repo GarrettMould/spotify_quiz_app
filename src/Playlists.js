@@ -75,7 +75,7 @@ export var playlists = [
         artist: "The Beatles",
         name: "This is The Beatles", 
         img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO2iBPiw-large.jpg", 
-        id: "37i9dQZF1DZ06evO2iBPiw",
+        id: "37i9dQZF1DZ06evO12tsHe",
         description: "This is The Beatles. Essential tracks all in one playlist.", 
         tags: ["pop", "popular"]
     }, 
@@ -87,5 +87,15 @@ export var playlists = [
         description: "Get to know the shape-shifting, forward thinking, the one and only, Frank Ocean.", 
         tags: ["pop"]
     }, 
+    { 
+        artist: "Den Vau",
+        name: "This is Den Vau", 
+        img: "https://i.scdn.co/image/ab67706f000000033fc91b90ebec9607f4c0b5ab", 
+        id: "37i9dQZF1DXcJ3YhsMrHLi",
+        description: "Get to know the shape-shifting, forward thinking, the one and only, Frank Ocean.", 
+        tags: ["pop"]
+    }, 
+
+
 
 ]

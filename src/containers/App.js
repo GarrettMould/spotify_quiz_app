@@ -272,15 +272,13 @@ const getPlaylistInfo = async () => {
         {(matches) =>
           matches.small ? (
             <>
-            <Header></Header>
-            <LoginPageDesktop
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
+            <Header AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
               RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
-              <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
+             {/* <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
             <Spacer></Spacer>
             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
               
@@ -297,17 +295,17 @@ const getPlaylistInfo = async () => {
             </>
           ) : (
             <>
-            <Header></Header>
-            <LoginPageDesktop
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
+            <Header AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
               RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></LoginPageDesktop>
-              <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
+             {/* <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
             <Spacer></Spacer>
-            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
+              
+             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
               
              <form>
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
