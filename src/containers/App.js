@@ -315,7 +315,7 @@ const getPlaylistInfo = async () => {
           </form>
           */}
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               

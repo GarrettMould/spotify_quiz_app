@@ -38,7 +38,7 @@ export const DisplayResults = (props) => {
             </div>
           </div>
           <div className={classes.rowButtons}>
-            <button className={classes.btn}>Close</button>
+            <button onClick={props.resetQuiz} className={classes.btn}>Close</button>
           </div>
           
           
