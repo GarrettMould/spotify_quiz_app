@@ -10,7 +10,9 @@ const Header = (props) => {
           <span className={classes.greenText}>Rap</span> Quiz
         </div>
         <div className={classes.navBar}>
-          <LoginPageDesktop AUTH_ENDPOINT={props.AUTH_ENDPOINT}
+          <LoginPageDesktop 
+              logout={props.logout}
+              AUTH_ENDPOINT={props.AUTH_ENDPOINT}
               CLIENT_ID={props.CLIENT_ID}
               REDIRECT_URI={props.REDIRECT_URI}
               RESPONSE_TYPE={props.RESPONSE_TYPE}

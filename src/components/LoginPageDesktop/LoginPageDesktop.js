@@ -6,7 +6,7 @@ const LoginPageDesktop = (props) => {
           <a
             href={`${props.AUTH_ENDPOINT}?client_id=${props.CLIENT_ID}&redirect_uri=${props.REDIRECT_URI}&response_type=${props.RESPONSE_TYPE}&scope=${props.SCOPES_URL_PARAM}`}
           >
-            <Button className={classes.btn}>Login to Spotify</Button>
+            <Button  onClick={props.logout} className={classes.btn}>Login to Spotify</Button>
           </a>
         
   );

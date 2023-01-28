@@ -295,7 +295,9 @@ const getPlaylistInfo = async () => {
             </>
           ) : (
             <>
-            <Header AUTH_ENDPOINT={AUTH_ENDPOINT}
+            <Header 
+              logout={logout}
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
               RESPONSE_TYPE={RESPONSE_TYPE}
