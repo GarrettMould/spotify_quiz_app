@@ -1,0 +1,76 @@
+.container { 
+    position: relative;
+    display: flex; 
+    justify-content: space-between;
+    height: 80vh;
+}
+
+.browseLink { 
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    font-family: CircularBold;
+    border-bottom: 2px solid white;
+    font-size: 150%;
+}
+
+.browseLink:hover { 
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--primary-green);
+}
+.containerLeftBlock { 
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+
+}
+
+.containerMainText { 
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainText { 
+    font-family: CircularBold;
+    font-size: 350%;
+    line-height: 140%;
+}
+
+.subText { 
+    font-family: CircularBook;
+    color: var(--grey);
+    font-size: 140%;
+    line-height: 175%;
+}
+.containerRightBlock { 
+    position: relative;
+}
+
+.photoOne {
+    border-radius: 50%;
+    max-width: 300px;
+    position: absolute;
+    top: 0; 
+    right: 0;
+}
+
+.photoTwo { 
+    border-radius: 50%;
+    max-width: 150px;
+    position: absolute;
+    top: 30px; 
+    right: 400px;
+}
+
+.photoThree { 
+    border-radius: 50%;
+    max-width: 220px;
+    position: absolute;
+    top: 220px; 
+    right: 300px;
+}
+
