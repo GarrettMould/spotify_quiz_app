@@ -1,8 +1,9 @@
 .container { 
+    margin-top: 50px;
     position: relative;
     display: flex; 
     justify-content: space-between;
-    height: 80vh;
+    height: 90vh;
 }
 
 .browseLink { 
@@ -20,15 +21,16 @@
     color: var(--primary-green);
     border-bottom: 2px solid var(--primary-green);
 }
+
 .containerLeftBlock { 
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     width: 45%;
 
 }
 
-.containerMainText { 
-    margin-top: 50px;
+.containerMainText {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,19 +42,53 @@
     line-height: 140%;
 }
 
+.containerSubText { 
+    margin-bottom: 15px;
+}
+
 .subText { 
-    font-family: CircularBook;
+    font-family: CircularBold;
     color: var(--grey);
     font-size: 140%;
     line-height: 175%;
 }
+
+.form { 
+    display: flex;
+    align-items: center;
+}
+
+.input { 
+    border-radius: 4px;
+    border: none;
+    color: var(--primary);
+    padding: 10px;
+    font-size: 110%;
+    margin-right: 10px;
+    height: 50px;
+}
+
+.input::placeholder { 
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.btnSubmit { 
+    background-color: var(--primary-green);
+    font-family: CircularBook;
+    height: 50px;
+    padding: 0px 30px;
+    font-size: 110%;
+    border-radius: 4px;
+}
+
 .containerRightBlock { 
     position: relative;
 }
 
 .photoOne {
     border-radius: 50%;
-    max-width: 300px;
+    max-width: 280px;
     position: absolute;
     top: 0; 
     right: 0;
@@ -60,9 +96,9 @@
 
 .photoTwo { 
     border-radius: 50%;
-    max-width: 150px;
+    max-width: 175px;
     position: absolute;
-    top: 30px; 
+    top: 0px; 
     right: 400px;
 }
 
@@ -70,7 +106,7 @@
     border-radius: 50%;
     max-width: 220px;
     position: absolute;
-    top: 220px; 
-    right: 300px;
+    top: 200px; 
+    right: 270px;
 }
 

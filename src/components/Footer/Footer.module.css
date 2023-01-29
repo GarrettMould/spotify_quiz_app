@@ -1,0 +1,34 @@
+.container { 
+    height: 200px; 
+    background-color: var(--primary);   
+}
+
+.column { 
+    margin: 0px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.columnTitle { 
+    font-family: CircularBold;
+    color: var(--grey);
+    font-size: 170%;
+    margin-bottom: 20px;
+}
+
+
+
+.columnText { 
+    font-size: 110%;
+    color: var(--secondary);
+    line-height: 170%;
+}
+
+.iconsContainer { 
+    display: flex;
+    
+}
+
+.iconContainer { 
+    margin-right: 10px;
+}

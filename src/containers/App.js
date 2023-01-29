@@ -18,6 +18,7 @@ import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/Pla
 import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/PlaylistSelectionMobile";
 import { DisplayResults } from "../components/DisplayResults/DisplayResults";
 import StartPage from "../components/StartPage/StartPage";
+import Footer from "../components/Footer/Footer";
 
 
 
@@ -267,6 +268,7 @@ const getPlaylistInfo = async () => {
 }
 
   return (
+    <>
     <div className={classes.wrapper}>
 
       <Media queries={{ small: { maxWidth: 599 } }}>
@@ -294,6 +296,8 @@ const getPlaylistInfo = async () => {
               <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              <Footer></Footer>
+              
             </>
           ) : (
             <>
@@ -321,12 +325,13 @@ const getPlaylistInfo = async () => {
               {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
-              
+              <Footer></Footer>
             </>
           )
         }
       </Media>
     </div>
+    </>
     
   );
 };
