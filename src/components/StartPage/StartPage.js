@@ -9,7 +9,7 @@ import React from 'react'
 const StartPage = () => {
   return (
     <div className={classes.container}>
-       {/*} <a className={classes.browseLink} href="#">Browse Quizzes</a> */}
+       {/* <a className={classes.browseLink} href="#">Browse Quizzes</a> */}
         <div className={classes.containerLeftBlock}>
             <div className={classes.containerMainText}>
                 <h2 className={classes.mainText}>How Well Do You Know Your Favorite Artists?</h2>

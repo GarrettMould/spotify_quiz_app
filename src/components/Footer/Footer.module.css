@@ -1,6 +1,8 @@
 .container { 
     height: 200px; 
-    background-color: var(--primary);   
+    background-color: var(--primary);  
+    margin: 0px !important; 
+    padding: 0px !important; 
 }
 
 .column { 
@@ -31,4 +33,9 @@
 
 .iconContainer { 
     margin-right: 10px;
+}
+
+.icon:hover {
+    color: var(--primary-green);
+    cursor: pointer;
 }

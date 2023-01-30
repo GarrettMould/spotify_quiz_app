@@ -19,6 +19,7 @@ import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/Playl
 import { DisplayResults } from "../components/DisplayResults/DisplayResults";
 import StartPage from "../components/StartPage/StartPage";
 import Footer from "../components/Footer/Footer";
+import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 
 
 
@@ -42,7 +43,7 @@ const App = (props) => {
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
   const [token, setToken] = useState("");
   // User ID
-  const [userID, setUserID] = useState("");
+  const [userID, setUserID] = useState(false);
   // Boolean - true if a artist has been selected
   const [gotSongs, setGotSongs] = useState(false); 
   const [topSongs, setTopSongs] = useState(null);
@@ -62,6 +63,8 @@ const App = (props) => {
   const [userScore, setUserScore] = useState(0);
   // Keeps track of quiz round 
   const [round, setRound] = useState(0); 
+  // Login Modal Open or Close
+  const [modalOpen, setModalOpen] = useState(false);
 
 
 
@@ -102,8 +105,12 @@ const handleNoAnswer = () => {
 
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
-    setPlaylistID(e.currentTarget.id); 
+    if (userID) { 
+      setPlaylistID(e.currentTarget.id); 
     resetQuiz();
+    } else { 
+      setModalOpen(true);
+    }
   }
 
 // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
@@ -320,6 +327,14 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
           */}
+              {modalOpen ? <LoginPromptPopUp 
+                logout={logout}
+                AUTH_ENDPOINT={AUTH_ENDPOINT}
+                CLIENT_ID={CLIENT_ID}
+                REDIRECT_URI={REDIRECT_URI}
+                RESPONSE_TYPE={RESPONSE_TYPE}
+                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
+              ></LoginPromptPopUp> : null}
               <StartPage></StartPage>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}

@@ -5,7 +5,7 @@ import { FacebookLogo, InstagramLogo, GithubLogo, LinkedinLogo } from "phosphor-
 
 const Footer = () => {
   return (
-    <Container>
+    <Container className={classes.container}>
     <Row>
       <Col className={classes.column}>
         <div className={classes.columnTitle}>About</div>
@@ -14,9 +14,9 @@ const Footer = () => {
       <Col className={classes.column}>
         <div className={classes.columnTitle}>Social</div>
         <div className={classes.iconsContainer}>
-           <div className={classes.iconContainer}><InstagramLogo color="#ffffff"  size={40}></InstagramLogo></div> 
-           <div className={classes.iconContainer}><GithubLogo color="#ffffff"  size={40}></GithubLogo></div> 
-           <div className={classes.iconContainer}><LinkedinLogo color="#ffffff"  size={40}></LinkedinLogo></div>
+           <div className={classes.iconContainer}><InstagramLogo className={classes.icon} color="#ffffff"  size={40}></InstagramLogo></div> 
+           <div className={classes.iconContainer}><GithubLogo className={classes.icon} color="#ffffff"  size={40}></GithubLogo></div> 
+           <div className={classes.iconContainer}><LinkedinLogo className={classes.icon} color="#ffffff"  size={40}></LinkedinLogo></div>
         </div>
       </Col>
       <Col className={classes.column}>
