@@ -11,6 +11,7 @@ const Header = (props) => {
         </div>
         <div className={classes.navBar}>
           <LoginPageDesktop 
+              userID={props.userID}
               logout={props.logout}
               AUTH_ENDPOINT={props.AUTH_ENDPOINT}
               CLIENT_ID={props.CLIENT_ID}

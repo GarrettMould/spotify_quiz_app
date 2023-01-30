@@ -77,6 +77,10 @@ function SongThisIs(name, img, uri, answerOptions) {
 }
 
 
+const closeModal = () => { 
+  setModalOpen(false);
+}
+
 const resetQuiz = () => { 
   setGotThisIs(false); 
   setRound(0); 
@@ -154,6 +158,7 @@ const handleNoAnswer = () => {
   // Function to clear token and clear results display
   const logout = () => {
     setToken("");
+    setUserID(false);
     window.localStorage.removeItem("token");
     setGotSongs(false); 
     setGotThisIs(false);
@@ -282,7 +287,9 @@ const getPlaylistInfo = async () => {
         {(matches) =>
           matches.small ? (
             <>
-            <Header AUTH_ENDPOINT={AUTH_ENDPOINT}
+            <Header 
+              userID={userID}
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
               RESPONSE_TYPE={RESPONSE_TYPE}
@@ -309,6 +316,7 @@ const getPlaylistInfo = async () => {
           ) : (
             <>
             <Header 
+              userID={userID}
               logout={logout}
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
@@ -328,6 +336,7 @@ const getPlaylistInfo = async () => {
           </form>
           */}
               {modalOpen ? <LoginPromptPopUp 
+                closeModal={closeModal}
                 logout={logout}
                 AUTH_ENDPOINT={AUTH_ENDPOINT}
                 CLIENT_ID={CLIENT_ID}
