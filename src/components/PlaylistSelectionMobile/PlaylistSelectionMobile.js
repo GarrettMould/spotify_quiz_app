@@ -50,6 +50,20 @@ var rapPlaylists = [];
           </button>
     )
   })
+
+  const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
+    return (    
+          <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+          <div className={classes.imageContainer}>
+            <img
+              src={playlist.img}
+              className={classes.image}
+              alt="playlistimage"
+            ></img>
+          </div>
+          </button>
+    )
+  })
   return (
     <div>
         <div className={classes.container}>
@@ -69,6 +83,18 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedPopPlaylists}
+            <button className={classes.viewAllBtn}>
+            <div className={classes.contentContainer}>
+                <div className={classes.viewAllText}>View All</div>
+                <ArrowCircleRight size={40} color="#c0c0c0" />
+            </div>
+            </button>
+            </div>
+            </section>
+            <Headline text="Rock"></Headline>
+            <section className={classes.section}>
+            <div className={classes.allPlaylistsContainer}>
+            {mappedRockPlaylists}
             <button className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>

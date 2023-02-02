@@ -33,9 +33,9 @@ const Footer = (props) => {
     <Col className={classes.column}>
       <div className={classes.columnTitle}>Social</div>
       <div className={classes.iconsContainer}>
-         <div className={classes.iconContainer}><InstagramLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 25 : 40}></InstagramLogo></div> 
-         <div className={classes.iconContainer}><GithubLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 25 : 40}></GithubLogo></div> 
-         <div className={classes.iconContainer}><LinkedinLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 25 : 40}></LinkedinLogo></div>
+         <div className={classes.iconContainer}><InstagramLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 20 : 40}></InstagramLogo></div> 
+         <div className={classes.iconContainer}><GithubLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 20 : 40}></GithubLogo></div> 
+         <div className={classes.iconContainer}><LinkedinLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 20 : 40}></LinkedinLogo></div>
       </div>
     </Col>
     <Col className={classes.column}>

@@ -18,7 +18,7 @@ const PlaylistSelection = (props) => {
       rapPlaylists.push(playlist);
     } else if (playlist.tags.includes("pop")) { 
       popPlaylists.push(playlist)
-    } else if (playlist.tags.includes("pop")) { 
+    } else if (playlist.tags.includes("rock")) { 
       rockPlaylists.push(playlist)
     }
   })
@@ -59,6 +59,24 @@ const PlaylistSelection = (props) => {
     </div>
     )
   })
+
+  const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
+    return (    
+    <div className={classes.playlistContainer}>
+      <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+        <div className={classes.contentContainer}>
+          
+              <img src={playlist.img} alt="playlist" className={classes.img}></img>
+          
+          <div className={classes.textContainer}>
+            <div className={classes.name}>{playlist.artist}</div>
+            <div className={classes.description}>{playlist.description}</div>
+          </div>
+        </div>
+      </button>
+    </div>
+    )
+  })
   return (
     <div className={classes.container}>
       <Headline text="Hip Hop Quizzes"></Headline>
@@ -73,6 +91,13 @@ const PlaylistSelection = (props) => {
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedPopPlaylists}
+      </div>
+      </section>
+      <Headline text="Rock Quizzes"></Headline>
+      <section  className={classes.section}>
+      <Spacer></Spacer>
+      <div className={classes.allPlaylistsContainer}>
+      {mappedRockPlaylists}
       </div>
       </section>
     </div>

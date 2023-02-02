@@ -16,6 +16,14 @@ export var playlists = [
         tags: ["rap", "popular"]
     }, 
     { 
+        artist: "Outkast",
+        name: "This is Outkast", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO0Wc5ry-large.jpg", 
+        id: "37i9dQZF1DZ06evO0Wc5ry",
+        description: "This is Outkast. Essential tracks all in one playlist.", 
+        tags: ["rap"]
+    }, 
+    { 
         artist: "Tyler, The Creator",
         name: "This is Tyler, The Creator", 
         img: "https://i.scdn.co/image/ab67706f00000003d446868f2ac4bf79885aec3f", 
@@ -90,11 +98,133 @@ export var playlists = [
     { 
         artist: "Den Vau",
         name: "This is Den Vau", 
-        img: "https://i.scdn.co/image/ab67706f000000033fc91b90ebec9607f4c0b5ab", 
+        img: "https://i.scdn.co/image/ab67706f0000000383f19220230d72b238a2b27e", 
         id: "37i9dQZF1DXcJ3YhsMrHLi",
-        description: "Get to know the shape-shifting, forward thinking, the one and only, Frank Ocean.", 
-        tags: ["pop"]
+        description: "Album mới dongvui harmony cùng những bài khác từ 'một người Việt chơi nhạc Rap'", 
+        tags: ["rap"]
     }, 
+    { 
+        artist: "Justin Bieber",
+        name: "This is Justin Bieber", 
+        img: "https://i.scdn.co/image/ab67706f000000039cf2e21a96f217de5d3abf60", 
+        id: "37i9dQZF1DXc2aPBXGmXrt",
+        description: "This is the essential Justin Bieber.", 
+        tags: ["pop" ]
+    }, 
+    { 
+        artist: "Adele",
+        name: "This is Adele", 
+        img: "https://i.scdn.co/image/ab67706f0000000357246dfa8cbe38a322eca769", 
+        id: "37i9dQZF1DWZUozJiHy44Y",
+        description: "The essential tracks, all in one playlist.", 
+        tags: ["pop" ]
+    }, 
+    { 
+        artist: "Lil Yachty",
+        name: "This is Lil Yachty", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO3IjBrq-large.jpg", 
+        id: "37i9dQZF1DZ06evO3IjBrq",
+        description: "This is Lil Yachty. The essential tracks, all in one playlist.", 
+        tags: ["rap"]
+    }, 
+    { 
+        artist: "Nirvana",
+        name: "This is Nirvana", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO3M0Fbi-large.jpg", 
+        id: "37i9dQZF1DZ06evO3M0Fbi",
+        description: "This is Nirvana. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    }, 
+    { 
+        artist: "Pearl Jam",
+        name: "This is Pearl Jam", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO0Q8JGw-large.jpg", 
+        id: "37i9dQZF1DZ06evO0Q8JGw",
+        description: "This is Pearl Jam. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    }, 
+    { 
+        artist: "Weezer",
+        name: "This is Weezer", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1VmDYs-large.jpg", 
+        id: "37i9dQZF1DZ06evO1VmDYs",
+        description: "This is Weezer. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    },
+    { 
+        artist: "The Red Hot Chili Peppers",
+        name: "This is The Red Hot Chili Peppers", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO0nT692-large.jpg", 
+        id: "37i9dQZF1DZ06evO0nT692",
+        description: "This is The Red Hot Chili Peppers. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    },
+    { 
+        artist: "Slayer",
+        name: "This is Slayer", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO0XObfi-large.jpg", 
+        id: "37i9dQZF1DZ06evO0XObfi",
+        description: "This is Slayer. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    },
+    { 
+        artist: "Cage The Elephant",
+        name: "This is Cage The Elephant", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1chrPy-large.jpg", 
+        id: "37i9dQZF1DZ06evO1chrPy",
+        description: "This is Cage The Elephant. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    },  
+    { 
+        artist: "The Strokes",
+        name: "This is The Strokes", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO04caZO-large.jpg", 
+        id: "37i9dQZF1DZ06evO04caZO",
+        description: "This is The Strokes. The essential tracks, all in one playlist.", 
+        tags: ["rock"]
+    },  
+    { 
+        artist: "Glass Animals",
+        name: "This is Glass Animals", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO2FvyO4-large.jpg", 
+        id: "37i9dQZF1DZ06evO2FvyO4",
+        description: "This is Glass Animals. The essential tracks, all in one playlist.", 
+        tags: ["pop"]
+    },  
+    { 
+        artist: "Jay-Z",
+        name: "This is Jay-Z", 
+        img: "https://i.scdn.co/image/ab67706f000000032924cf9363d9e7544c96f425", 
+        id: "37i9dQZF1DX7jGZjyDa8rI",
+        description: "This is Jay-Z. The essential tracks, all in one playlist.", 
+        tags: ["rap"]
+    }, 
+    { 
+        artist: "Eminem",
+        name: "This is Eminem", 
+        img: "https://i.scdn.co/image/ab67706f000000037a181d9fed936372672c40ca", 
+        id: "37i9dQZF1DX1clOuib1KtQ",
+        description: "This is Eminem. The essential tracks, all in one playlist.", 
+        tags: ["rap"]
+    },  
+    { 
+        artist: "Nas",
+        name: "This is Nas", 
+        img: "https://i.scdn.co/image/ab67706f00000003b1496df70548b3e43c25b0d4", 
+        id: "37i9dQZF1DWUuiucxQQIC1",
+        description: "This is Nas. The essential tracks, all in one playlist.", 
+        tags: ["rap"]
+    }, 
+    { 
+        artist: "Wu Tang Clan",
+        name: "This is Wu Tang Clan", 
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO1Mfhq8-large.jpg", 
+        id: "37i9dQZF1DZ06evO1Mfhq8",
+        description: "This is Wu Tang Clan. The essential tracks, all in one playlist.", 
+        tags: ["rap"]
+    },  
+
+
 
 
 

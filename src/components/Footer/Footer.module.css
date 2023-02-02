@@ -9,14 +9,14 @@
     text-align: center;
     font-family: CircularBook;
     color: var(--secondary);
-    font-size: 2rem;
+    font-size: 1.75rem;
    
   }
   
   .greenText {
     font-family: CircularBold;
     color: var(--primary-green);
-    font-size: 2rem;
+    font-size: 1.75rem;
    
   }
 
@@ -66,13 +66,13 @@
     .columnTitle { 
         font-family: CircularBold;
         color: var(--grey);
-        font-size: 140%;
+        font-size: 120%;
         margin: 20px 0px 10px 0px;
         text-align: center;
     }
 
     .columnText { 
-        font-size: 100%;
+        font-size: 90%;
         text-align: center;
         color: var(--secondary);
         line-height: 170%;

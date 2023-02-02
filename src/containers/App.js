@@ -306,35 +306,7 @@ const getPlaylistInfo = async () => {
       <Media queries={{ small: { maxWidth: 599 } }}>
         {(matches) =>
           matches.small ? (
-            <>
-            <Header 
-              userID={userID}
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
-              CLIENT_ID={CLIENT_ID}
-              REDIRECT_URI={REDIRECT_URI}
-              RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
-             {/* <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
-            <Spacer></Spacer>
-            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
-              
-             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
-              
-             <form>
-                <input type="text" id="input_id" placeholder="Playlist ID"></input>
-                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
-          </form>
-          */}
-              <StartPage isMobile={isMobile}></StartPage>
-              <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
-              {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
-              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              <Spacer></Spacer>
-              <Footer isMobile={isMobile}></Footer>
-              
-            </>
-          ) : (
+            
             <>
             <Header 
               userID={userID}
@@ -356,6 +328,45 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
           */}
+              {modalOpen ? <LoginPromptPopUp 
+                closeModal={closeModal}
+                logout={logout}
+                AUTH_ENDPOINT={AUTH_ENDPOINT}
+                CLIENT_ID={CLIENT_ID}
+                REDIRECT_URI={REDIRECT_URI}
+                RESPONSE_TYPE={RESPONSE_TYPE}
+                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
+              ></LoginPromptPopUp> : null}
+              <StartPage isMobile={isMobile}></StartPage>
+              <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
+              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
+              <Spacer></Spacer>
+              <Footer isMobile={isMobile}></Footer>
+            </>
+          ) : (
+            <>
+            <Header 
+              userID={userID}
+              logout={logout}
+              AUTH_ENDPOINT={AUTH_ENDPOINT}
+              CLIENT_ID={CLIENT_ID}
+              REDIRECT_URI={REDIRECT_URI}
+              RESPONSE_TYPE={RESPONSE_TYPE}
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
+             {/* <button className={classes.btn} onClick={logout}>Logout</button>
+              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
+            <Spacer></Spacer>
+            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+              
+            <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
+              
+             <form>
+                <input type="text" id="input_id" placeholder="Playlist ID"></input>
+                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
+          </form>*/}
+          
               {modalOpen ? <LoginPromptPopUp 
                 closeModal={closeModal}
                 logout={logout}
