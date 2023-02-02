@@ -1,7 +1,7 @@
 import LoginPageDesktop from "../components/LoginPageDesktop/LoginPageDesktop";
 import LoginPageMobile from "../components/LoginPageMobile/LoginPageMobile";
 
-
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Media from "react-media";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -24,10 +24,12 @@ import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 
 
 const App = (props) => {
+  // Device Width 
+  const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -67,6 +69,24 @@ const App = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
 
+  // Reading device width and updating state on change
+  useEffect(() => {
+    handleWindowSizeChange();
+  });
+
+  const handleWindowSizeChange = () => {
+    setDeviceWidth(window.innerWidth);
+  };
+
+  window.addEventListener("resize", handleWindowSizeChange);
+
+  console.log(deviceWidth);
+
+  // Variable that returns true if device width is less than 500 (use this for mobile styling)
+
+  const isMobile = deviceWidth <= 500;
+
+  console.log(isMobile);
 
 // Class for Individual Quiz Song -- Includes name, img, uri, and an array of 4 answer options
 function SongThisIs(name, img, uri, answerOptions) {
@@ -306,11 +326,12 @@ const getPlaylistInfo = async () => {
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>
           */}
-              <StartPage></StartPage>
+              <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
               {gotThisIs ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              <Footer></Footer>
+              <Spacer></Spacer>
+              <Footer isMobile={isMobile}></Footer>
               
             </>
           ) : (
@@ -344,12 +365,13 @@ const getPlaylistInfo = async () => {
                 RESPONSE_TYPE={RESPONSE_TYPE}
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
-              <StartPage></StartPage>
+              <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
               {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
-              <Footer></Footer>
+              <Spacer></Spacer>
+              <Footer isMobile={isMobile}></Footer>
             </>
           )
         }

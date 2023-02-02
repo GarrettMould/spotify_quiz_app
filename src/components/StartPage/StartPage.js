@@ -6,7 +6,7 @@ import mac_miller from "../../photos/mac_miller.jpg"
 
 import React from 'react'
 
-const StartPage = () => {
+const StartPage = (props) => {
   return (
     <div className={classes.container}>
        {/* <a className={classes.browseLink} href="#">Browse Quizzes</a> */}
@@ -22,7 +22,7 @@ const StartPage = () => {
                 <button type="submit" className={classes.btnSubmit}>Get Notified</button>
             </form>
         </div>
-        <div className={classes.containerRightBlock}>
+        {props.isMobile ? null : <div className={classes.containerRightBlock}>
             <div className={classes.photoContainer}>
                 <img id="photo-one" className={classes.photoOne} src={frank_ocean}></img>
             </div>
@@ -32,7 +32,7 @@ const StartPage = () => {
             <div className={classes.photoContainer}>
                 <img  className={classes.photoThree} src={mac_miller}></img>
             </div>
-        </div>
+        </div> }
     </div>
   )
 }
