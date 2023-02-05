@@ -16,7 +16,7 @@ var rapPlaylists = [];
       rapPlaylists.push(playlist);
     } else if (playlist.tags.includes("pop")) { 
       popPlaylists.push(playlist)
-    } else if (playlist.tags.includes("pop")) { 
+    } else if (playlist.tags.includes("rock")) { 
       rockPlaylists.push(playlist)
     }
   })
