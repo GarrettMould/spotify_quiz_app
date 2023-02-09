@@ -15,6 +15,7 @@ import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
 import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
 import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
 import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/PlaylistSelectionInfoBox";
+import { StartScreenQuiz } from "../components/StartScreenQuiz/StartScreenQuiz";
 import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/PlaylistSelectionMobile";
 import { DisplayResults } from "../components/DisplayResults/DisplayResults";
 import StartPage from "../components/StartPage/StartPage";
@@ -28,8 +29,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  //const REDIRECT_URI = "http://localhost:3000/";
-  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  const REDIRECT_URI = "http://localhost:3000/";
+  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -67,8 +68,14 @@ const App = (props) => {
   const [round, setRound] = useState(0); 
   // Login Modal Open or Close
   const [modalOpen, setModalOpen] = useState(false);
+  // True if the quiz is currently in round one
+  const [roundOne, setRoundOne] = useState(false);
+  // True when the user chooses a playlist and the start menu is displayed
+  const [startMenu, setStartMenu] = useState(true)
 
 
+
+  console.log(round);
   // Reading device width and updating state on change
   useEffect(() => {
     handleWindowSizeChange();
@@ -102,20 +109,23 @@ const closeModal = () => {
 }
 
 const resetQuiz = () => { 
+  setStartMenu(true)
   setGotThisIs(false); 
   setRound(0); 
   setUserScore(0);
 }
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (value) => { 
-
-  const element = document.querySelectorAll(".countdownBar")
     
   if (value === "blah") setUserScore(userScore + 100)
   console.log(value)
-  setRound(round + 1);
   console.log(userScore)
-  element.remove();
+
+  setTimeout(
+    () => setRound(round + 1), 
+    2000
+  );
+  
 }
 
 const handleNoAnswer = () => { 
@@ -129,6 +139,7 @@ const handleNoAnswer = () => {
 
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
+    setStartMenu(true);
     if (userID) { 
       setPlaylistID(e.currentTarget.id); 
     resetQuiz();
@@ -229,7 +240,7 @@ const getPlaylistSongs = async () => {
       },
       
   })
-  
+
   getPlaylistInfo();
   setGotThisIs(true);
 
@@ -281,6 +292,7 @@ const getPlaylistSongs = async () => {
 
   console.log(selectedSongs)
   setSelectedThisIsSongs(selectedSongs);
+
 
 }
 
@@ -339,8 +351,8 @@ const getPlaylistInfo = async () => {
               ></LoginPromptPopUp> : null}
               <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
-              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
-              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs  setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               <Spacer></Spacer>
               <Footer isMobile={isMobile}></Footer>
@@ -378,8 +390,8 @@ const getPlaylistInfo = async () => {
               ></LoginPromptPopUp> : null}
               <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs && round < 10 ? <DisplayThisIs handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer} selectedThisIsSongs={selectedThisIsSongs}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
-              {gotSongs ? <DisplaySongs topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               <Spacer></Spacer>
               <Footer isMobile={isMobile}></Footer>

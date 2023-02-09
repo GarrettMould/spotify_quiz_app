@@ -1,4 +1,15 @@
 
+/* Red and Green Highights for correct and incorrect answers*/ 
+
+.highlightRed { 
+    font-size: 300px;
+    
+  }
+  
+  .highlightGreen { 
+    background-color: greenyellow;
+  }
+
 
 .wrapper { 
     display: flex; 
