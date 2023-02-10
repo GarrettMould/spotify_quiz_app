@@ -121,10 +121,7 @@ const handleAnswer = (value) => {
   console.log(value)
   console.log(userScore)
 
-  setTimeout(
-    () => setRound(round + 1), 
-    2000
-  );
+  setRound(round + 1);
   
 }
 
@@ -140,8 +137,9 @@ const handleNoAnswer = () => {
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
     setStartMenu(true);
-    if (userID) { 
+    if (userID) {
       setPlaylistID(e.currentTarget.id); 
+      
     resetQuiz();
     } else { 
       setModalOpen(true);
