@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useRef } from 'react';
 import classes from './DisplayThisIs.module.css'
 import Countdown from "react-countdown";
 import ReactHowler from 'react-howler'
@@ -7,6 +8,24 @@ import GamePanel from '../GamePanel/GamePanel';
 import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 
 const DisplayThisIs = (props) => {
+
+ //Countdown Ref
+ const clockRef = useRef();
+
+ // Countdown Handle Start Function
+ const handleStart = () => clockRef.current.start();
+
+ 
+ useEffect(() => {
+   handleStart();
+ }, [props.round]);
+
+
+ const renderer = ({seconds }) => {
+     // Render a countdown
+     return <span>{seconds}</span>;
+   
+ };
 
 const startQuiz = () => { 
   playFirstURI();
@@ -20,8 +39,8 @@ const playFirstURI = () => {
   console.log(sourceFirst)
   audioFirst.load();
   audioFirst.play();
-
 }
+
 const changeSrc = () => {
     const audioFirst = document.getElementById("audioFirst")
     audioFirst.pause();
@@ -48,6 +67,7 @@ const changeSrc = () => {
 
   const handleNoAnswerUpdate = () => {
     changeSrc(); 
+    
     props.handleNoAnswer();
 
   }
@@ -88,7 +108,7 @@ const changeSrc = () => {
         <source id="audioSrc" src={song.uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
         
-       {/* <Countdown intervalDelay={1500} date={Date.now() + 10000} autoStart={true} onComplete={handleNoAnswer}></Countdown>*/}
+       <Countdown  renderer={renderer}  ref={clockRef} className='blah' intervalDelay={1500} date={Date.now() + 10000} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown>
 
         <div className={classes.answers}>{mappedAnswerOptions}</div>        
         </>
