@@ -1,6 +1,7 @@
 import classes from "./PlaylistSelectionMobile.module.css"
 import { ArrowCircleRight } from "phosphor-react";
 import { playlists } from '../../Playlists'
+import { Link } from "react-router-dom";
 import Headline from "../../elements/Headline/Headline";
 import { Spacer } from "../../elements/Spacer/Spacer";
 import React from 'react'
@@ -25,6 +26,7 @@ var rapPlaylists = [];
 
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return ( 
+      <Link to="/PlayPage">
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                 <div className={classes.imageContainer}>
                   <img
@@ -34,11 +36,13 @@ var rapPlaylists = [];
                   ></img>
                 </div>
                 </button>
+       </Link>
     )
   })
 
   const mappedPopPlaylists = popPlaylists.map((playlist) => { 
-    return (    
+    return ( 
+      <Link to="/PlayPage">  
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
           <div className={classes.imageContainer}>
             <img
@@ -48,11 +52,13 @@ var rapPlaylists = [];
             ></img>
           </div>
           </button>
+          </Link> 
     )
   })
 
   const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
     return (    
+      <Link to="/PlayPage">
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
           <div className={classes.imageContainer}>
             <img
@@ -62,6 +68,7 @@ var rapPlaylists = [];
             ></img>
           </div>
           </button>
+          </Link>
     )
   })
   return (

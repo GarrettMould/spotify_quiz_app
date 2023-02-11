@@ -31,8 +31,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
