@@ -72,10 +72,53 @@ const App = (props) => {
   const [roundOne, setRoundOne] = useState(false);
   // True when the user chooses a playlist and the start menu is displayed
   const [startMenu, setStartMenu] = useState(true)
+  // Tally of the number of correct answers 
+  const [correctTally, setCorrectTally] = useState(0);
+  // Avg Answer Time Array 
+  const [averageAnswerTime, setAverageAnswerTime] = useState([]);
+  // Score Comparison Percentage 
+  var [scoreCompPerc, setScoreCompPerc] = useState(0);
 
 
+  // Determine the percentile based on userScore 
+  if (userScore >= 750) { 
+    scoreCompPerc = 98
+  } else if (userScore >= 700 && userScore < 750) { 
+    scoreCompPerc = 97
+  } else if (userScore >= 650 && userScore < 700) { 
+    scoreCompPerc = 90
+  } else if (userScore >= 600 && userScore < 650) { 
+    scoreCompPerc = 84
+  } else if (userScore >= 550 && userScore < 600) { 
+    scoreCompPerc = 79
+  } else if (userScore >= 500 && userScore < 550) { 
+    scoreCompPerc = 73
+  } else if (userScore >= 450 && userScore < 500) { 
+    scoreCompPerc = 62
+  } else if (userScore >= 400 && userScore < 450) { 
+    scoreCompPerc = 57
+  } else if (userScore >= 350 && userScore < 400) { 
+    scoreCompPerc = 48
+  } else if (userScore >= 300 && userScore < 350) { 
+    scoreCompPerc = 39
+  } else if (userScore >= 250 && userScore < 300) { 
+    scoreCompPerc = 31
+  } else if (userScore >= 200 && userScore < 250) { 
+    scoreCompPerc = 26
+  } else if (userScore >= 150 && userScore < 200) { 
+    scoreCompPerc = 17
+  } else if (userScore >= 100 && userScore < 150) { 
+    scoreCompPerc = 14
+  } else if (userScore >= 50 && userScore < 100) { 
+    scoreCompPerc = 11
+  } else if (userScore >= 0 && userScore < 50) { 
+    scoreCompPerc = 6
+  } else { 
+    scoreCompPerc = 0
+  }
 
-  console.log(round);
+
+ 
   // Reading device width and updating state on change
   useEffect(() => {
     handleWindowSizeChange();
@@ -109,6 +152,8 @@ const closeModal = () => {
 }
 
 const resetQuiz = () => { 
+  setAverageAnswerTime([]); 
+  setCorrectTally(0);
   setStartMenu(true)
   setGotThisIs(false); 
   setRound(0); 
@@ -123,10 +168,6 @@ const handleAnswer = (value) => {
 
   setRound(round + 1);
   
-}
-
-const handleNoAnswer = () => { 
-  setRound(round + 1);
 }
 
 // Function to update the artist ID 
@@ -239,6 +280,8 @@ const getPlaylistSongs = async () => {
       
   })
 
+  console.log(data);
+
   getPlaylistInfo();
   setGotThisIs(true);
 
@@ -349,7 +392,7 @@ const getPlaylistInfo = async () => {
               ></LoginPromptPopUp> : null}
               <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
-              {gotThisIs && round < 10 ? <DisplayThisIs  setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs setAverageAnswerTime={setAverageAnswerTime} averageAnswerTime={averageAnswerTime} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} userScore={userScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} round={round} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               <Spacer></Spacer>
@@ -388,7 +431,7 @@ const getPlaylistInfo = async () => {
               ></LoginPromptPopUp> : null}
               <StartPage isMobile={isMobile}></StartPage>
               <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs && round < 10 ? <DisplayThisIs setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} handleNoAnswer={handleNoAnswer} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
+              {gotThisIs && round < 10 ? <DisplayThisIs setAverageAnswerTime={setAverageAnswerTime} averageAnswerTime={averageAnswerTime} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound}  setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} correctTally={correctTally} userScore={userScore} resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
               {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
               {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
               <Spacer></Spacer>

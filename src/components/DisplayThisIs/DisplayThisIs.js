@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef} from 'react';
 import classes from './DisplayThisIs.module.css'
 import Countdown from "react-countdown";
 import ReactHowler from 'react-howler'
@@ -9,11 +9,23 @@ import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 
 const DisplayThisIs = (props) => {
 
+  
+
+ // Score multiplier (based on time remaning in round)
+ var scoreMultiplier; 
+
+ //10 Second Countdown Variable
+ const endDate =  Date.now() + 10000;
+
  //Countdown Ref
  const clockRef = useRef();
 
+
  // Countdown Handle Start Function
- const handleStart = () => clockRef.current.start();
+ const handleStart = () => { 
+  clockRef.current.start();
+  console.log()
+ }
 
  
  useEffect(() => {
@@ -52,24 +64,34 @@ const changeSrc = () => {
   }
 
 
-
   const handleAnswer = (e) => { 
-    var el = e.currentTarget;
+    // Current Date
+    const currentDate = Date.now()
+    // Variable that will be used to calculate score
+    scoreMultiplier = (currentDate - endDate) / - 1000;
+    // Variable that represents time it took player to answer question
+    const answerTime = 10 - scoreMultiplier; 
+    // Add answerTime to array of answer times
+    props.setAverageAnswerTime((averageAnswerTime => [...averageAnswerTime, answerTime] ));
+    // Variable that represents the new score (based on score multiplier)
+    var updatedScore = Math.floor((scoreMultiplier * 10) + props.userScore)
+
     var value = e.currentTarget.value
 
-    console.log(el)
-    console.log(value); 
-    
-    
-    changeSrc(); 
-    props.handleAnswer(value);
+    if (value === "blah") {
+      props.setUserScore(updatedScore)
+      props.setCorrectTally(props.correctTally + 1);
+    }
+    console.log(props.userScore)
+    changeSrc();
+  
+    props.setRound(props.round + 1);
   }
+ 
 
   const handleNoAnswerUpdate = () => {
     changeSrc(); 
-    
-    props.handleNoAnswer();
-
+    props.setRound(props.round +1);
   }
 
 
@@ -108,7 +130,7 @@ const changeSrc = () => {
         <source id="audioSrc" src={song.uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
         
-       <Countdown  renderer={renderer}  ref={clockRef} className='blah' intervalDelay={1500} date={Date.now() + 10000} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown>
+       <Countdown  renderer={renderer}  ref={clockRef} className='blah' intervalDelay={1500} date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown>
 
         <div className={classes.answers}>{mappedAnswerOptions}</div>        
         </>
