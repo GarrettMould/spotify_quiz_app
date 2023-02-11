@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import classes from "./LoginPageDesktop.module.css";
 const LoginPageDesktop = (props) => {
 
@@ -9,7 +10,7 @@ const LoginPageDesktop = (props) => {
             <Button  onClick={props.logout} className={classes.btn}>Login to Spotify</Button>
           </a>
   
-  const logoutButton =  <Button  onClick={props.logout} className={classes.btn}>Logout</Button>
+  const logoutButton =  <Link to="/"><Button  onClick={props.logout} className={classes.btn}>Logout</Button></Link>
   return (
    
          (props.userID ? logoutButton : loginButton)

@@ -21,6 +21,8 @@ import { DisplayResults } from "../components/DisplayResults/DisplayResults";
 import StartPage from "../components/StartPage/StartPage";
 import Footer from "../components/Footer/Footer";
 import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
+import HomePage from "../MainPages/HomePage/HomePage";
+import PlayPage from "../MainPages/PlayPage/PlayPage";
 
 
 
@@ -47,8 +49,7 @@ const App = (props) => {
   const [token, setToken] = useState("");
   // User ID
   const [userID, setUserID] = useState(false);
-  // Boolean - true if a artist has been selected
-  const [gotSongs, setGotSongs] = useState(false); 
+  // Boolean - true if a artist has been selected 
   const [topSongs, setTopSongs] = useState(null);
   // Boolean - true if a playlist has been selected
   const [gotThisIs, setGotThisIs] = useState(false); 
@@ -229,8 +230,7 @@ const handleAnswer = (value) => {
   const logout = () => {
     setToken("");
     setUserID(false);
-    window.localStorage.removeItem("token");
-    setGotSongs(false); 
+    window.localStorage.removeItem("token"); 
     setGotThisIs(false);
     resetQuiz(); 
   
@@ -264,7 +264,7 @@ const getTopSongs = async () => {
         },
         
     })
-    //setGotSongs(true);
+
     setTopSongs(data.tracks);
    
 }
@@ -355,60 +355,17 @@ const getPlaylistInfo = async () => {
   return (
     <>
     <div className={classes.wrapper}>
-
-      <Media queries={{ small: { maxWidth: 599 } }}>
-        {(matches) =>
-          matches.small ? (
-            
-            <>
-            <Header 
+      <Header 
+              resetQuiz={resetQuiz}
               userID={userID}
               logout={logout}
               AUTH_ENDPOINT={AUTH_ENDPOINT}
               CLIENT_ID={CLIENT_ID}
               REDIRECT_URI={REDIRECT_URI}
               RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
-             {/* <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
-            <Spacer></Spacer>
-            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>*/}
-              
-             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
-              
-             <form>
-                <input type="text" id="input_id" placeholder="Playlist ID"></input>
-                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
-          </form>
-          */}
-              {modalOpen ? <LoginPromptPopUp 
-                closeModal={closeModal}
-                logout={logout}
-                AUTH_ENDPOINT={AUTH_ENDPOINT}
-                CLIENT_ID={CLIENT_ID}
-                REDIRECT_URI={REDIRECT_URI}
-                RESPONSE_TYPE={RESPONSE_TYPE}
-                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
-              ></LoginPromptPopUp> : null}
-              <StartPage isMobile={isMobile}></StartPage>
-              <PlaylistSelectionMobile handlePlaylistChange={handlePlaylistChange}></PlaylistSelectionMobile>
-              {gotThisIs && round < 10 ? <DisplayThisIs setAverageAnswerTime={setAverageAnswerTime} averageAnswerTime={averageAnswerTime} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound}  setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} correctTally={correctTally} userScore={userScore} resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
-              {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
-              <Spacer></Spacer>
-              <Footer isMobile={isMobile}></Footer>
-            </>
-          ) : (
-            <>
-            <Header 
-              userID={userID}
-              logout={logout}
-              AUTH_ENDPOINT={AUTH_ENDPOINT}
-              CLIENT_ID={CLIENT_ID}
-              REDIRECT_URI={REDIRECT_URI}
-              RESPONSE_TYPE={RESPONSE_TYPE}
-              SCOPES_URL_PARAM={SCOPES_URL_PARAM}></Header>
-             {/* <button className={classes.btn} onClick={logout}>Logout</button>
+              SCOPES_URL_PARAM={SCOPES_URL_PARAM}>
+      </Header>
+      {/* <button className={classes.btn} onClick={logout}>Logout</button>
               <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
             <Spacer></Spacer>
             {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
@@ -419,8 +376,7 @@ const getPlaylistInfo = async () => {
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>*/}
-          
-              {modalOpen ? <LoginPromptPopUp 
+          {modalOpen ? <LoginPromptPopUp 
                 closeModal={closeModal}
                 logout={logout}
                 AUTH_ENDPOINT={AUTH_ENDPOINT}
@@ -429,17 +385,14 @@ const getPlaylistInfo = async () => {
                 RESPONSE_TYPE={RESPONSE_TYPE}
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
-              <StartPage isMobile={isMobile}></StartPage>
-              <PlaylistSelection handlePlaylistChange={handlePlaylistChange}></PlaylistSelection>
-              {gotThisIs && round < 10 ? <DisplayThisIs setAverageAnswerTime={setAverageAnswerTime} averageAnswerTime={averageAnswerTime} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound}  setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs} round={round} userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}></DisplayThisIs> : gotThisIs && round >= 10 ? <DisplayResults scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} correctTally={correctTally} userScore={userScore} resetQuiz={resetQuiz} thisIsImage={thisIsImage} thisIsName={thisIsName}></DisplayResults> : null}
-              {gotSongs ? <DisplaySongs  topSongs={topSongs} handleAnswer={handleAnswer}></DisplaySongs> : null}
-              {/*<DisplayQuizResults thisIsImage={thisIsImage} thisIsName={thisIsName} userScore={userScore} round={round}></DisplayQuizResults>*/}
-              <Spacer></Spacer>
-              <Footer isMobile={isMobile}></Footer>
-            </>
-          )
-        }
-      </Media>
+      <Routes>
+            <>
+            <Route path="/" element={<HomePage isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+             <Route path="/PlayPage" element={<PlayPage scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
+            </>     
+        </Routes>
+        <Spacer></Spacer>
+        <Footer isMobile={isMobile}></Footer> 
     </div>
     </>
     

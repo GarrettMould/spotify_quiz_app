@@ -1,7 +1,7 @@
 import React from 'react'
 import FullButton from '../../elements/FullButton/FullButton'
 import classes from "./DisplayResults.module.css"
-import { TwitterLogo, FacebookLogo, Link } from 'phosphor-react'
+import { Link } from 'react-router-dom'
 
 export const DisplayResults = (props) => {
 
@@ -39,14 +39,14 @@ export const DisplayResults = (props) => {
             <div className={classes.statsDisplayContainer}>
                 <div className={classes.titleContainer}><div className={classes.title}>Quick Stats</div></div>
                 <div className={classes.statsContainer}>
-                    <div className={classes.statLine}> <span className={classes.span}>Score:</span> {props.userScore}</div>
-                    <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span> {10 - props.correctTally}</div>
-                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span> {roundedAVG} seconds</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Score:</span>  {props.userScore}</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span>  {10 - props.correctTally}</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span>  {roundedAVG} seconds</div>
                 </div>
             </div>
           </div>
           <div className={classes.rowButtons}>
-            <button onClick={props.resetQuiz} className={classes.btn}>Close</button>
+           <Link style={{ width: "100%"}} to="/"><button onClick={props.resetQuiz} className={classes.btn}>Close</button></Link>
           </div>
           
           

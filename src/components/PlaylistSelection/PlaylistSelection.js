@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from "./PlaylistSelection.module.css"
-
+import { Link } from 'react-router-dom'
 import { playlists } from '../../Playlists'
 import Headline from '../../elements/Headline/Headline'
 import { Spacer } from '../../elements/Spacer/Spacer'
@@ -27,6 +27,7 @@ const PlaylistSelection = (props) => {
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return (    
     <div className={classes.playlistContainer}>
+      <Link to="/PlayPage">
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
         <div className={classes.contentContainer}>
           
@@ -38,6 +39,7 @@ const PlaylistSelection = (props) => {
           </div>
         </div>
       </button>
+      </Link>
     </div>
     )
   })
@@ -45,6 +47,7 @@ const PlaylistSelection = (props) => {
   const mappedPopPlaylists = popPlaylists.map((playlist) => { 
     return (    
     <div className={classes.playlistContainer}>
+      <Link to="/PlayPage">
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
         <div className={classes.contentContainer}>
           
@@ -56,6 +59,7 @@ const PlaylistSelection = (props) => {
           </div>
         </div>
       </button>
+      </Link>
     </div>
     )
   })
@@ -63,6 +67,7 @@ const PlaylistSelection = (props) => {
   const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
     return (    
     <div className={classes.playlistContainer}>
+      <Link to="/PlayPage">
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
         <div className={classes.contentContainer}>
           
@@ -74,6 +79,7 @@ const PlaylistSelection = (props) => {
           </div>
         </div>
       </button>
+      </Link>
     </div>
     )
   })

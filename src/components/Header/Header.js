@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Navbar, Button } from "react-bootstrap";
 import LoginPageDesktop from '../LoginPageDesktop/LoginPageDesktop';
 import classes from "./Header.module.css"
@@ -6,9 +7,11 @@ import classes from "./Header.module.css"
 const Header = (props) => {
   return (
     <div className={classes.container}>
-        <div className={classes.siteTitle}>
+      <Link to="/">
+        <div className={classes.siteTitle} onClick={props.resetQuiz}>
           <span className={classes.greenText}>Rap</span> Quiz
         </div>
+      </Link>
         <div className={classes.navBar}>
           <LoginPageDesktop 
               userID={props.userID}
