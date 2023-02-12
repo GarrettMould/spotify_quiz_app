@@ -1,6 +1,7 @@
 import React from 'react'
 import FullButton from '../../elements/FullButton/FullButton'
 import classes from "./DisplayResults.module.css"
+import { Spacer } from '../../elements/Spacer/Spacer'
 import { Link } from 'react-router-dom'
 
 export const DisplayResults = (props) => {
@@ -13,6 +14,7 @@ export const DisplayResults = (props) => {
   var artistName = props.thisIsName.split(' ').slice(2).join(' ');
 
   return (
+    <>
     <div className={classes.wrapper}>
       <div className={classes.quizPanelWrapper}>
         <div className={classes.quizSectionContainer}>
@@ -30,7 +32,7 @@ export const DisplayResults = (props) => {
                     </div>
                     <div className={classes.noteAndIconsContainer}>
                         <div className={classes.noteContainer}>
-                            <div className={classes.note}>Congratulations, you are a true Stan! You are in the top {props.scoreCompPerc} percent of {artistName} fans.</div>
+                            <div className={classes.note}>Nicely done! You are in the top {props.scoreCompPerc} percent of {artistName} fans.</div>
                         </div>
                     </div>
                     </div>
@@ -41,7 +43,7 @@ export const DisplayResults = (props) => {
                 <div className={classes.statsContainer}>
                     <div className={classes.statLine}> <span className={classes.span}>Score:</span>  {props.userScore}</div>
                     <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span>  {10 - props.correctTally}</div>
-                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span>  {roundedAVG} seconds</div>
+                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span>  {props.averageAnswerTime.length ? `${roundedAVG} seconds` : "10 seconds"} </div>
                 </div>
             </div>
           </div>
@@ -54,6 +56,7 @@ export const DisplayResults = (props) => {
         </div>
       </div>
     </div>
+    </>
     
   )
 }

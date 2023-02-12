@@ -9,9 +9,9 @@ import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 
 const DisplayThisIs = (props) => {
 
+  const round = props.round + 1;
   
-
- // Score multiplier (based on time remaning in round)
+// Score multiplier (based on time remaning in round)
  var scoreMultiplier; 
 
  //10 Second Countdown Variable
@@ -129,9 +129,13 @@ const changeSrc = () => {
         <audio id="audio" controls="controls" hidden="hidden">
         <source id="audioSrc" src={song.uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
-        
-       <Countdown  renderer={renderer}  ref={clockRef} className='blah' intervalDelay={1500} date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown>
-
+        <div className={classes.containerGamePanel}>
+        <div className={classes.gameInfoContainer}>
+            <div className={classes.roundContainer}>Round: <span className={classes.span}>{round}</span></div>
+           <div className={classes.countdownContainer}><Countdown  renderer={renderer}  ref={clockRef} className='blah'  date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown></div> 
+            <div className={classes.scoreContainer}>Score: <span className={classes.span}>{props.userScore}</span></div>
+        </div>
+    </div>
         <div className={classes.answers}>{mappedAnswerOptions}</div>        
         </>
     )
@@ -155,9 +159,7 @@ console.log(selectedSongs)
           <audio id="audioFirst" controls="controls" hidden="hidden">
         <source id="sourceFirst" src={props.selectedThisIsSongs.uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
-          
-          <GamePanel handleNoAnswerUpdate={handleNoAnswerUpdate} userScore={props.userScore} round={props.round}></GamePanel>
-          
+    
           {mappedSongs[props.round]}
         </div>
       </div>

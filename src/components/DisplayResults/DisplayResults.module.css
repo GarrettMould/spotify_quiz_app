@@ -6,7 +6,7 @@
 }
 
 .quizPanelWrapper {
-    width: 50%;
+    width: 40%;
     border-radius: 4px;
     background-color: #343434;
     display: flex; 
@@ -20,14 +20,14 @@
 
 
 .thisIsImage { 
-    max-width: 75px;
+    max-width: 80px;
     margin: 50px 30px 50px 20px;
     border-radius: 4px;
 }
 
 .thisIsName { 
     font-family: CircularBold;
-    font-size: 125%;
+    font-size: 120%;
 }
 
 .quizInfoContainer { 
@@ -83,8 +83,8 @@ span {
     align-items: center;
     background-color: #343434;
     border-radius: 4px;
-    width: 100px; 
-    height: 100px; 
+    width: 70px; 
+    height: 70px; 
     margin-right: 20px;
     
 }
@@ -92,7 +92,7 @@ span {
 .percentage { 
     text-align: center;
     font-family: CircularBold;
-    font-size: 170%;
+    font-size: 150%;
     color: var(--primary-green);
 }
 
@@ -112,7 +112,7 @@ span {
 .note { 
     text-align: center;
     font-family: CircularBook;
-    font-size: 110%;
+    font-size: 100%;
     line-height: 180%;
 }
 

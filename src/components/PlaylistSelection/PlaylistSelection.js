@@ -27,7 +27,7 @@ const PlaylistSelection = (props) => {
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return (    
     <div className={classes.playlistContainer}>
-      <Link to="/PlayPage">
+      <Link to={props.userID ? "/PlayPage" : "/"} >
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
         <div className={classes.contentContainer}>
           

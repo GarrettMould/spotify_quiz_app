@@ -27,8 +27,12 @@
   color: var(--secondary);
 }
 
+.blur { 
+  opacity: 70%;
+}
+
 .wrapper { 
-  padding: 20px;
+  padding: 20px 50px;
   background-color: var(--primary);
   background: linear-gradient(#2c2c2c, #121212 30%);
 }

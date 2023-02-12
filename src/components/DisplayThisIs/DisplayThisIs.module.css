@@ -1,3 +1,42 @@
+/* Game Panel Stuff */ 
+
+.containerGamePanel { 
+    display: flex;
+    flex-direction: column;
+    margin: 30px 10px;
+} 
+.gameInfoContainer { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.countdownContainer { 
+    font-size: 150%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roundContainer { 
+    font-size: 120%;
+    font-family: CircularBold;    
+}
+
+.scoreContainer { 
+    font-size: 120%;
+    font-family: CircularBold;
+}
+
+.span { 
+    margin-left: 5px;
+    color: var(--grey);
+}
+
+
 
 /* Red and Green Highights for correct and incorrect answers*/ 
 
@@ -17,7 +56,7 @@
 }
 
 .quizPanelWrapper {
-    width: 85%;
+    width: 70%;
     border-radius: 4px;
     background-color: #343434;
     display: flex; 
@@ -31,14 +70,14 @@
 
 
 .thisIsImage { 
-    max-width: 100px;
+    max-width: 90px;
     margin: 50px 30px 50px 20px;
     border-radius: 4px;
 }
 
 .thisIsName { 
     font-family: CircularBold;
-    font-size: 150%;
+    font-size: 130%;
 }
 
 .quizInfoContainer { 
@@ -107,7 +146,7 @@ span {
 
 .answerText { 
     width: 80%;
-    font-size: 110%;
+    font-size: 100%;
     font-weight: 600;
     display: flex;
     justify-content: center;

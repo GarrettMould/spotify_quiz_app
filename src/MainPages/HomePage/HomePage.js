@@ -7,7 +7,7 @@ const HomePage = (props) => {
   return (
     <>
     <StartPage isMobile={props.isMobile}></StartPage>
-    {props.isMobile ? <PlaylistSelectionMobile handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
+    {props.isMobile ? <PlaylistSelectionMobile userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
     </>
   )
 }

@@ -1,24 +1,10 @@
-import LoginPageDesktop from "../components/LoginPageDesktop/LoginPageDesktop";
-import LoginPageMobile from "../components/LoginPageMobile/LoginPageMobile";
-
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import Media from "react-media";
+import { Routes, Route} from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./App.module.css";
 import Header from "../components/Header/Header";
-import DisplaySongs from "../components/DisplaySongs/DisplaySongs";
 import { Spacer } from "../elements/Spacer/Spacer";
-import { SelectArtist } from "../components/SelectArtist/SelectArtist";
-import DisplayThisIs from "../components/DisplayThisIs/DisplayThisIs";
-import PlaylistSelection from "../components/PlaylistSelection/PlaylistSelection";
-import DisplayQuizResults from "../components/DisplayQuizResults/DisplayQuizResults";
-import PlaylistSelectionInfoBox from "../components/PlaylistSelectionInfoBox/PlaylistSelectionInfoBox";
-import { StartScreenQuiz } from "../components/StartScreenQuiz/StartScreenQuiz";
-import PlaylistSelectionMobile from "../components/PlaylistSelectionMobile/PlaylistSelectionMobile";
-import { DisplayResults } from "../components/DisplayResults/DisplayResults";
-import StartPage from "../components/StartPage/StartPage";
 import Footer from "../components/Footer/Footer";
 import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 import HomePage from "../MainPages/HomePage/HomePage";
@@ -184,6 +170,7 @@ const handleAnswer = (value) => {
       
     resetQuiz();
     } else { 
+      
       setModalOpen(true);
     }
   }
@@ -354,7 +341,16 @@ const getPlaylistInfo = async () => {
 
   return (
     <>
-    <div className={classes.wrapper}>
+     {modalOpen ? <LoginPromptPopUp 
+                closeModal={closeModal}
+                logout={logout}
+                AUTH_ENDPOINT={AUTH_ENDPOINT}
+                CLIENT_ID={CLIENT_ID}
+                REDIRECT_URI={REDIRECT_URI}
+                RESPONSE_TYPE={RESPONSE_TYPE}
+                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
+              ></LoginPromptPopUp> : null}
+    <div className={modalOpen ?  `${classes.wrapper} ${classes.blur}`:`${classes.wrapper}`}>
       <Header 
               resetQuiz={resetQuiz}
               userID={userID}
@@ -376,18 +372,9 @@ const getPlaylistInfo = async () => {
                 <input type="text" id="input_id" placeholder="Playlist ID"></input>
                 <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
           </form>*/}
-          {modalOpen ? <LoginPromptPopUp 
-                closeModal={closeModal}
-                logout={logout}
-                AUTH_ENDPOINT={AUTH_ENDPOINT}
-                CLIENT_ID={CLIENT_ID}
-                REDIRECT_URI={REDIRECT_URI}
-                RESPONSE_TYPE={RESPONSE_TYPE}
-                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
-              ></LoginPromptPopUp> : null}
       <Routes>
             <>
-            <Route path="/" element={<HomePage isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+            <Route path="/" element={<HomePage userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
              <Route path="/PlayPage" element={<PlayPage scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>
