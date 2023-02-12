@@ -26,7 +26,7 @@ var rapPlaylists = [];
 
   const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
     return ( 
-      <Link to="/PlayPage">
+      <Link to={props.userID ? "/PlayPage" : "/"}>
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                 <div className={classes.imageContainer}>
                   <img
@@ -42,7 +42,7 @@ var rapPlaylists = [];
 
   const mappedPopPlaylists = popPlaylists.map((playlist) => { 
     return ( 
-      <Link to="/PlayPage">  
+      <Link to={props.userID ? "/PlayPage" : "/"}>  
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
           <div className={classes.imageContainer}>
             <img
@@ -58,7 +58,7 @@ var rapPlaylists = [];
 
   const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
     return (    
-      <Link to="/PlayPage">
+      <Link to={props.userID ? "/PlayPage" : "/"}>
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
           <div className={classes.imageContainer}>
             <img
