@@ -1,7 +1,8 @@
 import React from 'react'
-import { useEffect, useRef} from 'react';
+import { useEffect, useRef, useState} from 'react';
 import classes from './DisplayThisIs.module.css'
 import Countdown from "react-countdown";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import ReactHowler from 'react-howler'
 import CountdownBar from '../../elements/CountdownBar/CountdownBar';
 import GamePanel from '../GamePanel/GamePanel';
@@ -10,6 +11,7 @@ import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 const DisplayThisIs = (props) => {
 
   const round = props.round + 1;
+  const [key, setKey] = useState(0);
   
 // Score multiplier (based on time remaning in round)
  var scoreMultiplier; 
@@ -18,12 +20,12 @@ const DisplayThisIs = (props) => {
  const endDate =  Date.now() + 10000;
 
  //Countdown Ref
- const clockRef = useRef();
+ //const clockRef = useRef();
 
 
  // Countdown Handle Start Function
  const handleStart = () => { 
-  clockRef.current.start();
+  //clockRef.current.start();
   console.log()
  }
 
@@ -86,6 +88,7 @@ const changeSrc = () => {
     changeSrc();
   
     props.setRound(props.round + 1);
+    setKey(prevKey => prevKey + 1)
   }
  
 
@@ -132,7 +135,20 @@ const changeSrc = () => {
         <div className={classes.containerGamePanel}>
         <div className={classes.gameInfoContainer}>
             <div className={classes.roundContainer}>Round: <span className={classes.span}>{round}</span></div>
-           <div className={classes.countdownContainer}><Countdown  renderer={renderer}  ref={clockRef} className='blah'  date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown></div> 
+           {/*<div className={classes.countdownContainer}><Countdown  renderer={renderer}  ref={clockRef} className='blah'  date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown></div> */}
+        <CountdownCircleTimer
+          isPlaying
+          key={key}
+          duration={10}
+          delay={1}
+          onComplete={() => {
+            handleNoAnswerUpdate()
+            return { shouldRepeat: true } // repeat animation in 1.5 seconds
+          }}
+          colors={['#1bcb59']}
+        >
+          {({ remainingTime }) => remainingTime}
+        </CountdownCircleTimer>
             <div className={classes.scoreContainer}>Score: <span className={classes.span}>{props.userScore}</span></div>
         </div>
     </div>
