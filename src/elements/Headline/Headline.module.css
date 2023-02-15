@@ -3,3 +3,16 @@
     font-size: 150%; 
     color: var(--secondary);
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+
+    .headline { 
+        font-family: CircularBold;
+        font-size: 120%; 
+        color: var(--secondary); 
+    }
+
+  }
+  
