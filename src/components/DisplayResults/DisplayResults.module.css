@@ -92,7 +92,7 @@ span {
 .percentage { 
     text-align: center;
     font-family: CircularBold;
-    font-size: 150%;
+    font-size: 125%;
     color: var(--primary-green);
 }
 

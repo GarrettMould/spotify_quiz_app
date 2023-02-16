@@ -83,7 +83,7 @@ export var playlists = [
         artist: "The Beatles",
         name: "This is The Beatles", 
         img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO2iBPiw-large.jpg", 
-        id: "37i9dQZF1DZ06evO12tsHe",
+        id: "37i9dQZF1DZ06evO2iBPiw",
         description: "This is The Beatles. Essential tracks all in one playlist.", 
         tags: ["pop", "popular"]
     }, 

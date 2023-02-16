@@ -3,8 +3,8 @@ import classes from "./PlaylistSelection.module.css"
 import { Link } from 'react-router-dom'
 import { playlists } from '../../Playlists'
 import Headline from '../../elements/Headline/Headline'
+import { Container, Row, Col } from 'react-bootstrap'
 import { Spacer } from '../../elements/Spacer/Spacer'
-import PlaylistSelectionInfoBox from '../PlaylistSelectionInfoBox/PlaylistSelectionInfoBox'
 
 
 const PlaylistSelection = (props) => {
@@ -22,10 +22,15 @@ const PlaylistSelection = (props) => {
       rockPlaylists.push(playlist)
     }
   })
+
+  const slicedRap = rapPlaylists.slice(0, 4);
+  const slicedPop = popPlaylists.slice(0,4); 
+  const slicedRock = rockPlaylists.slice(0,4);
  
 
-  const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
+  const mappedRapPlaylists = slicedRap.map((playlist) => { 
     return (    
+    <Col xs={3}>
     <div className={classes.playlistContainer}>
       <Link to={props.userID ? "/PlayPage" : "/"} >
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -41,11 +46,13 @@ const PlaylistSelection = (props) => {
       </button>
       </Link>
     </div>
+    </Col>
     )
   })
 
-  const mappedPopPlaylists = popPlaylists.map((playlist) => { 
+  const mappedPopPlaylists = slicedPop.map((playlist) => { 
     return (    
+    <Col xs={3}>
     <div className={classes.playlistContainer}>
       <Link to={props.userID ? "/PlayPage" : "/"}>
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -61,11 +68,13 @@ const PlaylistSelection = (props) => {
       </button>
       </Link>
     </div>
+    </Col>
     )
   })
 
-  const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
+  const mappedRockPlaylists = slicedRock.map((playlist) => { 
     return (    
+    <Col xs={3}>
     <div className={classes.playlistContainer}>
       <Link to={props.userID ? "/PlayPage" : "/"}>
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -81,6 +90,7 @@ const PlaylistSelection = (props) => {
       </button>
       </Link>
     </div>
+    </Col>
     )
   })
   return (
@@ -92,7 +102,11 @@ const PlaylistSelection = (props) => {
       <section className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
+      <Container fluid={true}>
+        <Row >
       {mappedRapPlaylists}
+        </Row>
+      </Container>
       </div>
       </section>
       <div className={classes.sectionTitleContainer}>
@@ -102,7 +116,11 @@ const PlaylistSelection = (props) => {
       <section  className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
-      {mappedPopPlaylists}
+      <Container fluid={true}>
+        <Row>
+        {mappedPopPlaylists}
+        </Row>
+      </Container>
       </div>
       </section>
       <div className={classes.sectionTitleContainer}>
@@ -112,7 +130,11 @@ const PlaylistSelection = (props) => {
       <section  className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
-      {mappedRockPlaylists}
+      <Container fluid={true}>
+        <Row>
+        {mappedRockPlaylists}
+        </Row>
+      </Container>
       </div>
       </section>
     </div>

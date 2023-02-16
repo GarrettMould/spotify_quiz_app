@@ -1,6 +1,7 @@
 import React from 'react'
 import Headline from '../../elements/Headline/Headline'
 import { Spacer } from '../../elements/Spacer/Spacer'
+import { Container, Row, Col } from 'react-bootstrap'
 import classes from "./PlaylistsViewAllPage.module.css"
 import { Link } from 'react-router-dom'
 import { playlists } from '../../Playlists'
@@ -30,6 +31,7 @@ var rapPlaylists = [];
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 
     return (    
+    <Col xs={3}>
     <div className={classes.playlistContainer}>
       <Link to={props.userID ? "/PlayPage" : "/"} >
       <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -45,11 +47,13 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
       </button>
       </Link>
     </div>
+    </Col>
     )
   })
 
   const mappedPlaylistsMobile = playlistsAll.map((playlist) => { 
     return ( 
+      <Col xs={4}>
       <Link to={props.userID ? "/PlayPage" : "/"}>
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                 <div className={classes.imageContainer}>
@@ -61,6 +65,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
                 </div>
                 </button>
        </Link>
+       </Col>
     )
   })
 
@@ -75,7 +80,11 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
     <section className={classes.section}>
     <Spacer></Spacer>
     <div className={classes.allPlaylistsContainer}>
+    <Container fluid={true}>
+    <Row>
     {props.isMobile ? mappedPlaylistsMobile : mappedPlaylistsDesktop}
+    </Row>
+    </Container>
     </div>
     </section>
     </div>
