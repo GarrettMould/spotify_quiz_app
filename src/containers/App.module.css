@@ -13,6 +13,33 @@
   src: url(../fonts/CircularSpotifyText-Light.otf);
 }
 
+@font-face {
+  font-family: WalsheimLight;
+  src: url(../fonts/GTWalsheimPro-Light.woff);
+}
+
+@font-face {
+  font-family: WalsheimRegular;
+  src: url(../fonts/GTWalsheimPro-Regular.woff);
+}
+
+@font-face {
+  font-family: WalsheimMedium;
+  src: url(../fonts/GTWalsheimPro-Medium.woff);
+}
+
+@font-face {
+  font-family: WalsheimBold;
+  src: url(../fonts/GTWalsheimPro-Bold.woff);
+}
+
+@font-face {
+  font-family: WalsheimUltraBold;
+  src: url(../fonts/GTWalsheimPro-UltraBold.woff);
+}
+
+
+
 ::-moz-selection { /* Code for Firefox */
   background: var(--primary-green);
 }

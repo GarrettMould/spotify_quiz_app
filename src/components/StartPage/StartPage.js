@@ -9,30 +9,11 @@ import React from 'react'
 const StartPage = (props) => {
   return (
     <div className={classes.container}>
-       {/* <a className={classes.browseLink} href="#">Browse Quizzes</a> */}
-        <div className={classes.containerLeftBlock}>
-            <div className={classes.containerMainText}>
-                <h2 className={classes.mainText}>How Well Do You Know Your Favorite Artists?</h2>
-            </div>
-            <div className={classes.containerSubText}>
-                <h3 className={classes.subText}>Stay in the loop. Get updates from RapQuiz.</h3>
-            </div>
-            <form>
-                <input className={classes.input} type="text" placeholder='Email Address'></input>
-                <button type="submit" className={classes.btnSubmit}>Get Notified</button>
-            </form>
+        <div className={classes.mainBlockContainer}>
+            <div className={classes.mainLineOne}>Spotify Quizzes.</div>
+            <div className={classes.mainLineTwo}>How well do you know your favorite artists?</div>
+            <div className={classes.findQuizLink}>Find a quiz</div>
         </div>
-        {props.isMobile ? null : <div className={classes.containerRightBlock}>
-            <div className={classes.photoContainer}>
-                <img id="photo-one" className={classes.photoOne} src={frank_ocean}></img>
-            </div>
-            <div className={classes.photoContainer}>
-                <img  className={classes.photoTwo} src={tyler_the_creator}></img>
-            </div>
-            <div className={classes.photoContainer}>
-                <img  className={classes.photoThree} src={mac_miller}></img>
-            </div>
-        </div> }
     </div>
   )
 }

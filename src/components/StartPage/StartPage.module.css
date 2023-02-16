@@ -6,173 +6,29 @@
     height: 90vh;
 }
 
-.browseLink { 
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-    margin: 0 auto;
-    font-family: CircularBold;
-    border-bottom: 2px solid white;
-    font-size: 150%;
-}
-
-.browseLink:hover { 
-    color: var(--primary-green);
-    border-bottom: 2px solid var(--primary-green);
-}
-
-.containerLeftBlock { 
-    margin-top: 20px;
+.mainBlockContainer { 
     display: flex;
     flex-direction: column;
     width: 45%;
-
 }
 
-.containerMainText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.mainLineOne { 
+    font-size: 380%;
+    font-family: WalsheimBold;
 }
 
-.mainText { 
-    font-family: CircularBold;
-    font-size: 320%;
-    line-height: 140%;
+.mainLineTwo { 
+    font-size: 225%;
+    font-family: WalsheimRegular;
+    margin-bottom: 10px;
 }
 
-.containerSubText { 
-    margin-bottom: 15px;
+.findQuizLink { 
+    font-size: 150%;
+    font-family: WalsheimLight;
 }
 
-.subText { 
-    font-family: CircularBold;
-    color: var(--grey);
-    font-size: 130%;
-    line-height: 175%;
+.findQuizLink:hover { 
+    cursor: pointer;
+    text-decoration: underline;
 }
-
-.form { 
-    display: flex;
-    align-items: center;
-}
-
-.input { 
-    border-radius: 4px;
-    border: none;
-    color: var(--primary);
-    padding: 10px;
-    font-size: 100%;
-    margin-right: 10px;
-    height: 45px;
-}
-
-.input::placeholder { 
-    color: var(--primary);
-    font-weight: bold;
-}
-
-.btnSubmit { 
-    background-color: var(--primary-green);
-    font-family: CircularBook;
-    height: 45px;
-    padding: 0px 30px;
-    font-size: 100%;
-    border-radius: 4px;
-}
-
-.containerRightBlock { 
-    position: relative;
-}
-
-.photoOne {
-    border-radius: 50%;
-    max-width: 250px;
-    position: absolute;
-    top: 0; 
-    right: 0;
-}
-
-.photoTwo { 
-    border-radius: 50%;
-    max-width: 175px;
-    position: absolute;
-    top: 0px; 
-    right: 400px;
-}
-
-.photoThree { 
-    border-radius: 50%;
-    max-width: 200px;
-    position: absolute;
-    top: 200px; 
-    right: 270px;
-}
-
-@media screen and (max-width: 768px) {
-
-    .container { 
-        margin-top: 30px;
-        margin-bottom: 50px;
-        height: auto;
-    }
-
-    .containerLeftBlock { 
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .mainText { 
-        font-family: CircularBold;
-        font-size: 250%;
-        line-height: 140%;
-    }
-
-    .containerSubText { 
-        margin-bottom: 15px;
-    }
-    
-    .subText { 
-        font-family: CircularBold;
-        color: var(--grey);
-        font-size: 120%;
-        line-height: 175%;
-    }
-
-    .form { 
-        display: flex;
-        align-items: center;
-    }
-    
-    .input { 
-        border-radius: 4px;
-        border: none;
-        color: var(--primary);
-        padding: 10px;
-        font-size: 90%;
-        margin-right: 10px;
-        width: 100%; 
-        height: 40px;
-        margin-bottom: 10px;
-    }
-    
-    .input::placeholder { 
-        color: var(--primary);
-        font-weight: bold;
-    }
-    
-    .btnSubmit { 
-        background-color: var(--primary-green);
-        font-family: CircularBook;
-        width: 100%; 
-        height: 40px;
-        padding: 10px 30px;
-        font-size: 100%;
-        border-radius: 4px;
-    }
-    
-
-} 

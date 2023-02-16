@@ -8,7 +8,7 @@ const Header = (props) => {
     <div className={classes.container}>
       <Link to="/">
         <div className={classes.siteTitle} onClick={props.resetQuiz}>
-          <span className={classes.greenText}>Rap</span> Quiz
+          Quizify
         </div>
       </Link>
         <div className={classes.navBar}>
