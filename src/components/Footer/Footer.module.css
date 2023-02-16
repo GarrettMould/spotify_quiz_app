@@ -56,6 +56,13 @@
 }
 
 @media screen and (max-width: 768px) {
+    .logo { 
+        max-width: 120px;
+      }
+
+      .siteTitle { 
+        font-family: CircularBold;
+      }
     .container { 
         height: 100px; 
         background-color: var(--primary);  

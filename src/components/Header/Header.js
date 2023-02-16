@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import LoginPageDesktop from '../LoginPageDesktop/LoginPageDesktop';
 import classes from "./Header.module.css"
+import logo from '../../photos/logoFinal.png'
 
 const Header = (props) => {
   return (
     <div className={classes.container}>
       <Link to="/">
         <div className={classes.siteTitle} onClick={props.resetQuiz}>
-          Quizify
+          <img  className={classes.logo}src={logo}></img>
         </div>
       </Link>
         <div className={classes.navBar}>

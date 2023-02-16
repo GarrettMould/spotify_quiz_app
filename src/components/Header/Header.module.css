@@ -5,6 +5,8 @@
 }
 
 .siteTitle {
+  display: flex; 
+  align-items: center;
     font-family: CircularBold;
     color: var(--secondary);
     font-size: 25px;
@@ -15,5 +17,8 @@
     font-family: CircularBold;
     color: var(--primary-green);
     font-size: 2.2rem;
-   
+  }
+
+  .logo { 
+    max-width: 120px;
   }

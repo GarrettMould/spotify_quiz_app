@@ -2,6 +2,7 @@ import classes from "./Footer.module.css"
 import React from 'react'
 import { Container,  Row, Col } from "react-bootstrap"
 import { FacebookLogo, InstagramLogo, GithubLogo, LinkedinLogo } from "phosphor-react"
+import logo from '../../photos/logoFinal.png'
 
 const Footer = (props) => {
 
@@ -9,7 +10,7 @@ const Footer = (props) => {
 
   props.isMobile ? (footer = <>
     <div className={classes.siteTitle}>
-       <span className={classes.greenText}>Rap</span> Quiz
+    Quizify
     </div>
     <div className={classes.column}>
     <div className={classes.columnTitle}>About</div>
