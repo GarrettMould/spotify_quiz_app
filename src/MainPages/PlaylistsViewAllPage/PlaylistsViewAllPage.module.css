@@ -1,3 +1,22 @@
+.wrapper { 
+    margin: 50px 0px;
+}
+.sectionTitleContainer { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.showAllLink { 
+    color: var(--grey);
+    font-size: 100%;
+    font-family: CircularBold;
+}
+
+.showAllLink:hover { 
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 
 .container { 
     display: flex;
@@ -36,6 +55,7 @@
 
 .allPlaylistsContainer { 
     display: flex;
+    flex-wrap: wrap;
 }
 
 .playlistContainer { 
@@ -44,6 +64,7 @@
     margin-right: 30px;
     width: 250px;
     border-radius: 4px;
+    margin-bottom: 40px;
 }
 
 
@@ -111,3 +132,41 @@
     overflow-y: hidden;
 
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .container { 
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .section { 
+        margin: 20px 0px 30px 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        overflow-x: scroll;
+        
+    }
+    
+    .btn { 
+        background-color: transparent;
+        margin-bottom: 10px;
+    }
+    
+    .allPlaylistsContainer { 
+        display: flex;
+    }
+        
+    .image {
+        width: 100px; 
+        height: 100px;
+        border-radius: 4px;
+    }
+   
+    
+
+} 

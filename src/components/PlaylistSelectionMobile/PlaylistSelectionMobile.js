@@ -78,36 +78,39 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRapPlaylists}
-            <button className={classes.viewAllBtn}>
+            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Rap" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
-                <ArrowCircleRight size={40} color="#c0c0c0"  />
+                <ArrowCircleRight size={40} color="#c0c0c0" />
             </div>
             </button>
+            </Link>
             </div>
             </section>
             <Headline text="Pop"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedPopPlaylists}
-            <button className={classes.viewAllBtn}>
+            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Pop" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />
             </div>
             </button>
+            </Link>
             </div>
             </section>
             <Headline text="Rock"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRockPlaylists}
-            <button className={classes.viewAllBtn}>
+            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Rock" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />
             </div>
             </button>
+            </Link>
             </div>
             </section>
         </div>

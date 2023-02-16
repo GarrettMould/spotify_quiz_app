@@ -9,6 +9,7 @@ import Footer from "../components/Footer/Footer";
 import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 import HomePage from "../MainPages/HomePage/HomePage";
 import PlayPage from "../MainPages/PlayPage/PlayPage";
+import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsViewAllPage";
 
 
 
@@ -65,6 +66,8 @@ const App = (props) => {
   const [averageAnswerTime, setAverageAnswerTime] = useState([]);
   // Score Comparison Percentage 
   var [scoreCompPerc, setScoreCompPerc] = useState(0);
+  // View All Playlist Type 
+  const [viewAllGenre, setViewAllGenre] = useState(null);
 
 
   // Determine the percentile based on userScore 
@@ -105,6 +108,11 @@ const App = (props) => {
   }
 
 
+  //Set view all genre 
+  const handleViewAllGenre = (e) => { 
+    setViewAllGenre(e.currentTarget.id);
+    console.log(e.currentTarget.id)
+  }
  
   // Reading device width and updating state on change
   useEffect(() => {
@@ -139,6 +147,7 @@ const closeModal = () => {
 }
 
 const resetQuiz = () => { 
+  setViewAllGenre(null);
   setAverageAnswerTime([]); 
   setCorrectTally(0);
   setStartMenu(true)
@@ -355,6 +364,7 @@ const getPlaylistInfo = async () => {
               ></LoginPromptPopUp> : null}
     <div className={modalOpen ?  `${classes.wrapper} ${classes.blur}`:`${classes.wrapper}`}>
       <Header 
+              isMobile={isMobile}
               resetQuiz={resetQuiz}
               userID={userID}
               logout={logout}
@@ -377,7 +387,8 @@ const getPlaylistInfo = async () => {
           </form>*/}
       <Routes>
             <>
-            <Route path="/" element={<HomePage userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+            <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>

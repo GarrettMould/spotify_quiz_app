@@ -85,21 +85,30 @@ const PlaylistSelection = (props) => {
   })
   return (
     <div className={classes.container}>
-      <Headline text="Hip Hop Quizzes"></Headline>
+      <div className={classes.sectionTitleContainer}>
+        <Headline text="Hip Hop Quizzes"></Headline>
+        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Rap" className={classes.showAllLink}>Show All</div></Link>
+      </div>
       <section className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedRapPlaylists}
       </div>
       </section>
-      <Headline text="Pop Quizzes"></Headline>
+      <div className={classes.sectionTitleContainer}>
+        <Headline text="Pop Quizzes"></Headline>
+        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Pop" className={classes.showAllLink}>Show All</div></Link>
+      </div>
       <section  className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>
       {mappedPopPlaylists}
       </div>
       </section>
-      <Headline text="Rock Quizzes"></Headline>
+      <div className={classes.sectionTitleContainer}>
+        <Headline text="Rock Quizzes"></Headline>
+        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Rock" className={classes.showAllLink}>Show All</div></Link>
+      </div>
       <section  className={classes.section}>
       <Spacer></Spacer>
       <div className={classes.allPlaylistsContainer}>

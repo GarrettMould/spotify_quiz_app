@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Navbar, Button } from "react-bootstrap";
 import LoginPageDesktop from '../LoginPageDesktop/LoginPageDesktop';
 import classes from "./Header.module.css"
 
@@ -14,6 +13,7 @@ const Header = (props) => {
       </Link>
         <div className={classes.navBar}>
           <LoginPageDesktop 
+              isMobile={props.isMobile}
               userID={props.userID}
               logout={props.logout}
               AUTH_ENDPOINT={props.AUTH_ENDPOINT}

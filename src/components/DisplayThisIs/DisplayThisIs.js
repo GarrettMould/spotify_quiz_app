@@ -1,11 +1,7 @@
 import React from 'react'
 import { useEffect, useRef, useState} from 'react';
 import classes from './DisplayThisIs.module.css'
-import Countdown from "react-countdown";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import ReactHowler from 'react-howler'
-import CountdownBar from '../../elements/CountdownBar/CountdownBar';
-import GamePanel from '../GamePanel/GamePanel';
 import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 
 const DisplayThisIs = (props) => {
@@ -19,27 +15,25 @@ const DisplayThisIs = (props) => {
  //10 Second Countdown Variable
  const endDate =  Date.now() + 10000;
 
- //Countdown Ref
- //const clockRef = useRef();
-
-
  // Countdown Handle Start Function
  const handleStart = () => { 
   //clockRef.current.start();
   console.log()
  }
-
  
  useEffect(() => {
    handleStart();
  }, [props.round]);
 
 
- const renderer = ({seconds }) => {
-     // Render a countdown
-     return <span>{seconds}</span>;
-   
- };
+ // Function that renders the visual aspects of the countdown timer
+ const renderTime = ({ remainingTime }) => {
+    return (
+    <div className={classes.timer}>
+        <div className={classes.value}>{remainingTime}</div>
+    </div>
+  );
+};
 
 const startQuiz = () => { 
   playFirstURI();
@@ -91,7 +85,7 @@ const changeSrc = () => {
     setKey(prevKey => prevKey + 1)
   }
  
-
+  // Function called when timer expires without an answer selected
   const handleNoAnswerUpdate = () => {
     changeSrc(); 
     props.setRound(props.round +1);
@@ -139,6 +133,8 @@ const changeSrc = () => {
         <CountdownCircleTimer
           isPlaying
           key={key}
+          size={60}
+          strokeWidth={4}
           duration={10}
           delay={1}
           onComplete={() => {
@@ -147,7 +143,7 @@ const changeSrc = () => {
           }}
           colors={['#1bcb59']}
         >
-          {({ remainingTime }) => remainingTime}
+          {renderTime}
         </CountdownCircleTimer>
             <div className={classes.scoreContainer}>Score: <span className={classes.span}>{props.userScore}</span></div>
         </div>
