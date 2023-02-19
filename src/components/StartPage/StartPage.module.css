@@ -10,21 +10,22 @@
     display: flex;
     flex-direction: column;
     width: 45%;
+    margin-top: 20px;
 }
 
 .mainLineOne { 
-    font-size: 380%;
+    font-size: 400%;
     font-family: WalsheimBold;
 }
 
 .mainLineTwo { 
-    font-size: 225%;
+    font-size: 250%;
     font-family: WalsheimRegular;
     margin-bottom: 10px;
 }
 
 .findQuizLink { 
-    font-size: 150%;
+    font-size: 180%;
     font-family: WalsheimLight;
 }
 

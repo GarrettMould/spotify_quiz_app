@@ -33,6 +33,11 @@
   margin-bottom: 4%;
 }
 
+.instructionsLink { 
+  margin-right: 50px; 
+  font-size: 110%;
+  font-family: CircularBook;
+}
 
 .btn {
   width: 150px !important;

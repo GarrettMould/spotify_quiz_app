@@ -12,8 +12,10 @@ const LoginPageDesktop = (props) => {
   
   const logoutButton =  <Link to="/"><Button  onClick={props.logout} className={classes.btn}>Logout</Button></Link>
   return (
-   
-         (props.userID ? logoutButton : loginButton)
+        <div className={classes.idk}>
+          <a href="#" className={classes.instructionsLink}>How to Play</a>
+          {props.userID ? logoutButton : loginButton}
+         </div>
         
   );
 };
