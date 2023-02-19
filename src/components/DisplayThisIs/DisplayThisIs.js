@@ -2,10 +2,13 @@ import React from 'react'
 import { useEffect, useRef, useState} from 'react';
 import classes from './DisplayThisIs.module.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import Countdown from 'react-countdown';
 import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
 
 const DisplayThisIs = (props) => {
 
+  const clockRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const round = props.round + 1;
   const [key, setKey] = useState(0);
   
@@ -15,52 +18,60 @@ const DisplayThisIs = (props) => {
  //10 Second Countdown Variable
  const endDate =  Date.now() + 10000;
 
+ const handlePlay = () => { 
+  clockRef.current.start();
+  playFirstURI()
+  setIsPlaying(true)
+
+ }
  // Countdown Handle Start Function
  const handleStart = () => { 
-  //clockRef.current.start();
+  clockRef.current.start();
   console.log()
  }
  
  useEffect(() => {
-   handleStart();
+  if (isPlaying) { 
+    handleStart();
+  }
  }, [props.round]);
 
 
- // Function that renders the visual aspects of the countdown timer
- const renderTime = ({ remainingTime }) => {
-    return (
-    <div className={classes.timer}>
-        <div className={classes.value}>{remainingTime}</div>
-    </div>
-  );
-};
 
-const startQuiz = () => { 
-  playFirstURI();
-  props.setStartMenu(false);
+const startRound = () => { 
+  changeSrc(); // Call changeSrc at the start of each round
+  setKey(prevKey => prevKey + 1);
 }
-  
+
+const stopFirstURI = () => { 
+  const audioFirst = document.getElementById("audioFirst");
+    const sourceFirst = document.getElementById("sourceFirst");
+    sourceFirst.src = props.selectedThisIsSongs[0].uri
+    console.log(sourceFirst.src)
+    audioFirst.pause();
+}
+
 const playFirstURI = () => { 
-  const audioFirst = document.getElementById("audioFirst")
-  const sourceFirst = document.getElementById("sourceFirst")
-  sourceFirst.src = props.selectedThisIsSongs[0].uri
-  console.log(sourceFirst)
-  audioFirst.load();
-  audioFirst.play();
+  const audioFirst = document.getElementById("audioFirst");
+    const sourceFirst = document.getElementById("sourceFirst");
+    sourceFirst.src = props.selectedThisIsSongs[0].uri
+    console.log(sourceFirst.src)
+    audioFirst.load();
+    audioFirst.play();
 }
 
 const changeSrc = () => {
-    const audioFirst = document.getElementById("audioFirst")
-    audioFirst.pause();
     const audio = document.getElementById("audio");
     const source = document.getElementById("audioSrc");
     source.src = mappedSongs[props.round].uri
+    console.log(source.src)
     audio.load();
     audio.play();
   }
 
 
   const handleAnswer = (e) => { 
+    stopFirstURI();
     // Current Date
     const currentDate = Date.now()
     // Variable that will be used to calculate score
@@ -79,16 +90,18 @@ const changeSrc = () => {
       props.setCorrectTally(props.correctTally + 1);
     }
     console.log(props.userScore)
-    changeSrc();
+    
   
     props.setRound(props.round + 1);
     setKey(prevKey => prevKey + 1)
+    startRound()
   }
  
   // Function called when timer expires without an answer selected
   const handleNoAnswerUpdate = () => {
-    changeSrc(); 
+    stopFirstURI();
     props.setRound(props.round +1);
+    startRound(); 
   }
 
 
@@ -100,7 +113,7 @@ const changeSrc = () => {
     console.log(correctAnswer)
 
     const mappedAnswerOptions = song.answerOptions.map( (track, i) => {    
-      
+       
         return (
             <>
             <div className={classes.answerContainer}>
@@ -129,22 +142,8 @@ const changeSrc = () => {
         <div className={classes.containerGamePanel}>
         <div className={classes.gameInfoContainer}>
             <div className={classes.roundContainer}>Round: <span className={classes.span}>{round}</span></div>
-           {/*<div className={classes.countdownContainer}><Countdown  renderer={renderer}  ref={clockRef} className='blah'  date={endDate} autoStart={false} onComplete={handleNoAnswerUpdate}></Countdown></div> */}
-        <CountdownCircleTimer
-          isPlaying
-          key={key}
-          size={60}
-          strokeWidth={4}
-          duration={10}
-          delay={1}
-          onComplete={() => {
-            handleNoAnswerUpdate()
-            return { shouldRepeat: true } // repeat animation in 1.5 seconds
-          }}
-          colors={['#1bcb59']}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
+            {isPlaying ? null : <button className={classes.playBtn} onClick={handlePlay}>Play</button>}
+           <Countdown className={classes.countdown} ref={clockRef} date={Date.now() + 10000} autoStart={false} onComplete={handleNoAnswerUpdate}/>
             <div className={classes.scoreContainer}>Score: <span className={classes.span}>{props.userScore}</span></div>
         </div>
     </div>
@@ -158,7 +157,6 @@ console.log(selectedSongs)
 
   return (
     <>
-    {props.startMenu ? <StartScreenQuiz startQuiz={startQuiz} setStartMenu={props.setStartMenu} startMenu={props.startMenu}></StartScreenQuiz> : null}
   <div className={classes.wrapper}>
       <div className={classes.quizPanelWrapper}>
         <div className={classes.quizSectionContainer}>
@@ -169,7 +167,7 @@ console.log(selectedSongs)
             </div>
           </div>
           <audio id="audioFirst" controls="controls" hidden="hidden">
-        <source id="sourceFirst" src={props.selectedThisIsSongs.uri} type="audio/mpeg" hidden="hidden"/>
+        <source id="sourceFirst" src={props.selectedThisIsSongs[0].uri} type="audio/mpeg" hidden="hidden"/>
         </audio>
     
           {mappedSongs[props.round]}

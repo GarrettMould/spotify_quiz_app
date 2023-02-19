@@ -10,6 +10,7 @@ import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 import HomePage from "../MainPages/HomePage/HomePage";
 import PlayPage from "../MainPages/PlayPage/PlayPage";
 import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsViewAllPage";
+import InstructionsBox from "../components/InstructionsBox/InstructionsBox";
 
 
 
@@ -53,7 +54,7 @@ const App = (props) => {
   // Keeps track of User's quiz score
   const [userScore, setUserScore] = useState(0);
   // Keeps track of quiz round 
-  const [round, setRound] = useState(0); 
+  const [round, setRound] = useState(null); 
   // Login Modal Open or Close
   const [modalOpen, setModalOpen] = useState(false);
   // True if the quiz is currently in round one
@@ -68,6 +69,8 @@ const App = (props) => {
   var [scoreCompPerc, setScoreCompPerc] = useState(0);
   // View All Playlist Type 
   const [viewAllGenre, setViewAllGenre] = useState(null);
+  // Mapped songs 
+  const [mappedSongs, setMappedSongs] = useState([]);
 
 
   // Determine the percentile based on userScore 
@@ -108,6 +111,8 @@ const App = (props) => {
   }
 
 
+ 
+ 
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
     setViewAllGenre(e.currentTarget.id);
@@ -166,11 +171,6 @@ const handleAnswer = (value) => {
   
 }
 
-// Function to update the artist ID 
-  const handleArtistChange = (id) => { 
-    setArtistID(id); 
-  }
-
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
     setStartMenu(true);
@@ -181,11 +181,29 @@ const handleAnswer = (value) => {
       setPlaylistID(e.currentTarget.id); 
       
     resetQuiz();
+    setRound(0);
     } else { 
       
       setModalOpen(true);
     }
   }
+
+   // Function to change the source of the audio player
+   const changeSrc = (url) => {
+    console.log("changeSrc() called with url:", url);
+    const audio = document.getElementById("audio");
+    const source = document.getElementById("audioSrc");
+  
+    if (!source) {
+      console.error("Audio source element not found");
+      return;
+    }
+  
+    source.src = url;
+    audio.load();
+    audio.play();
+  };
+
 
 // Funcion to get the User's ID and set the UserID variable (will be called using useEffect hook when the token changes)
   const getUserID = async () => {
@@ -247,12 +265,6 @@ useEffect((e) => {
 }, [playlistID]);
 
 
-
-// Function that sets playlistID to the user input value
-const handleCustomPlaylistSubmit = () => { 
-  var id = document.getElementById('input_id').value;
-  setPlaylistID(id);
-}
   
 // Function takes an artist ID and returns their top songs 
 const getTopSongs = async () => {
@@ -337,6 +349,7 @@ const getPlaylistSongs = async () => {
 }
 
 
+
 // Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist
 const getPlaylistInfo = async () => { 
 
@@ -374,22 +387,15 @@ const getPlaylistInfo = async () => {
               RESPONSE_TYPE={RESPONSE_TYPE}
               SCOPES_URL_PARAM={SCOPES_URL_PARAM}>
       </Header>
-      {/* <button className={classes.btn} onClick={logout}>Logout</button>
-              <button className={classes.btn} onClick={resetQuiz}>Reset</button>*/}
+  
             <Spacer></Spacer>
-            {/*<button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
-              
-            <button onClick={getPlaylistSongs}>GET PLAYLIST SONGS</button>
-              
-             <form>
-                <input type="text" id="input_id" placeholder="Playlist ID"></input>
-                <input type="button" value="Submit" onClick={handleCustomPlaylistSubmit} />
-          </form>*/}
+            
+         {/*<InstructionsBox></InstructionsBox>*/}
       <Routes>
             <>
             <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
-             <Route path="/PlayPage" element={<PlayPage scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
+             <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>
         <Spacer></Spacer>

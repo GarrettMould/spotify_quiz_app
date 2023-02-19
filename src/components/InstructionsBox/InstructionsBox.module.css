@@ -1,0 +1,31 @@
+.container { 
+    background-color: var(--darkGreyHover);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 300px;
+    border-radius: 4px;
+    z-index: 999;
+}
+
+.allSlidesContainer { 
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide { 
+    display: flex;
+    justify-content: center;
+}
+.slideContainer { 
+    background-color: transparent;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}

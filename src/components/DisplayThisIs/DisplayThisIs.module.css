@@ -1,9 +1,7 @@
 /* Countdown Timer Component */
 
-.timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.countdown { 
+    display: none;
 }
 
 .text {
@@ -21,6 +19,15 @@
 
 
 /* Game Panel Stuff */ 
+
+.playBtn { 
+    width: 150px; 
+    border-radius: 4px;
+    background-color: var(--primary-green);
+    height: 35px;
+    font-family: CircularBook;
+
+}
 
 .containerGamePanel { 
     display: flex;
