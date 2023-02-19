@@ -74,7 +74,7 @@
     flex-direction: column;
     align-items: center;
     width: 250px; 
-    height: 340px;
+    height: 320px;
     margin-bottom: 20px;
    
 }
@@ -130,7 +130,9 @@
     font-size: 90%;
     color: var(--grey);
     text-align: start;
-    overflow-y: hidden;
+    max-height: 3em; /* 3 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 

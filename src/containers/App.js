@@ -1,4 +1,7 @@
 import { Routes, Route} from "react-router-dom";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +13,7 @@ import LoginPromptPopUp from "../components/LoginPromptPopUp/LoginPromptPopUp";
 import HomePage from "../MainPages/HomePage/HomePage";
 import PlayPage from "../MainPages/PlayPage/PlayPage";
 import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsViewAllPage";
-import InstructionsBox from "../components/InstructionsBox/InstructionsBox";
+import HowToPlayPage from "../components/HowToPlayPage/HowToPlayPage";
 
 
 
@@ -387,10 +390,11 @@ const getPlaylistInfo = async () => {
               RESPONSE_TYPE={RESPONSE_TYPE}
               SCOPES_URL_PARAM={SCOPES_URL_PARAM}>
       </Header>
-  
-            <Spacer></Spacer>
             
-         {/*<InstructionsBox></InstructionsBox>*/}
+            <Spacer></Spacer>
+            {/*<HowToPlayPage></HowToPlayPage>*/}
+            
+         
       <Routes>
             <>
             <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
