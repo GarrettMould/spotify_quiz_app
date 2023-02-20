@@ -36,14 +36,13 @@
 .containerGamePanel { 
     display: flex;
     flex-direction: column;
-    margin: 30px 10px;
+    margin: 40px 10px;
 } 
 .gameInfoContainer { 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 
@@ -244,6 +243,12 @@ span {
         font-size: 100%;
         font-family: CircularBold;
     }
+
+    .containerGamePanel { 
+        display: flex;
+        flex-direction: column;
+        margin: 35px 10px;
+    } 
     
     
 

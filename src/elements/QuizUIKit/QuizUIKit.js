@@ -1,8 +1,8 @@
 import React from 'react'
-import classes from "./MobileUIKit.module.css"
+import classes from "./QuizUIKit.module.css"
 import daft_punk from "../../photos/daft_punk.jpg"
 
-const MobileUIKit = () => {
+const QuizUIKit = () => {
   return (
     <div className={classes.wrapper}>
     <div className={classes.quizPanelWrapper}>
@@ -24,22 +24,22 @@ const MobileUIKit = () => {
 
         <div className={classes.answers}>
             <div className={classes.answerContainer}>
-                <button
+                <button disabled="true" 
                     className={`${classes.btnAnswerOption}` }                
                 ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
-                <button
+                <button disabled="true" 
                     className={`${classes.btnAnswerOption}` }                
                 ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
-                <button
+                <button disabled="true"
                     className={`${classes.btnAnswerOption}` }                
                 ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
-                <button
+                <button disabled="true"
                     className={`${classes.btnAnswerOption}` }                
                 ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
             </div> 
@@ -51,4 +51,4 @@ const MobileUIKit = () => {
   )
 }
 
-export default MobileUIKit
+export default QuizUIKit

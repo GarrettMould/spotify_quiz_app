@@ -14,18 +14,18 @@
 }
 
 .mainLineOne { 
-    font-size: 400%;
+    font-size: 375%;
     font-family: WalsheimBold;
 }
 
 .mainLineTwo { 
-    font-size: 250%;
+    font-size: 225%;
     font-family: WalsheimRegular;
     margin-bottom: 10px;
 }
 
 .findQuizLink { 
-    font-size: 180%;
+    font-size: 170%;
     font-family: WalsheimLight;
 }
 
