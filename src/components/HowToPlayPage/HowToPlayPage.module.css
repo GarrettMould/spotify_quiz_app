@@ -1,5 +1,5 @@
 .container  { 
-    height: 100vh;
+    height: auto;
     max-width: 100%;
     overflow: hidden;
     display: flex;
@@ -30,3 +30,9 @@
     font-family: WalsheimRegular;
     line-height: 2em;
 }
+
+.stepTwoSection { 
+    display: flex;
+
+}
+

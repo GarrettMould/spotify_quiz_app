@@ -392,12 +392,13 @@ const getPlaylistInfo = async () => {
       </Header>
             
             <Spacer></Spacer>
-            {/*<HowToPlayPage></HowToPlayPage>*/}
+            
             
          
       <Routes>
             <>
             <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+            <Route path="/HowToPlay" element={<HowToPlayPage></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     

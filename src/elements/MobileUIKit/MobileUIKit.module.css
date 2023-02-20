@@ -1,0 +1,241 @@
+
+
+/* Game Panel Stuff */ 
+
+.containerGamePanel { 
+    display: flex;
+    flex-direction: column;
+    margin: 30px 10px;
+} 
+.gameInfoContainer { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+
+.roundContainer { 
+    font-size: 120%;
+    font-family: CircularBold;    
+}
+
+.scoreContainer { 
+    font-size: 120%;
+    font-family: CircularBold;
+}
+
+.span { 
+    margin-left: 5px;
+    color: var(--grey);
+}
+
+
+
+/* Red and Green Highights for correct and incorrect answers*/ 
+
+.highlightRed { 
+    font-size: 300px;
+    
+  }
+  
+  .highlightGreen { 
+    background-color: greenyellow;
+  }
+
+
+.wrapper { 
+    display: flex; 
+    justify-content: center;
+}
+
+.quizPanelWrapper {
+    width: 70%;
+    border-radius: 4px;
+    background-color: #343434;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+  .quizSectionContainer{ 
+    padding: 25px 25px 15px 25px;
+    width: 100%;   
+}
+
+
+.thisIsImage { 
+    max-width: 60px;
+    margin: 50px 30px 50px 20px;
+    border-radius: 4px;
+}
+
+.thisIsName { 
+    font-family: CircularBold;
+    font-size: 110%;
+}
+
+.quizInfoContainer { 
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 4px;
+    height: 100px;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.infoTextContainer { 
+    display: flex; 
+    flex-direction: column;
+}
+span { 
+    font-family: CircularBold;
+}
+
+.scoreIdentifier { 
+    color: var(--grey); 
+    font-family: CircularBook;
+    font-size: 120%;
+}
+
+.answers { 
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+}
+
+
+.answerContainer { 
+    padding: 0px 10px 10px 0px;
+    width: 50%;
+    display: flex; 
+    flex-direction: row; 
+    
+}
+
+.btnAnswerOption { 
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+    border-radius: 4px;
+    background-color: var(--darkGrey);
+}
+
+.btnAnswerOption:hover, .btnAnswerOption:active { 
+    background-color: var(--darkGreyHover);
+}
+
+
+
+.img { 
+    width: 100%; 
+    border-radius: 4px;
+    
+}
+
+.imgContainer { 
+    max-width: 90px;
+    padding: 5px;
+}
+
+.answerText { 
+    width: 80%;
+    font-size: 100%;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.track { 
+    width: 85%;
+}
+
+
+.playBtn { 
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100px; 
+    border-radius: 4px;
+    background-color: var(--primary-green);
+    height: 35px;
+    
+    font-family: CircularBook;
+
+}
+
+.value {
+   font-size: 100%;
+}
+
+.wrapper { 
+    display: flex; 
+    width: 50%;
+
+}
+
+.quizPanelWrapper {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #343434;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.quizSectionContainer{ 
+    width: 90%;
+    padding: 25px 0px 15px 0px;   
+}
+
+.thisIsImage { 
+    max-width: 75px;
+    margin: 50px 20px 50px 20px;
+}
+
+.thisIsName { 
+    font-family: CircularBold;
+    font-size: 110%;
+}
+
+.roundContainer { 
+    font-size: 100%;
+    font-family: CircularBold;    
+}
+
+.scoreContainer { 
+    font-size: 100%;
+    font-family: CircularBold;
+}
+
+
+
+
+
+.imgContainer { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 60px;
+    margin: 0px 15px 0px 5px;
+    padding: 0px;
+}
+.answerText {     
+    font-size: 90%;
+    font-family: CircularBold;
+    font-weight: 600;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+
+}
+
+.track { 
+    width: 90%;
+}
