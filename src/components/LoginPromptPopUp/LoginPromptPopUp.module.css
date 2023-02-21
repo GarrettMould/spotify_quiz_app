@@ -4,7 +4,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
+    width: 35%;
     border-radius: 4px;
     z-index: 999;
 }
@@ -36,6 +36,7 @@
 
 .messageContainer { 
     margin: 25px 0;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;

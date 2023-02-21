@@ -1,4 +1,20 @@
 
+/*Social Row*/ 
+
+.socialRowContainer { 
+    background-color: var(--darkGrey);
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconContainer { 
+    padding: 10px 0px;
+}
+.icon { 
+    max-width: 32px;
+}
 
 .wrapper { 
     display: flex; 
