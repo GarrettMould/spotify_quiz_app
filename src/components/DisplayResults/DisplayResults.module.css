@@ -10,7 +10,14 @@
 }
 
 .iconContainer { 
-    padding: 10px 0px;
+    width: 35px; 
+    height: 35px;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #343434;
+    border-radius: 50%;
 }
 .icon { 
     max-width: 32px;
