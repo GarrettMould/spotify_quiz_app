@@ -12,7 +12,7 @@ const Header = (props) => {
           <img  className={classes.logo}src={logo}></img>
         </div>
       </Link>
-        <div className={classes.navBar}>
+        
           <LoginPageDesktop 
               isMobile={props.isMobile}
               userID={props.userID}
@@ -22,7 +22,7 @@ const Header = (props) => {
               REDIRECT_URI={props.REDIRECT_URI}
               RESPONSE_TYPE={props.RESPONSE_TYPE}
               SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}></LoginPageDesktop>
-        </div>
+       
     </div>
     
   )

@@ -119,11 +119,12 @@ const changeSrc = () => {
             <div className={classes.answerContainer}>
   
             <button
-              className={`${classes.btnAnswerOption}` }
+              className={isPlaying ? `${classes.btnAnswerOption}` : `${classes.btnAnswerOptionDisabled}` }
               type="radio"
               name={correctAnswer}
               value={track.name === correctAnswer ? "blah" : false}
               onClick={handleAnswer}
+              disabled={isPlaying ? false : true}
               
             ><div className={classes.imgContainer}><img src={track.img.url} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>{track.name}</div></div></button>
             </div>

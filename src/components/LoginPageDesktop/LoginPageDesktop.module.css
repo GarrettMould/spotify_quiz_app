@@ -1,5 +1,18 @@
+.navbar { 
+  display: flex;
+  align-items: center;
+}
+
 .padding {
   height: 100vh;
+}
+
+.icon { 
+  margin-right: 50px;
+}
+
+.icon:hover { 
+  cursor: pointer;
 }
 
 .contentContainer {
@@ -34,8 +47,9 @@
 }
 
 .instructionsLink { 
+  padding-top: 2px;
   margin-right: 50px; 
-  font-size: 110%;
+  font-size: 105%;
   font-family: CircularBook;
 }
 

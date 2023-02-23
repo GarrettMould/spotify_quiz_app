@@ -19,6 +19,7 @@ import HomePage from "../MainPages/HomePage/HomePage";
 import PlayPage from "../MainPages/PlayPage/PlayPage";
 import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsViewAllPage";
 import HowToPlayPage from "../components/HowToPlayPage/HowToPlayPage";
+import SearchPage from "../MainPages/SearchPage/SearchPage";
 
 
 
@@ -65,6 +66,8 @@ const App = (props) => {
   const [round, setRound] = useState(null); 
   // Login Modal Open or Close
   const [modalOpen, setModalOpen] = useState(false);
+  // Search Page Open or Close 
+  const [searchOpen, setSearchOpen] = useState(false);
   // True if the quiz is currently in round one
   const [roundOne, setRoundOne] = useState(false);
   // True when the user chooses a playlist and the start menu is displayed
@@ -383,7 +386,7 @@ const getPlaylistInfo = async () => {
                 RESPONSE_TYPE={RESPONSE_TYPE}
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
-    <div className={modalOpen ?  `${classes.wrapper} ${classes.blur}`:`${classes.wrapper}`}>
+    <div className={searchOpen ? `${classes.noWrapper}` : modalOpen ?  `${classes.wrapper} ${classes.blur}` : `${classes.wrapper}`}>
       <Header 
               isMobile={isMobile}
               resetQuiz={resetQuiz}
@@ -402,7 +405,8 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>          
+            <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/SearchPage" element={<SearchPage userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 

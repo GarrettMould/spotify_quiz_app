@@ -1,7 +1,16 @@
 /*Swiper*/ 
 
 .swiper { 
-    width: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slick-slide { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .custom-prev-button { 
@@ -11,30 +20,43 @@
     border-radius: 50%;
 }
 
-fas fa-chevron-left
 
 /*Social Row*/ 
 
+.thirdRow { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.socialMessage { 
+    width: 90%;
+    padding-top: 15px;
+    text-align: center;
+    font-family: CircularBook;
+    font-size: 110%;;
+}
 .socialRowContainer { 
+    padding: 20px;
     background-color: var(--darkGrey);
     border-radius: 4px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+    display: flex !important;
+    justify-content: space-around !important;
 }
 
 .iconContainer { 
-    width: 35px; 
-    height: 35px;
+    width: 40px; 
+    height: 40px;
     margin: 5px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #343434;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 .icon { 
-    max-width: 32px;
+    font-size: 150%;
 }
 
 .wrapper { 
@@ -156,7 +178,7 @@ span {
 
 .statsDisplayContainer { 
     width: 100%; 
-    height: auto;
+    
     background-color: var(--darkGrey);
     border-radius: 4px;
     display: flex;
@@ -180,9 +202,7 @@ span {
 
 .statsContainer { 
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
+    padding: 30px;
 }
 
 .statLine { 

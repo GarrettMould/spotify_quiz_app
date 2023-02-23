@@ -58,6 +58,9 @@
   opacity: 40%;
 }
 
+.noWrapper { 
+  padding: 0;
+}
 .wrapper { 
   padding: 20px 50px;
   background-color: var(--primary);

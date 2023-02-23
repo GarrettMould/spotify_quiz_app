@@ -1,6 +1,10 @@
 import React from 'react'
 import classes from "./QuizUIKit.module.css"
 import daft_punk from "../../photos/daft_punk.jpg"
+import discovery from "../../photos/discovery.jpg"
+import random_access_memories from "../../photos/random_access_memories.jpg"
+import tron from "../../photos/tron.jpg"
+import human_after_all from "../../photos/human_after_all.jpg"
 
 const QuizUIKit = () => {
   return (
@@ -26,22 +30,22 @@ const QuizUIKit = () => {
             <div className={classes.answerContainer}>
                 <button disabled="true" 
                     className={`${classes.btnAnswerOption}` }                
-                ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
+                ><div className={classes.imgContainer}><img src={discovery} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Something About Us</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
                 <button disabled="true" 
                     className={`${classes.btnAnswerOption}` }                
-                ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
+                ><div className={classes.imgContainer}><img src={tron} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Disc Wars</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
                 <button disabled="true"
                     className={`${classes.btnAnswerOption}` }                
-                ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
+                ><div className={classes.imgContainer}><img src={random_access_memories} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Dance</div></div></button>
             </div> 
             <div className={classes.answerContainer}>
                 <button disabled="true"
                     className={`${classes.btnAnswerOption}` }                
-                ><div className={classes.imgContainer}><img src={daft_punk} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Lose Yourself to Danxe</div></div></button>
+                ><div className={classes.imgContainer}><img src={human_after_all} alt="album" className={classes.img}></img></div><div className={classes.answerText}><div className={classes.track}>Human After All</div></div></button>
             </div> 
         </div> 
             

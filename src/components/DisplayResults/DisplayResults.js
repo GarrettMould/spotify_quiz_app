@@ -1,13 +1,41 @@
 import React from 'react'
+import { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
+import Slider from "react-slick";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import classes from "./DisplayResults.module.css"
+import { TwitterLogo, FacebookLogo, Copy } from 'phosphor-react';
 import { TwitterShareButton, FacebookMessengerShareButton, FacebookShareButton} from 'react-share';
 import { Link } from 'react-router-dom'
 
 export const DisplayResults = (props) => {
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handleAfterChange = (index) => {
+    setActiveSlide(index);
+  };
+
+  var statsDisplayTitle; 
+
+  {activeSlide === 0 && (
+    statsDisplayTitle = "Quick Stats"
+  )}
+  {activeSlide === 1 && (
+    statsDisplayTitle = "Social Share"
+  )}
+  
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
+   
 
   //Facebook App ID 
   const appID = "944392260236824";
@@ -48,64 +76,48 @@ export const DisplayResults = (props) => {
                     </div>
                 </div>
                 
-            <div className={classes.statsDisplayContainer}>
-            <div className={classes.titleContainer}><div className={classes.title}>Quick Stats</div></div>
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={1}
-              modules={[Navigation, Pagination]}
-              navigation
-              pagination={{ clickable: true }}
-              className={classes.swiper}
-            >
-              <SwiperSlide>
-                
-                <div className={classes.statsContainer}>
-                    <div className={classes.statLine}> <span className={classes.span}>Score:</span>  {props.userScore}</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className={classes.statsContainer}>
-                    <div className={classes.statLine}> <span className={classes.span}>Missed Questions:</span>  {10 - props.correctTally}</div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className={classes.statsContainer}>
-                    <div className={classes.statLine}> <span className={classes.span}>Time Per Question:</span>  {props.averageAnswerTime.length ? `${roundedAVG} seconds` : "10 seconds"} </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
+        <div className={classes.statsDisplayContainer}>
+            <div className={classes.titleContainer}><div className={classes.title}>{statsDisplayTitle}</div></div>
+          <Slider {...settings} className={classes.swiper} afterChange={handleAfterChange}>
+          
+          <div className={classes.statsContainer}>
+            <div className={classes.statLine}><span>Score:</span>  {props.userScore}</div>
+            <div className={classes.statLine}><span>Missed Questions:</span>  {10 - props.correctTally}</div>
+            <div className={classes.statLine}><span>Time Per Question:</span>  {props.averageAnswerTime.length ? `${roundedAVG} seconds` : "10 seconds"} </div>
+          </div>
+          
+        
+          <div className={classes.thirdRow}>
+            <div className={classes.socialMessage}>Challenge your friends to beat your top score</div>
                 <div className={classes.socialRowContainer}>
-                  <button className={classes.iconContainer}>
+                  
                     <TwitterShareButton title={message} url="https://sweet-kitten-2dc72c.netlify.app">
-                      <i class="fa fa-twitter"></i>
+                      <i class="fa fa-twitter icon fa-lg"></i>
                     </TwitterShareButton>
-                  </button>
-                  <button className={classes.iconContainer}>
-                    <FacebookShareButton url="https://sweet-kitten-2dc72c.netlify.app">
-                      <i class="fa fa-facebook"></i>
+
+                    <FacebookShareButton  className={classes.iconContainer}url="https://sweet-kitten-2dc72c.netlify.app">
+                      <i class="fa fa-facebook icon fa-lg"></i>
                     </FacebookShareButton>
-                  </button>
-                  <button className={classes.iconContainer}>
+
                     <FacebookMessengerShareButton appId={appID} redirectUri={link}>
-                      <i class='fab fa-facebook-messenger'></i>
+                      <i class='fab fa-facebook-messenger icon fa-lg'></i>
                     </FacebookMessengerShareButton>
-                  </button>
-                  <button className={classes.iconContainer}>
                     <CopyToClipboard text={link}>
-                      <i class="fa fa-share-alt"></i>
+                      <i class="fa fa-copy fa-lg"></i>
                     </CopyToClipboard>
-                  </button>
+                  
                 </div>
-              </SwiperSlide>
-            </Swiper>
+          </div>
+          
+        </Slider>
                 
-            </div>
+        </div>
           </div>
           
          <div className={classes.rowButtons}>
            <Link style={{ width: "100%"}} to="/"><button onClick={props.resetQuiz} className={classes.btn}>Close</button></Link>
           </div>
+          
         </div>
       </div>
     </div>
