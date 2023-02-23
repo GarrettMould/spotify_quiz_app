@@ -75,7 +75,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
     <div className={classes.wrapper}>
     <div className={classes.sectionTitleContainer}>
     <Headline text={headlineTitle}></Headline>
-    <Link to="/"><div onClick={props.resetQuiz} className={classes.showAllLink}>Return</div></Link>
+    
     </div>
     <section className={classes.section}>
     <Spacer></Spacer>
