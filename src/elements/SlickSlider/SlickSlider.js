@@ -13,6 +13,7 @@ export const SlickSlider = () => {
     playlists.forEach((playlist) => { 
         playlistImages.push(playlist.img)
       })
+      
     
     const sliderImages = playlistImages.map((image) => { 
         return (

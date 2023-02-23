@@ -1,9 +1,8 @@
 import React from 'react'
 import { useEffect, useRef, useState} from 'react';
 import classes from './DisplayThisIs.module.css'
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import Countdown from 'react-countdown';
-import { StartScreenQuiz } from '../StartScreenQuiz/StartScreenQuiz';
+
 
 const DisplayThisIs = (props) => {
 
@@ -11,6 +10,7 @@ const DisplayThisIs = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const round = props.round + 1;
   const [key, setKey] = useState(0);
+
   
 // Score multiplier (based on time remaning in round)
  var scoreMultiplier; 

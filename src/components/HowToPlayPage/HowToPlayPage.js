@@ -4,7 +4,8 @@ import Slider from 'react-slick';
 import QuizUIKit from '../../elements/QuizUIKit/QuizUIKit';
 import { SlickSlider } from '../../elements/SlickSlider/SlickSlider';
 import ResultsUIKit from '../../elements/ResultsUIKit/ResultsUIKit';
-const HowToPlay = () => {
+
+const HowToPlay = (props) => {
 
   
   return (
@@ -15,7 +16,7 @@ const HowToPlay = () => {
             <h4 className={classes.stepName}>Choose a Quiz</h4>
             <p className={classes.stepDescription}>Pick a quiz from our wide variety of different artists. Quizify generates ten question quizzes based on an artists "This Is" Spotify playlist.</p>
         </div>
-        <SlickSlider></SlickSlider>
+        <SlickSlider shuffle={props.shuffle}></SlickSlider>
     </div>
     <div className={classes.container}>
       <div className={classes.stepTwoSection}>      

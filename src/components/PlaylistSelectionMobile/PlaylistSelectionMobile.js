@@ -21,10 +21,18 @@ var rapPlaylists = [];
       rockPlaylists.push(playlist)
     }
   })
+
+  const shuffledRap = props.shuffle(rapPlaylists);
+  const shuffledPop = props.shuffle(popPlaylists); 
+  const shuffledRock = props.shuffle(rockPlaylists);
+
+  const slicedRap = shuffledRap.slice(0, 8);
+  const slicedPop = shuffledPop.slice(0,8); 
+  const slicedRock = shuffledRock.slice(0,8);
  
 
 
-  const mappedRapPlaylists = rapPlaylists.map((playlist) => { 
+  const mappedRapPlaylists = slicedRap.map((playlist) => { 
     return ( 
       <Link to={props.userID ? "/PlayPage" : "/"}>
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -40,7 +48,7 @@ var rapPlaylists = [];
     )
   })
 
-  const mappedPopPlaylists = popPlaylists.map((playlist) => { 
+  const mappedPopPlaylists = slicedPop.map((playlist) => { 
     return ( 
       <Link to={props.userID ? "/PlayPage" : "/"}>  
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
@@ -56,7 +64,7 @@ var rapPlaylists = [];
     )
   })
 
-  const mappedRockPlaylists = rockPlaylists.map((playlist) => { 
+  const mappedRockPlaylists = slicedRock.map((playlist) => { 
     return (    
       <Link to={props.userID ? "/PlayPage" : "/"}>
           <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>

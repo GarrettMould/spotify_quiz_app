@@ -25,9 +25,14 @@ var rapPlaylists = [];
     }
   })
 
+  const shuffledRap = props.shuffle(rapPlaylists);
+  const shuffledPop = props.shuffle(popPlaylists); 
+  const shuffledRock = props.shuffle(rockPlaylists);
 
 
-{props.viewAllGenre === "Rap" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : playlistsAll = rockPlaylists}
+
+
+{props.viewAllGenre === "Rap" ? playlistsAll = shuffledRap : props.viewAllGenre === "Pop" ? playlistsAll = shuffledPop : playlistsAll = shuffledRock}
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 
     return (    

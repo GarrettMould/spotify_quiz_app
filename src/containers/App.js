@@ -149,6 +149,26 @@ const App = (props) => {
 
   console.log(isMobile);
 
+// Function to shuffle an array (used in multiple components)
+
+const shuffle = (array) => {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 // Class for Individual Quiz Song -- Includes name, img, uri, and an array of 4 answer options
 function SongThisIs(name, img, uri, answerOptions) {
   this.name = name;
@@ -157,11 +177,12 @@ function SongThisIs(name, img, uri, answerOptions) {
   this.answerOptions = answerOptions;
 }
 
-
+// Function to close the pop up modal 
 const closeModal = () => { 
   setModalOpen(false);
 }
 
+// Function to reset the quiz variables
 const resetQuiz = () => { 
   setViewAllGenre(null);
   setAverageAnswerTime([]); 
@@ -405,10 +426,10 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/" element={<HomePage shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
             <Route path="/SearchPage" element={<SearchPage userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
-            <Route path="/HowToPlay" element={<HowToPlayPage></HowToPlayPage>}></Route>
-             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
+            <Route path="/HowToPlay" element={<HowToPlayPage shuffle={shuffle}></HowToPlayPage>}></Route>
+             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>
