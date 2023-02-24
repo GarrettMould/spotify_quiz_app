@@ -22,13 +22,10 @@ var rapPlaylists = [];
     }
   })
 
-  const shuffledRap = props.shuffle(rapPlaylists);
-  const shuffledPop = props.shuffle(popPlaylists); 
-  const shuffledRock = props.shuffle(rockPlaylists);
 
-  const slicedRap = shuffledRap.slice(0, 8);
-  const slicedPop = shuffledPop.slice(0,8); 
-  const slicedRock = shuffledRock.slice(0,8);
+  const slicedRap = rapPlaylists.slice(0, 8);
+  const slicedPop = popPlaylists.slice(0,8); 
+  const slicedRock = rockPlaylists.slice(0,8);
  
 
 
