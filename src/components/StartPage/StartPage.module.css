@@ -33,3 +33,49 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+
+    .container { 
+        margin-top: 40px;
+        position: relative;
+        display: flex; 
+        justify-content: space-between;
+        height: 60vh;
+    }
+   
+.mainBlockContainer { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.mainLineOne { 
+    text-align: center;
+    font-size: 350%;
+    font-family: WalsheimBold;
+}
+
+.mainLineTwo { 
+    text-align: center;
+    font-size: 180%;
+    font-family: WalsheimRegular;
+    margin-bottom: 10px;
+}
+
+.findQuizLink { 
+    font-size: 150%;
+    font-family: WalsheimLight;
+}
+
+.findQuizLink:hover { 
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+    
+    
+  
+  } 

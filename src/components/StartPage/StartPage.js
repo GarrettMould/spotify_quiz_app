@@ -1,9 +1,5 @@
 import classes from './StartPage.module.css'
-
-import frank_ocean from "../../photos/frank_ocean.jpg"
-import tyler_the_creator from "../../photos/tyler_the_creator.jpg"
-import mac_miller from "../../photos/mac_miller.jpg"
-
+import LoginButton from '../../elements/LoginButton/LoginButton'
 import React from 'react'
 
 const StartPage = (props) => {
@@ -12,7 +8,8 @@ const StartPage = (props) => {
         <div className={classes.mainBlockContainer}>
             <div className={classes.mainLineOne}>Spotify Quizzes.</div>
             <div className={classes.mainLineTwo}>How well do you know your favorite artists?</div>
-            <div className={classes.findQuizLink}>Find a quiz</div>
+            {props.isMobile ? <LoginButton></LoginButton> : null}
+            <div className={classes.findQuizLink}>{props.isMobile ? "How to Play" : "Find a Quiz" }</div>
         </div>
     </div>
   )
