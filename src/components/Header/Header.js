@@ -9,7 +9,7 @@ const Header = (props) => {
     <div className={classes.container}>
       <Link to="/">
         <div className={classes.siteTitle} onClick={props.resetQuiz}>
-          <img  className={classes.logo}src={logo}></img>
+          <img  alt="logo" className={classes.logo}src={logo}></img>
         </div>
       </Link>
         
