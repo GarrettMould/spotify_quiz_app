@@ -6,3 +6,15 @@
 .slider { 
     margin-top: 30px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .sliderImage { 
+        max-width: 150px; 
+        border-radius: 4px;
+    }
+
+    
+
+  }
+  

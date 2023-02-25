@@ -5,7 +5,7 @@ import { playlists } from '../../Playlists'
 import classes from "./SlickSlider.module.css"
 
 
-export const SlickSlider = () => {
+export const SlickSlider = (props) => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     var playlistImages = []
@@ -28,9 +28,9 @@ export const SlickSlider = () => {
       infinite: true,
       autoplay: true,
       autoplaySpeed: 0,
-      slidesToShow: 5,
+      slidesToShow: (props.isMobile ? 2 : 5),
       slidesToScroll: 1,
-      speed: 9000,
+      speed: (props.isMobile ? 7000: 9000),
   pauseOnHover: false,
   cssEase: 'linear',
       beforeChange: (current, next) => setCurrentSlide(next),

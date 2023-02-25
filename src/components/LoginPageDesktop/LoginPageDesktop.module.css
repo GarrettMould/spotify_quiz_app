@@ -73,6 +73,10 @@
 
 @media screen and (max-width: 768px) {
 
+  .icon { 
+    margin-right: 20px;
+  }
+
   .btn {
     display: flex;
     align-items: center;

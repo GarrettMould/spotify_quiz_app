@@ -46,3 +46,48 @@
     text-align: end;
 }
 
+@media screen and (max-width: 768px) {
+
+    .container  { 
+        margin-top: 50px;
+        margin-bottom: 80px;
+        max-width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .textSectionContainer { 
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .stepNumber { 
+        color: var(--hover-green);
+        font-size: 150%;
+        font-family: WalsheimMedium;
+        margin-bottom: 15px;
+    }
+    
+    .stepName { 
+        font-size: 250%;
+        margin-bottom: 15px;
+        font-family: WalsheimBold;
+    }
+    
+    .stepDescription { 
+        font-size: 125%; 
+        font-family: WalsheimRegular;
+        line-height: 2em;
+    }
+  
+    .stepTwoSection { 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .two { 
+        text-align: start;
+    }
+  } 

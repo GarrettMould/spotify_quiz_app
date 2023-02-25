@@ -14,14 +14,19 @@
   }
   
   @media screen and (max-width: 768px) {
+
+    .link { 
+      width: 100%;
+    }
   
     .btn {
+      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100px !important;
-      height: 35px !important;
-      font-size: 1rem !important;
+      width: 100% !important;
+      height: 45px !important;
+      font-size: 1.1rem !important;
       font-family: CircularBook !important;
       font-weight: 500 !important;
       border-radius: 4px !important;

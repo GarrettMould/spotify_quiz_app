@@ -179,7 +179,7 @@ span {
 
     .wrapper { 
         display: flex; 
-    
+        margin-top: 30px;
     }
 
     .quizPanelWrapper {

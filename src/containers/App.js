@@ -428,7 +428,7 @@ const getPlaylistInfo = async () => {
             <>
             <Route path="/" element={<HomePage shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
             <Route path="/SearchPage" element={<SearchPage userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
-            <Route path="/HowToPlay" element={<HowToPlayPage shuffle={shuffle}></HowToPlayPage>}></Route>
+            <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     

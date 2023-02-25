@@ -16,16 +16,20 @@ const HowToPlay = (props) => {
             <h4 className={classes.stepName}>Choose a Quiz</h4>
             <p className={classes.stepDescription}>Pick a quiz from our wide variety of different artists. Quizify generates ten question quizzes based on an artists "This Is" Spotify playlist.</p>
         </div>
-        <SlickSlider shuffle={props.shuffle}></SlickSlider>
+        <SlickSlider isMobile={props.isMobile}></SlickSlider>
     </div>
     <div className={classes.container}>
       <div className={classes.stepTwoSection}>      
-          <QuizUIKit></QuizUIKit>
+          {props.isMobile ? <><div className={classes.textSectionContainer}>
+            <span className={`${classes.stepNumber} ${classes.two}`}>Step 2</span>
+            <h4 className={`${classes.stepName} ${classes.two}`} >Name that Song</h4>
+            <p className={`${classes.stepDescription} ${classes.two}`}>You will hear a ten-second snippet of ten different songs from the selected quiz. The faster you answer, the more points you earn. Tick tock.</p>
+          </div><QuizUIKit></QuizUIKit></> : <><QuizUIKit></QuizUIKit>
           <div className={classes.textSectionContainer}>
             <span className={`${classes.stepNumber} ${classes.two}`}>Step 2</span>
             <h4 className={`${classes.stepName} ${classes.two}`} >Name that Song</h4>
             <p className={`${classes.stepDescription} ${classes.two}`}>You will hear a ten-second snippet of ten different songs from the selected quiz. The faster you answer, the more points you earn. Tick tock.</p>
-        </div>
+          </div></>}
         
       </div>   
     </div>
