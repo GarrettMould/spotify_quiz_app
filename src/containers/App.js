@@ -426,8 +426,8 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre} userID={userID} isMobile={isMobile} handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
-            <Route path="/SearchPage" element={<SearchPage userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
+            <Route path="/" element={<HomePage isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/SearchPage" element={<SearchPage isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
