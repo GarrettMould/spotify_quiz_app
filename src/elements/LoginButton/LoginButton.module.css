@@ -35,6 +35,10 @@
       border: none !important;
       box-shadow: none !important;
     }
+
+    .btnWrapper { 
+      width: 100%;
+    }
     
     
   

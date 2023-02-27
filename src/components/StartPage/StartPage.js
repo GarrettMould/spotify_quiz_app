@@ -9,8 +9,17 @@ const StartPage = (props) => {
         <div className={classes.mainBlockContainer}>
             <div className={classes.mainLineOne}>Spotify Quizzes.</div>
             <div className={classes.mainLineTwo}>How well do you know your favorite artists?</div>
-            {props.isMobile ? <LoginButton></LoginButton> : null}
-            {props.isMobile? <Link to="/HowToPlay"><div className={classes.findQuizLink}>How to Play</div></Link> : <div className={classes.findQuizLink}>How to Play</div>}
+            {props.isMobile ? 
+            <LoginButton 
+            isMobile={props.isMobile}
+            userID={props.userID}
+            logout={props.logout}
+            AUTH_ENDPOINT={props.AUTH_ENDPOINT}
+            CLIENT_ID={props.CLIENT_ID}
+            REDIRECT_URI={props.REDIRECT_URI}
+            RESPONSE_TYPE={props.RESPONSE_TYPE}
+            SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}></LoginButton> : null}
+            {props.isMobile? <Link to="/HowToPlay"><div className={classes.findQuizLink}>How to Play</div></Link> : <div className={classes.findQuizLink}>Find a Quiz</div>}
         </div>
     </div>
   )
