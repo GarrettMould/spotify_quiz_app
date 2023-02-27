@@ -45,7 +45,6 @@ const SearchPage = (props) => {
     
       const mappedPlaylistsMobile = filteredList.map((playlist) => { 
         return (
-          <Col xs={4}>
           <Link to={props.userID ? "/PlayPage" : "/"}>
                 <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                     <div className={classes.imageContainer}>
@@ -57,21 +56,21 @@ const SearchPage = (props) => {
                     </div>
                     </button>
           </Link>
-          </Col>
         )
       })
   return (
         <div className={classes.wrapper}>
+          
             <div className={classes.relative}>
-            <div className={classes.searchPageTitle}>Search Library</div>
-            <div className={classes.xIcon}><Link to="/"><X size={35}></X></Link></div>
-            <SearchBarEl handleSearch={handleSearch}></SearchBarEl>
+            <div className={classes.headerContainer}>
+              <div className={classes.searchPageTitle}>Search Library</div>
+              <div className={classes.xIcon}><Link to="/"><X size={35}></X></Link></div>
+              <SearchBarEl handleSearch={handleSearch}></SearchBarEl>
+            </div>
             <Spacer></Spacer>
             <div className={classes.allPlaylistsContainer}>
-                <Container fluid={true}>
-                    <Row>
-                        {searchTerm === "" ? null : props.isMobile ? mappedPlaylistsMobile : mappedPlaylists}
-                    </Row>
+                <Container fluid={true} className={classes.container}>
+                 {searchTerm === "" ? null : props.isMobile ? mappedPlaylistsMobile : <Row>mappedPlaylists</Row>} 
                 </Container>
             </div>  
             </div>

@@ -1,6 +1,7 @@
 
 
 .wrapper {
+    left: 0;
     top: 0;
     width: 100%;
     position: fixed;
@@ -9,6 +10,10 @@
     background: linear-gradient(#2c2c2c, #121212 30%);
     z-index: 9999;
     overflow-y: scroll;
+}
+
+.headerContainer { 
+    padding-left: 15px;
 }
 
 .relative { 
@@ -108,94 +113,14 @@
 
 }
 
-@media screen and (max-width: 768px) {
-    .playlistContainer { 
-        display: flex; 
-        justify-content: center;
-        margin-right: 30px;
-        width: 250px;
-        border-radius: 4px;
-    }
-    
-    
-    .contentContainer {
-        display: flex; 
-        flex-direction: column;
-        align-items: center;
-        width: 250px; 
-        height: 320px;
-        margin-bottom: 20px;
-       
-    }
-    
-    .img { 
-        border-radius: 4px;
-        max-width: 200px;
-        margin: 20px 0px;
-    }
-    
-    .imageContainer { 
-        margin: 0; 
-        padding: 0;
-    }
-    
-    .btn { 
-        border-radius: 4px;
-        margin-bottom: 30px;
-        border: none; 
-        outline: none;
-        background-color: #1b1b1b;   
-        transition: background-color 0.3s;
-        box-shadow:
-            /* offset-x | offset-y | blur-radius | spread-radius | color */
-            0px 3px 4px 0px hsla(0,0%,0%,0.14), 
-            0px 3px 3px -2px hsla(0,0%,0%,0.12), 
-            0px 1px 8px 0px hsla(0,0%,0%,0.2);
-    }
-    
-    .btn:hover{ 
-        background-color: var(--darkGreyHover);
-        cursor: pointer;
-    }
-    
-    .textContainer { 
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 200px;
-        height: auto;
-        overflow-y: hidden;
-    }
-    
-    .name { 
-        font-family: CircularBold; 
-        font-size: 100%; 
-        color: var(--secondary);
-        text-align: start;
-        margin-bottom: 5px;
-    }
-    
-    .description { 
-        font-family: CircularBook;
-        font-size: 90%;
-        color: var(--grey);
-        text-align: start;
-        max-height: 3em; /* 3 lines */
-        overflow: hidden;
-        text-overflow: ellipsis;
-    
-    }
-    
-} 
 
 
 @media screen and (max-width: 768px) {
 
     .container { 
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        overflow-x: hidden;
+        width: 100%;
+        padding-left: 0px !important; 
+        padding-right: 0px !important;
     }
     
     .section { 
@@ -213,7 +138,10 @@
     }
     
     .allPlaylistsContainer { 
+        padding-left: 15px;
         display: flex;
+        justify-content: center;
+        width: 100%; 
     }
         
     .image {
@@ -223,7 +151,11 @@
     }
    
 
-    
+    .xIcon { 
+        position: absolute;
+        top: 0px;
+        right: 20px;
+    }
 
   }
   

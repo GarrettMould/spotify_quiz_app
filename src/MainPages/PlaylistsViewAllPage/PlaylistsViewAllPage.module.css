@@ -19,12 +19,6 @@
 }
 
 
-.container { 
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    overflow-x: hidden;
-}
 
 .section { 
     margin: 20px 0px 50px 0px;
@@ -140,18 +134,17 @@
 @media screen and (max-width: 768px) {
 
     .container { 
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        overflow-x: hidden;
+        padding-left: 0px !important; 
+        padding-right: 0px !important;
     }
     
     .section { 
         margin: 20px 0px 30px 0px;
         display: flex;
         flex-direction: row;
+        justify-content: center;
         align-items: center; 
-        overflow-x: scroll;
+        
         
     }
     
