@@ -70,7 +70,7 @@ const SearchPage = (props) => {
             <Spacer></Spacer>
             <div className={classes.allPlaylistsContainer}>
                 <Container fluid={true} className={classes.container}>
-                 {searchTerm === "" ? null : props.isMobile ? mappedPlaylistsMobile : <Row>mappedPlaylists</Row>} 
+                 {searchTerm === "" ? null : props.isMobile ? {mappedPlaylistsMobile} : <Row>{mappedPlaylists}</Row>} 
                 </Container>
             </div>  
             </div>

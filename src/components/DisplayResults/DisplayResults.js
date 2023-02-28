@@ -5,44 +5,15 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import Slider from "react-slick";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import classes from "./DisplayResults.module.css"
+import Modal from 'react-modal';
+import share from "../../photos/share.png"
 import { TwitterLogo, FacebookLogo, Copy } from 'phosphor-react';
 import { TwitterShareButton, FacebookMessengerShareButton, FacebookShareButton} from 'react-share';
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const DisplayResults = (props) => {
 
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  const handleAfterChange = (index) => {
-    setActiveSlide(index);
-  };
-
-  var statsDisplayTitle; 
-
-  {activeSlide === 0 && (
-    statsDisplayTitle = "Quick Stats"
-  )}
-  {activeSlide === 1 && (
-    statsDisplayTitle = "Social Share"
-  )}
-  
-
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
-   
-
-  //Facebook App ID 
-  const appID = "944392260236824";
-  // URL 
-  const link = "https://sweet-kitten-2dc72c.netlify.app"
-  //Twitter Message 
-  var message = `I just got a score of ${props.userScore} on the "${props.thisIsName}" Spotify quiz! Can you beat me? Take the quiz here:`
 
   const sum = props.averageAnswerTime.reduce((partialSum, a) => partialSum + a, 0);
   const avg = (sum / props.averageAnswerTime.length)
@@ -77,9 +48,7 @@ export const DisplayResults = (props) => {
                 </div>
                 
         <div className={classes.statsDisplayContainer}>
-            <div className={classes.titleContainer}><div className={classes.title}>{statsDisplayTitle}</div></div>
-          <Slider {...settings} className={classes.swiper} afterChange={handleAfterChange}>
-          
+        <div className={classes.titleContainer}><div className={classes.title}>Quick Stats </div></div>
           <div className={classes.statsContainer}>
             <div className={classes.statLine}><span>Score:</span>  {props.userScore}</div>
             <div className={classes.statLine}><span>Missed Questions:</span>  {10 - props.correctTally}</div>
@@ -87,7 +56,8 @@ export const DisplayResults = (props) => {
           </div>
           
         
-          <div className={classes.thirdRow}>
+          {/*<div className={classes.thirdRow}>
+          <div className={classes.titleContainer}><div className={classes.title}>Social Share</div></div>
             <div className={classes.socialMessage}>Challenge your friends to beat your top score</div>
                 <div className={classes.socialRowContainer}>
                   
@@ -107,9 +77,9 @@ export const DisplayResults = (props) => {
                     </CopyToClipboard>
                   
                 </div>
-          </div>
+          </div>*/}
           
-        </Slider>
+        
                 
         </div>
           </div>

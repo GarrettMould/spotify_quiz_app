@@ -82,7 +82,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
     <Spacer></Spacer>
     <div className={classes.allPlaylistsContainer}>
     <Container fluid={true} className={classes.container}>
-    {props.isMobile ? (mappedPlaylistsMobile) : <Row> (mappedPlaylistsDesktop) </Row> }
+    {props.isMobile ? {mappedPlaylistsMobile} : <Row> {mappedPlaylistsDesktop} </Row> }
     </Container>
     </div>
     </section>

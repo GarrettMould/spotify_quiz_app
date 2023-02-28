@@ -72,7 +72,7 @@
     
     .columnTitle { 
         font-family: CircularBold;
-        color: var(--grey);
+        color: var(--primary-green);
         font-size: 120%;
         margin: 20px 0px 10px 0px;
         text-align: center;

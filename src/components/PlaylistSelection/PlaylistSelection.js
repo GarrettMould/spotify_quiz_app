@@ -95,7 +95,7 @@ const PlaylistSelection = (props) => {
     )
   })
   return (
-    <div className={classes.container}>
+    <div className={classes.container} id="playlistsContainer">
       <div className={classes.sectionTitleContainer}>
         <Headline text="Hip Hop Quizzes"></Headline>
         <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Rap" className={classes.showAllLink}>Show All</div></Link>
