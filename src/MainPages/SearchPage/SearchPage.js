@@ -20,6 +20,8 @@ const SearchPage = (props) => {
       playlist.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+   
+
     const mappedPlaylists = filteredList.map((playlist) => { 
         return (    
         <Col xs={3}>
@@ -58,6 +60,17 @@ const SearchPage = (props) => {
           </Link>
         )
       })
+
+
+      var display; 
+
+      if ((searchTerm.length > 2) && filteredList.length === 0) { 
+        display = <div className={classes.noResultsContainer}><div className={classes.noResultsMessage}>No results found. Try another artist.</div></div>
+      } else { 
+        display = (searchTerm === "" ? null : props.isMobile ? mappedPlaylistsMobile : <Row>{mappedPlaylists}</Row>)
+      }
+
+
   return (
         <div className={classes.wrapper}>
           
@@ -70,7 +83,7 @@ const SearchPage = (props) => {
             <Spacer></Spacer>
             <div className={classes.allPlaylistsContainer}>
                 <Container fluid={true} className={classes.container}>
-                 {searchTerm === "" ? null : props.isMobile ? {mappedPlaylistsMobile} : <Row>{mappedPlaylists}</Row>} 
+                  {display}
                 </Container>
             </div>  
             </div>

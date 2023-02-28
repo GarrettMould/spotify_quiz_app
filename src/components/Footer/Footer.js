@@ -14,7 +14,7 @@ const Footer = (props) => {
     </div>
     <div className={classes.column}>
     <div className={classes.columnTitle}>About</div>
-    <div className={classes.columnText}>RapQuiz is a project created by Spotify user and rap enthusiast, Garrett Mould. It uses Spotify's free Web API.</div>
+    <div className={classes.columnText}>Quizify is a project created by Spotify user and rap enthusiast, Garrett Mould. It uses Spotify's free Web API.</div>
   </div>
   <div className={classes.column}>
     <div className={classes.columnTitle}>Social</div>

@@ -23,7 +23,7 @@
 .searchPageTitle { 
     margin-top: 20px;
     font-family: CircularBold;
-    font-size: 150%;
+    font-size: 180%;
     color: var(--secondary);
 }
 .xIcon { 
@@ -34,6 +34,7 @@
 .allPlaylistsContainer { 
     display: flex;
     width: 90%;
+    padding-left: 25px;
 }
 
 .playlistContainer { 
@@ -113,6 +114,17 @@
 
 }
 
+.noResultsContainer { 
+    width: 90%;
+    font-size: 120%;
+}
+
+.noResultsMessage { 
+    color: var(--grey);
+    font-size: 150%;
+    font-family: WalsheimBold;
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -130,6 +142,10 @@
         align-items: center; 
         overflow-x: scroll;
         
+    }
+
+    .headerContainer { 
+        padding-left: 15px;
     }
     
     .btn { 
@@ -155,6 +171,15 @@
         position: absolute;
         top: 0px;
         right: 20px;
+    }
+
+    .noResultsContainer { 
+        width: 90%;
+        padding-left: 5px;
+    }
+
+    .noResultsMessage { 
+        font-size: 100%;
     }
 
   }
