@@ -289,7 +289,7 @@ span {
         font-family: CircularBold;
         font-weight: 600;
         max-height: 3em;
-        overflow: hidden;
+        
         text-overflow: ellipsis;
         display: flex;
         justify-content: center;
