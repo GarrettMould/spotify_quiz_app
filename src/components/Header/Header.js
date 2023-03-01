@@ -13,7 +13,9 @@ const Header = (props) => {
         </div>
       </Link>
         
-          <LoginPageDesktop 
+          <LoginPageDesktop
+              menuIsOpen={props.menuIsOpen}
+              handleMenu={props.handleMenu} 
               isMobile={props.isMobile}
               userID={props.userID}
               logout={props.logout}
