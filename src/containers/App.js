@@ -20,6 +20,7 @@ import PlayPage from "../MainPages/PlayPage/PlayPage";
 import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsViewAllPage";
 import HowToPlayPage from "../components/HowToPlayPage/HowToPlayPage";
 import SearchPage from "../MainPages/SearchPage/SearchPage";
+import DropDownMenu from "../elements/DropDownMenu/DropDownMenu";
 
 
 
@@ -80,9 +81,14 @@ const App = (props) => {
   var [scoreCompPerc, setScoreCompPerc] = useState(0);
   // View All Playlist Type 
   const [viewAllGenre, setViewAllGenre] = useState(null);
-  // Mapped songs 
-  const [mappedSongs, setMappedSongs] = useState([]);
+  // Sliding Menu Open 
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+
+  // Handle Menu Open 
+  const handleMenu = () => { 
+    setMenuIsOpen(!menuIsOpen);
+  }
 
   // Determine the percentile based on userScore 
   if (userScore >= 750) { 
@@ -127,6 +133,7 @@ const App = (props) => {
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
     setViewAllGenre(e.currentTarget.id);
+    setMenuIsOpen(!menuIsOpen);
     console.log(e.currentTarget.id)
   }
  
@@ -408,7 +415,13 @@ const getPlaylistInfo = async () => {
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
     <div className={searchOpen ? `${classes.noWrapper}` : modalOpen ?  `${classes.wrapper} ${classes.blur}` : `${classes.wrapper}`}>
-      <Header 
+      
+      {menuIsOpen && (
+          <DropDownMenu handleViewAllGenre={handleViewAllGenre} menuIsOpen={menuIsOpen} handleMenu={handleMenu}></DropDownMenu>
+      )}
+      <Header
+              menuIsOpen={menuIsOpen}
+              handleMenu={handleMenu} 
               isMobile={isMobile}
               resetQuiz={resetQuiz}
               userID={userID}

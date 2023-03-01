@@ -10,7 +10,7 @@ const Footer = (props) => {
 
   props.isMobile ? (footer = <>
     <div className={classes.siteTitle}>
-    Quizify
+    <img src={logo} className={classes.logo} alt="logo"></img>
     </div>
     <div className={classes.column}>
     <div className={classes.columnTitle}>About</div>
@@ -34,9 +34,9 @@ const Footer = (props) => {
     <Col className={classes.column}>
       <div className={classes.columnTitle}>Social</div>
       <div className={classes.iconsContainer}>
-         <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><TwitterLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 100 : 40}></TwitterLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><GithubLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 20 : 40}></GithubLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><LinkedinLogo className={classes.icon} color="#ffffff"  size={props.isMobile ? 20 : 40}></LinkedinLogo></a></div>
+         <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><TwitterLogo className={classes.icon} color="#ffffff"  size={40}></TwitterLogo></a></div> 
+         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><GithubLogo className={classes.icon} color="#ffffff"  size={40}></GithubLogo></a></div> 
+         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><LinkedinLogo className={classes.icon} color="#ffffff"  size={40}></LinkedinLogo></a></div>
       </div>
     </Col>
     <Col className={classes.column}>

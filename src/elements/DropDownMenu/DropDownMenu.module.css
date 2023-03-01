@@ -1,0 +1,69 @@
+/* Drop Down Menu */ 
+
+.menuContainer { 
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    background: linear-gradient(#2c2c2c, #121212 30%);
+    z-index: 9999;
+    transition: top 0.3s ease-in-out;
+}
+
+.menuContainer.active {
+    top: 0;
+}
+
+.list { 
+    margin-top: 50px;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.listItem { 
+    font-size: 30px;
+    font-family: WalsheimBold;
+    margin-bottom: 30px;
+}
+
+.Collapsible { 
+    font-size: 175%;
+    font-family: WalsheimBold;
+    margin-bottom: 30px;
+}
+
+.iconClose { 
+    position: absolute;
+    top: 15px; 
+    right: 15px;
+}
+
+.iconClose:hover { 
+    cursor: pointer;
+}
+
+.logo { 
+    max-width: 100px;
+    position: absolute;
+    bottom: 10px; 
+    left: 30px;
+  }
+
+  .listItemFlex { 
+    display: flex;
+    align-items: center;
+  }
+
+  .customContent { 
+    font-size: 20px; 
+    color: var(--grey);
+    font-family: WalsheimBold !important; 
+    padding-bottom: 20px !important;
+  }
+
+  .iconCaret { 
+   margin-bottom: 25px;
+   margin-left: 10px;
+  }

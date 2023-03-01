@@ -19,7 +19,7 @@ const StartPage = (props) => {
             REDIRECT_URI={props.REDIRECT_URI}
             RESPONSE_TYPE={props.RESPONSE_TYPE}
             SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}></LoginButton> : null}
-            {props.isMobile? <Link to="/HowToPlay"><div className={classes.findQuizLink}>How to Play</div></Link> : <a href="#playlistsContainer"><div className={classes.findQuizLink}>Find a Quiz</div></a>}
+            {props.isMobile? null : <a href="#playlistsContainer"><div className={classes.findQuizLink}>Find a Quiz</div></a>}
         </div>
     </div>
   )
