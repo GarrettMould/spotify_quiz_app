@@ -1,5 +1,6 @@
 import classes from './StartPage.module.css'
 import LoginButton from '../../elements/LoginButton/LoginButton'
+import { StartPageBackdrop } from '../../elements/MainPageBackdrop/StartPageBackdrop'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -19,8 +20,8 @@ const StartPage = (props) => {
             REDIRECT_URI={props.REDIRECT_URI}
             RESPONSE_TYPE={props.RESPONSE_TYPE}
             SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}></LoginButton> : null}
-            {props.isMobile? null : <a href="#playlistsContainer"><div className={classes.findQuizLink}>Find a Quiz</div></a>}
         </div>
+        
     </div>
   )
 }

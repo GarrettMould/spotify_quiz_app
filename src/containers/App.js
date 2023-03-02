@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import axios from "axios";
+import SpotifyWebApi from 'spotify-web-api-js';
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./App.module.css";
@@ -21,6 +22,7 @@ import PlaylistsViewAllPage from "../MainPages/PlaylistsViewAllPage/PlaylistsVie
 import HowToPlayPage from "../components/HowToPlayPage/HowToPlayPage";
 import SearchPage from "../MainPages/SearchPage/SearchPage";
 import DropDownMenu from "../elements/DropDownMenu/DropDownMenu";
+import { StartPageBackdrop } from "../elements/MainPageBackdrop/StartPageBackdrop";
 
 
 
@@ -29,8 +31,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  //const REDIRECT_URI = "http://localhost:3000/";
-  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  const REDIRECT_URI = "http://localhost:3000/";
+  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -40,6 +42,7 @@ const App = (props) => {
     "user-read-email",
     "playlist-modify-public",
     "playlist-modify-private",
+    "playlist-read-private"
 
 
   ];
@@ -127,13 +130,41 @@ const App = (props) => {
     scoreCompPerc = 0
   }
 
+  //THIS CODE WILL BE USED TO IMPLEMENT THE 'QUIZ A FRIEND' FEATURE --> CREATE QUIZ BASED ON YOUR PLAYLISTS AND CHALLENGE A FRIEND
+{/*
+const spotifyApi = new SpotifyWebApi();
+
+// Set the access token
+spotifyApi.setAccessToken(token);
+
+async function getUserPlaylists() {
+  try {
+    // Get information about the authenticated user
+    const user = await spotifyApi.getMe();
+    
+    // Get the user's playlists
+    const playlists = await spotifyApi.getUserPlaylists(user.id);
+    
+    console.log(playlists);
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+*/}
+
+
+
+
+
 
  
  
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
     setViewAllGenre(e.currentTarget.id);
-    setMenuIsOpen(!menuIsOpen);
+    setMenuIsOpen(false);
     console.log(e.currentTarget.id)
   }
  
@@ -434,6 +465,7 @@ const getPlaylistInfo = async () => {
       </Header>
             
             <Spacer></Spacer>
+            
             
             
          

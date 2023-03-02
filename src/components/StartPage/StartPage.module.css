@@ -1,25 +1,28 @@
 .container { 
-    margin-top: 50px;
+    margin-top: 60px;
     position: relative;
     display: flex; 
-    justify-content: space-between;
-    height: 90vh;
+    justify-content: center;
+    height: 60vh;
+    margin-bottom: 100px;
+    text-align: center;
 }
 
 .mainBlockContainer { 
     display: flex;
     flex-direction: column;
-    width: 45%;
-    margin-top: 20px;
+    justify-content: center;
+    width: 55%;
+    
 }
 
 .mainLineOne { 
-    font-size: 350%;
+    font-size: 475%;
     font-family: WalsheimBold;
 }
 
 .mainLineTwo { 
-    font-size: 225%;
+    font-size: 325%;
     font-family: WalsheimRegular;
     margin-bottom: 10px;
 }

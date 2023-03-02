@@ -9,7 +9,7 @@ const LoginPageDesktop = (props) => {
   return (
     
     <div className={classes.navbar}>
-      {props.isMobile ? null : <Link to="/SearchPage"><MagnifyingGlass size={25} className={classes.icon}/></Link>}
+      {props.isMobile ? null : <Link to="/SearchPage"className={classes.instructionsLink}>Search</Link>}
       {props.isMobile ? <List size={30} color="#ffffff" className={classes.icon} onClick={props.handleMenu}/> : null}
       {props.isMobile ? null : <Link to="/HowToPlay" className={classes.instructionsLink}>How to Play</Link>} 
       {props.isMobile ? null : <LoginButton 

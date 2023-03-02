@@ -83,6 +83,7 @@
 
     .columnText { 
         font-size: 90%;
+        width: 100%;
         text-align: center;
         color: var(--secondary);
         line-height: 170%;

@@ -1,0 +1,87 @@
+/* Slick */ 
+
+.slick-dots {
+    position: absolute;
+    bottom: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff0000; /* Change this to the desired color */
+    border: none;
+    outline: none;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .slick-dots li.slick-active button {
+    background-color: #0000ff; /* Change this to the desired active color */
+  }
+
+.background { 
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%; 
+    height: 45vh;
+    border-radius: 4px;
+    background-color: var(--primary);
+    background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.ball {
+    position: absolute;
+    right: 90px;
+    width: 450px; 
+    height: 450px; 
+    border-radius: 50%;
+    background-color: rgba(242, 223, 223, 0.267);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.img { 
+    position: absolute;
+    bottom: 100px; 
+    max-width: 255px;
+}
+
+.leftBlockContainer { 
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    width: 35%;
+
+}
+
+.rowOne { 
+    font-family: WalsheimBold;
+    font-size: 170%;
+    padding-bottom: 10px;
+}
+
+.rowTwo { 
+    font-family: WalsheimRegular;
+    font-size: 110%;
+    padding-bottom: 10px;
+}
+
+.viewAllLink { 
+    font-family: WalsheimRegular;
+    font-size: 110%;
+}
+
+.viewAllLink:hover { 
+    text-decoration: underline;
+    cursor: pointer;
+}

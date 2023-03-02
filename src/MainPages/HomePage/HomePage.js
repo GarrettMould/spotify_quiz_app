@@ -2,6 +2,7 @@ import React from 'react'
 import PlaylistSelection from '../../components/PlaylistSelection/PlaylistSelection'
 import PlaylistSelectionMobile from '../../components/PlaylistSelectionMobile/PlaylistSelectionMobile'
 import StartPage from '../../components/StartPage/StartPage'
+import { StartPageBackdrop } from '../../elements/MainPageBackdrop/StartPageBackdrop'
 
 const HomePage = (props) => {
   return (
@@ -17,6 +18,7 @@ const HomePage = (props) => {
       RESPONSE_TYPE={props.RESPONSE_TYPE}
       SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}  
     ></StartPage>
+    <StartPageBackdrop></StartPageBackdrop>
     {props.isMobile ? <PlaylistSelectionMobile shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
     </>
   )
