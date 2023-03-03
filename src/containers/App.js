@@ -418,6 +418,60 @@ const getPlaylistSongs = async () => {
 
 }
 
+// Empty arrays that will hold the new playlist objects 
+var rapPlaylists = []
+var popPlaylists = []
+var rockPlaylists = []
+
+// Rap Playlist IDs 
+var rapPlaylistIDs = [ 
+  "37i9dQZF1DWUgX5cUT0GbU", "37i9dQZF1DZ06evO1aBeik", "37i9dQZF1DZ06evO06Ki7m","37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO", "37i9dQZF1DX4hL5ZGneVGr", 
+  "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", "37i9dQZF1DXbyJ08AYfIHF", 
+  "37i9dQZF1DZ06evO3DtS8g", "37i9dQZF1DZ06evNZWDBEQ", "37i9dQZF1DZ06evO1JAInW", "37i9dQZF1DZ06evO01740o", 
+  "37i9dQZF1DZ06evO3Cn7Uc", "37i9dQZF1DZ06evO2NufN6", "37i9dQZF1DZ06evO259NXG", "37i9dQZF1DX2EykupcJRsV" 
+]
+
+// Function to Create new Playlist Object based on an array of playlistIDs
+const gatherPlaylistInfo = async (playlistID, tag) => { 
+  const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${playlistID}`, {
+      headers: {
+          Authorization: `Bearer ${token}`
+      },
+
+
+  })
+
+  const playlistName = data.name
+  const artistName = playlistName.substring(8);
+
+  const newPlaylist = {
+    artist: artistName,
+    playlistName: data.name,
+    img: data.images[0].url,
+    id: data.id,
+    description: data.description,
+    tags: [tag]
+  };
+
+  if (tag === "rap") { 
+    rapPlaylists.push(newPlaylist)
+  } else if (tag === "pop") { 
+    popPlaylists.push(newPlaylist)
+  } else if (tag === "rock") { 
+    rockPlaylists.push(newPlaylist)
+  } else { 
+    console.log("Oops. You are missing a tag and these playlist won't be rendered!")
+  }
+
+}
+
+
+rapPlaylistIDs.forEach((playlist) => { 
+  gatherPlaylistInfo(playlist, "rap")
+}); 
+
+console.log(rapPlaylists);
+
 
 
 // Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist

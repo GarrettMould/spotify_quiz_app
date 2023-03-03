@@ -19,9 +19,9 @@ const Footer = (props) => {
   <div className={classes.column}>
     <div className={classes.columnTitle}>Social</div>
     <div className={classes.iconsContainer}>
-        <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><TwitterLogo className={classes.icon} color="#ffffff"  size={35}></TwitterLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><GithubLogo className={classes.icon} color="#ffffff"  size={35}></GithubLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><LinkedinLogo className={classes.icon} color="#ffffff"  size={35}></LinkedinLogo></a></div>
+    <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><i class="fa fa-twitter icon fa-lg"></i></a></div> 
+         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><i class="fa fa-github icon fa-lg"></i></a></div> 
+         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><i class="fa fa-linkedin icon fa-lg"></i></a></div>
     </div>
   </div>
   <div className={classes.column}>
@@ -34,9 +34,9 @@ const Footer = (props) => {
     <Col className={classes.column}>
       <div className={classes.columnTitle}>Social</div>
       <div className={classes.iconsContainer}>
-         <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><TwitterLogo className={classes.icon} color="#ffffff"  size={40}></TwitterLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><GithubLogo className={classes.icon} color="#ffffff"  size={40}></GithubLogo></a></div> 
-         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><LinkedinLogo className={classes.icon} color="#ffffff"  size={40}></LinkedinLogo></a></div>
+         <div className={classes.iconContainer}><a href="https://twitter.com/Garrett57146042"><i class="fa fa-twitter icon fa-2x"></i></a></div> 
+         <div className={classes.iconContainer}><a href="https://github.com/GarrettMould"><i class="fa fa-github icon fa-2x"></i></a></div> 
+         <div className={classes.iconContainer}><a href="https://www.linkedin.com/in/garrett-mould-b1b353a6/"><i class="fa fa-linkedin icon fa-2x"></i></a></div>
       </div>
     </Col>
     <Col className={classes.column}>

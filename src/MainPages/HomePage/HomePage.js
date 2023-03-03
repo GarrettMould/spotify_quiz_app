@@ -18,7 +18,7 @@ const HomePage = (props) => {
       RESPONSE_TYPE={props.RESPONSE_TYPE}
       SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}  
     ></StartPage>
-    <StartPageBackdrop></StartPageBackdrop>
+    {props.isMobile ? null : <StartPageBackdrop></StartPageBackdrop>}
     {props.isMobile ? <PlaylistSelectionMobile shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
     </>
   )

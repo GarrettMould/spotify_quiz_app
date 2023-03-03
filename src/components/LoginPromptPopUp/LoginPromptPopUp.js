@@ -8,7 +8,7 @@ const LoginPromptPopUp = (props) => {
         <div className={classes.relativeContainer}>
             <div onClick={props.closeModal} className={classes.xContainer}><X size={30} color="#ffffff"></X></div>
             <div className={classes.contentWrapper}>
-                <div className={classes.iconContainer} onClick={props.closeModal}><SpotifyLogo color="#ffffff" size={60}></SpotifyLogo></div>
+                <div className={classes.iconContainer} onClick={props.closeModal}><i class="fa fa-spotify icon fa-3x"></i></div>
                 <div className={classes.messageContainer}>
                     <div className={classes.message}>Quizify is a Spotify web app which requires users to login to a Spotify account. Sign in to access thousands of quizzes.</div>
                 </div>

@@ -15,21 +15,62 @@ export var playlists = [
         description: "This is Drake. Essential tracks all in one playlist.", 
         tags: ["rap", "popular"]
     }, 
-    { 
+
+    {
+        artist: "A$AP Rocky",
+        name: "This Is A$AP Rocky",
+        img: "https://i.scdn.co/image/ab67706f00000003a0f5889bdd350bc5760316a7",
+        id: "37i9dQZF1DX2EykupcJRsV",
+        description: "The essential tracks, all in one playlist.",
+        tags: [ "rap"]
+      },
+      { 
         artist: "Outkast",
         name: "This is Outkast", 
         img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO0Wc5ry-large.jpg", 
         id: "37i9dQZF1DZ06evO0Wc5ry",
         description: "This is Outkast. Essential tracks all in one playlist.", 
-        tags: ["rap"]
+        tags: [ "rap"]
     }, 
+      {
+        artist: "Travis Scott",
+        name: "This Is Travis Scott",
+        img: "https://i.scdn.co/image/ab67706f0000000336f70792450e32a6af85dbf6",
+        id: "37i9dQZF1DWUgX5cUT0GbU",
+        description: "The essential tracks, all in one playlist.",
+        tags: [ "rap", "pop"]
+      },
+    {
+        artist: "Don Toliver",
+        name: "This is Don Toliver",
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO2Kixmg-large.jpg",
+        id: "37i9dQZF1DZ06evO2Kixmg",
+        description: "The essential tracks, all in one playlist.",
+        tags: [ "rap"]
+      },
+      {
+        artist: "Lil Uzi Vert",
+        name: "This Is Lil Uzi Vert",
+        img: "https://i.scdn.co/image/ab67706f000000032a154fbf713ec43881c73ade",
+        id: "37i9dQZF1DX4sqNyKH13qY",
+        description: "Hear all of the rapper's greatest hits and features. Flawless.",
+        tags: [ "rap"]
+      },
+      {
+        artist: "Lil Baby",
+        name: "This Is Lil Baby",
+        img: "https://i.scdn.co/image/ab67706f0000000302cdd4ff60fca3030f697038",
+        id: "37i9dQZF1DX3F3EumJCPca",
+        description: "This is Lil Baby. The essential tracks, all in one playlist.",
+        tags: [ "rap"]
+      },
     { 
         artist: "Tyler, The Creator",
         name: "This is Tyler, The Creator", 
         img: "https://i.scdn.co/image/ab67706f00000003d446868f2ac4bf79885aec3f", 
         id: "37i9dQZF1DX8IzjtXj8ThV",
         description: "This is Tyler, The Creator. Essential tracks all in one playlist.", 
-        tags: ["rap", "popular"]
+        tags: [ "rap", "popular"]
     }, 
     { 
         artist: "21 Savage",
@@ -37,7 +78,7 @@ export var playlists = [
         img: "https://i.scdn.co/image/ab67706f0000000329b95eb354eeaee9b6bb3cfe", 
         id: "37i9dQZF1DWYojpWKpDMGi",
         description: "This is 21 Savage. Essential tracks all in one playlist.", 
-        tags: ["rap", "popular"]
+        tags: [ "rap", "popular"]
     }, 
     { 
         artist: "Playboi Carti",
@@ -45,7 +86,7 @@ export var playlists = [
         img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO3CRVnO-large.jpg", 
         id: "37i9dQZF1DZ06evO3CRVnO",
         description: "This is Playboi Carti. Essential tracks all in one playlist.", 
-        tags: ["rap", "popular"]
+        tags: [ "rap", "popular"]
     }, 
     { 
         artist: "Kanye West",

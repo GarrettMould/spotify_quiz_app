@@ -4,50 +4,67 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Frank from "../../photos/frank_ocean_nobg.png"
+import Tyler from "../../photos/tyler_the_creator_nobg.png"
+import Kurt from "../../photos/kurt_cobain_nobg.png"
 
 export const StartPageBackdrop = () => {
 
+  const sliderLists = [ 
+    { 
+      title: "Top R&B Artists", 
+      id: "blank", 
+      description: "Frank Ocean, The Weeknd, Brent Faiyaz, SZA, and more", 
+      img: Frank, 
+    }, 
+    {
+      title: "Top Hip Hop Artists", 
+      id: "blank", 
+      description: "Future, Lil Baby, Kendrick Lamar, Kodak Black, and more", 
+      img: Tyler, 
+    }, 
+    {
+      title: "Blast from the Past",
+      id: "blank", 
+      description: "Nirvana, Ice Cube, Led Zepplin, The Beatles, and more", 
+      img: Kurt, 
+    }
+  ]
+
+  const mappedSliderLists = sliderLists.map((list, i) => { 
+    console.log(i)
+    return (
+      <div>
+        <div className={ i === 0 ? `${classes.backgroundGreen}` : i === 1 ? `${classes.backgroundPurple}` : `${classes.backgroundRainbow}` }>
+          <div className={classes.leftBlockContainer}>
+                    <div className={classes.rowOne}>{list.title}</div>
+                    <div className={classes.rowTwo}>{list.description}</div>
+                    <div className={classes.viewAllLink} id={list.id}>View All</div>
+          </div>
+          <div className={classes.ball}>
+            <img src={list.img} alt="frank" className={classes.img}></img>
+          </div>
+        </div>
+      </div>
+    )
+  })
+
   const settings = {
-    dots: true,
-    dotsClass: "slick-dots",
+    dots: false,
     arrows: false,
     infinite: true,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    pauseOnHover: false,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   return (
+    <div className={classes.container}>
     <Slider {...settings}>
-          <div>
-                <div className={classes.background}>
-              <div className={classes.leftBlockContainer}>
-                  <div className={classes.rowOne}>Top R&B Artists</div>
-                  <div className={classes.rowTwo}>Frank Ocean, The Weeknd, Brent Faiyaz, SZA, and more</div>
-                  <div className={classes.viewAllLink}>View All</div>
-              </div>
-              <div className={classes.ball}><img src={Frank} alt="frank" className={classes.img}></img></div></div>
-          </div>
-          <div>
-                <div className={classes.background}>
-              <div className={classes.leftBlockContainer}>
-                  <div className={classes.rowOne}>Top R&B Artists</div>
-                  <div className={classes.rowTwo}>Frank Ocean, The Weeknd, Brent Faiyaz, SZA, and more</div>
-                  <div className={classes.viewAllLink}>View All</div>
-              </div>
-              <div className={classes.ball}><img src={Frank} alt="frank" className={classes.img}></img></div></div>
-          </div>
-          <div>
-                <div className={classes.background}>
-              <div className={classes.leftBlockContainer}>
-                  <div className={classes.rowOne}>Top R&B Artists</div>
-                  <div className={classes.rowTwo}>Frank Ocean, The Weeknd, Brent Faiyaz, SZA, and more</div>
-                  <div className={classes.viewAllLink}>View All</div>
-              </div>
-              <div className={classes.ball}><img src={Frank} alt="frank" className={classes.img}></img></div></div>
-          </div>
-          
+          {mappedSliderLists}
         </Slider>
+        </div>
     
   )
 }

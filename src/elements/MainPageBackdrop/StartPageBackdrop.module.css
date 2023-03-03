@@ -1,31 +1,6 @@
-/* Slick */ 
 
-.slick-dots {
-    position: absolute;
-    bottom: 20px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
 
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ff0000; /* Change this to the desired color */
-    border: none;
-    outline: none;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  .slick-dots li.slick-active button {
-    background-color: #0000ff; /* Change this to the desired active color */
-  }
-
-.background { 
+.backgroundGreen { 
     display: flex;
     align-items: center;
     position: relative;
@@ -35,7 +10,35 @@
     background-color: var(--primary);
     background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
     overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 90px;
+}
+
+
+
+.backgroundPurple { 
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%; 
+    height: 45vh;
+    border-radius: 4px;
+    background-color: var(--primary);
+    overflow: hidden;
+    margin-bottom: 90px;
+    background: linear-gradient(220.55deg, #DEB5FF 0%, #6F00B3 100%);
+}
+
+.backgroundRainbow { 
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%; 
+    height: 45vh;
+    border-radius: 4px;
+    background-color: var(--primary);
+    overflow: hidden;
+    margin-bottom: 90px;
+    background: linear-gradient(220.55deg, #00E0EE 0%, #AD00FE 100%);
 }
 
 .ball {
