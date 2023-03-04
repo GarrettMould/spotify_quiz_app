@@ -23,9 +23,9 @@ export const StartPageBackdrop = () => {
       img: Tyler, 
     }, 
     {
-      title: "Blast from the Past",
+      title: "Top Rock Artists",
       id: "blank", 
-      description: "Nirvana, Ice Cube, Led Zepplin, The Beatles, and more", 
+      description: "Nirvana, The Black Keys, Led Zepplin, The Beatles, and more", 
       img: Kurt, 
     }
   ]
