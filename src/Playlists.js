@@ -15,15 +15,7 @@ export var playlists = [
         description: "This is Drake. Essential tracks all in one playlist.", 
         tags: ["rap", "popular"]
     }, 
-
-    {
-        artist: "A$AP Rocky",
-        name: "This Is A$AP Rocky",
-        img: "https://i.scdn.co/image/ab67706f00000003a0f5889bdd350bc5760316a7",
-        id: "37i9dQZF1DX2EykupcJRsV",
-        description: "The essential tracks, all in one playlist.",
-        tags: [ "rap"]
-      },
+    
       { 
         artist: "Outkast",
         name: "This is Outkast", 

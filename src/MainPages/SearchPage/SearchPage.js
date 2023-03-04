@@ -16,6 +16,15 @@ const SearchPage = (props) => {
       setSearchTerm(searchTerm);
     };
   
+    const playlists = props.rapPlaylists.concat(props.rockPlaylists, props.popPlaylists); 
+
+    const removeDuplicates = (arr) => {
+      return arr.filter((item,
+          index) => arr.indexOf(item) === index);
+  }
+
+  removeDuplicates(playlists); 
+  
     const filteredList = playlists.filter((playlist) =>
       playlist.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );

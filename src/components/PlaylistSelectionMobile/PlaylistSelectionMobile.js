@@ -83,7 +83,7 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRapPlaylists}
-            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Rap" className={classes.viewAllBtn}>
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Rap" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />
@@ -96,7 +96,7 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedPopPlaylists}
-            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Pop" className={classes.viewAllBtn}>
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Pop" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />
@@ -109,7 +109,7 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRockPlaylists}
-            <Link to="/ViewAllPage"><button onClick={props.handleViewAllGenre} id="Rock" className={classes.viewAllBtn}>
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Rock" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />

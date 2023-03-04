@@ -11,23 +11,11 @@ const PlaylistsViewAllPage = (props) => {
 var playlistsAll  = playlists;
 var headlineTitle = `${props.viewAllGenre} Quizzes` 
 
-var rapPlaylists = [];
- var popPlaylists = []; 
- var rockPlaylists = []; 
+var rapPlaylists = props.rapPlaylists;
+var popPlaylists = props.popPlaylists; 
+var rockPlaylists = props.rockPlaylists; 
 
-  playlistsAll.forEach((playlist) => { 
-    if (playlist.tags.includes("rap")) { 
-      rapPlaylists.push(playlist);
-    } else if (playlist.tags.includes("pop")) { 
-      popPlaylists.push(playlist)
-    } else if (playlist.tags.includes("rock")) { 
-      rockPlaylists.push(playlist)
-    }
-  })
-
- 
-
-
+  
 {props.viewAllGenre === "Rap" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : playlistsAll = rockPlaylists}
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 

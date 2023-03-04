@@ -86,6 +86,12 @@ const App = (props) => {
   const [viewAllGenre, setViewAllGenre] = useState(null);
   // Sliding Menu Open 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  /// Updated Playlists 
+  const [rapPlaylists, setRapPlaylists] = useState([]);
+  const [popPlaylists, setPopPlaylists] = useState([]);
+  const [rockPlaylists, setRockPlaylists] = useState([]);
+  const [rbPlaylists, setRbPlaylists] = useState([]);
+
 
 
   // Handle Menu Open 
@@ -163,9 +169,14 @@ async function getUserPlaylists() {
  
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
-    setViewAllGenre(e.currentTarget.id);
+    if (userID) {
+      setViewAllGenre(e.currentTarget.id);
     setMenuIsOpen(false);
     console.log(e.currentTarget.id)
+    } else { 
+      setModalOpen(true);
+    }
+    
   }
  
   // Reading device width and updating state on change
@@ -418,18 +429,35 @@ const getPlaylistSongs = async () => {
 
 }
 
-// Empty arrays that will hold the new playlist objects 
-var rapPlaylists = []
-var popPlaylists = []
-var rockPlaylists = []
 
 // Rap Playlist IDs 
 var rapPlaylistIDs = [ 
-  "37i9dQZF1DWUgX5cUT0GbU", "37i9dQZF1DZ06evO1aBeik", "37i9dQZF1DZ06evO06Ki7m","37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO", "37i9dQZF1DX4hL5ZGneVGr", 
-  "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", "37i9dQZF1DXbyJ08AYfIHF", 
-  "37i9dQZF1DZ06evO3DtS8g", "37i9dQZF1DZ06evNZWDBEQ", "37i9dQZF1DZ06evO1JAInW", "37i9dQZF1DZ06evO01740o", 
-  "37i9dQZF1DZ06evO3Cn7Uc", "37i9dQZF1DZ06evO2NufN6", "37i9dQZF1DZ06evO259NXG", "37i9dQZF1DX2EykupcJRsV" 
+  "37i9dQZF1DX7QOv5kjbU68", "37i9dQZF1DX8IzjtXj8ThV", "37i9dQZF1DZ06evO3nMr04", "37i9dQZF1DZ06evO2Kixmg",
+   "37i9dQZF1DZ06evO0Wc5ry", "37i9dQZF1DX1clOuib1KtQ", "37i9dQZF1DZ06evO3CRVnO", "37i9dQZF1DZ06evO1nxlXq", 
+  "37i9dQZF1DX5EkyRFIV92g","37i9dQZF1DWUgX5cUT0GbU", "37i9dQZF1DZ06evO1aBeik", "37i9dQZF1DZ06evO06Ki7m",
+  "37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO", "37i9dQZF1DX4hL5ZGneVGr", 
+  "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DX4sqNyKH13qY", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", 
+  "37i9dQZF1DXbyJ08AYfIHF", "37i9dQZF1DX7jGZjyDa8rI",   "37i9dQZF1DZ06evO3DtS8g", "37i9dQZF1DX3F3EumJCPca", 
+  "37i9dQZF1DWYojpWKpDMGi", "37i9dQZF1DZ06evO28Vxx6","37i9dQZF1DZ06evNZWDBEQ", "37i9dQZF1DZ06evO1JAInW", "37i9dQZF1DWUuiucxQQIC1", 
+  "37i9dQZF1DZ06evO01740o",   "37i9dQZF1DZ06evO3Cn7Uc", "37i9dQZF1DZ06evO2NufN6", "37i9dQZF1DZ06evO259NXG",
+  "37i9dQZF1DXcJ3YhsMrHLi", "37i9dQZF1DZ06evO3IjBrq", "37i9dQZF1DX2EykupcJRsV", "37i9dQZF1DZ06evO1Mfhq8", 
 ]
+
+var rbPlaylistIDs = ["37i9dQZF1DZ06evO28Vxx6", "37i9dQZF1DZ06evO216tjq", "37i9dQZF1DXdyjMX5o2vCq", "37i9dQZF1DZ06evO4fRiko",  
+"37i9dQZF1DX6bnzK9KPvrz", "37i9dQZF1DX2oU49YwtXI2", "37i9dQZF1DZ06evO2u61Y4", "37i9dQZF1DZ06evO2LMnXG", 
+"37i9dQZF1DZ06evO241prq", "37i9dQZF1DZ06evO4aKvZe", "37i9dQZF1DZ06evO1yvnUc", "37i9dQZF1DZ06evO1N3Bn2", "37i9dQZF1DZ06evO2fgLDY", "37i9dQZF1DZ06evO1erDHi"];
+
+var popPlaylistIDs = ["37i9dQZF1DZ06evO3by276", "37i9dQZF1DX1PfYnYcpw8w", "37i9dQZF1DX55yuR78Invt", "37i9dQZF1DX6bnzK9KPvrz", "37i9dQZF1DX3fRquEp6m8D",
+"37i9dQZF1DZ06evO2FvyO4", "37i9dQZF1DX2apWzyECwyZ","37i9dQZF1DWZUozJiHy44Y", "37i9dQZF1DXc2aPBXGmXrt", "37i9dQZF1DWZ8Cy8eCcjXW", "37i9dQZF1DXdyjMX5o2vCq", 
+"37i9dQZF1DZ06evO2iBPiw", "37i9dQZF1DZ06evO25rXbO", "37i9dQZF1DX9tzt7g58Xlh","37i9dQZF1DXa0PTjSQ7AeJ", "37i9dQZF1DZ06evO30zJ7i", "37i9dQZF1DX29brXfjEm5q", "37i9dQZF1DZ06evO3YTug0", "37i9dQZF1DZ06evO0jO79m", ]; 
+
+var rockPlaylistIDs = [ "37i9dQZF1DZ06evO04caZO", "37i9dQZF1DZ06evO1chrPy", "37i9dQZF1DZ06evO0XObfi",
+ "37i9dQZF1DZ06evO0nT692","37i9dQZF1DZ06evO1VmDYs", "37i9dQZF1DZ06evO0Q8JGw","37i9dQZF1DZ06evO3M0Fbi",
+  "37i9dQZF1DZ06evO19s0CZ", "37i9dQZF1DZ06evO0ENBD2", "37i9dQZF1DZ06evO2VxlyE", "37i9dQZF1DZ06evO00KN2M", 
+  "37i9dQZF1DZ06evO0auErC", "37i9dQZF1DZ06evO2JuLM4", "37i9dQZF1DZ06evO1S7maQ", "37i9dQZF1DZ06evO25rXbO", 
+  "37i9dQZF1DZ06evO3n0Aus", "37i9dQZF1DZ06evO0skD9m", "37i9dQZF1DZ06evO30gtH2", "37i9dQZF1DZ06evO2XVhS0",
+   "37i9dQZF1DZ06evO1VFliE", "37i9dQZF1DZ06evO4m87u0", "37i9dQZF1DZ06evO0AQB3i"];
+
 
 // Function to Create new Playlist Object based on an array of playlistIDs
 const gatherPlaylistInfo = async (playlistID, tag) => { 
@@ -454,23 +482,43 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
   };
 
   if (tag === "rap") { 
-    rapPlaylists.push(newPlaylist)
+    setRapPlaylists(prevState => [...prevState, newPlaylist])
   } else if (tag === "pop") { 
-    popPlaylists.push(newPlaylist)
+    setPopPlaylists(prevState => [...prevState, newPlaylist])
   } else if (tag === "rock") { 
-    rockPlaylists.push(newPlaylist)
+    setRockPlaylists(prevState => [...prevState, newPlaylist])
   } else { 
     console.log("Oops. You are missing a tag and these playlist won't be rendered!")
   }
 
+  console.log(rapPlaylists)
+
 }
 
 
-rapPlaylistIDs.forEach((playlist) => { 
-  gatherPlaylistInfo(playlist, "rap")
-}); 
+const createPlaylists = () => { 
+  rapPlaylistIDs.map((playlist) => {
+    return gatherPlaylistInfo(playlist, "rap");
+  }); 
+  popPlaylistIDs.map((playlist) => { 
+    return gatherPlaylistInfo(playlist, "pop");
+  })
+  rockPlaylistIDs.map((playlist) => { 
+    return gatherPlaylistInfo(playlist, "rock")
+  })
+  rbPlaylistIDs.map((playlist) => { 
+    return gatherPlaylistInfo(playlist, "rb")
+  })
+}
+// ONLY USING TO USEEFFCT TO AVOID THE 429 ERROR (FIGURE THIS PROBLEM OUT!)
+useEffect(() => {
+   createPlaylists();
+}, [token]);
 
-console.log(rapPlaylists);
+
+
+
+
 
 
 
@@ -525,10 +573,10 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
-            <Route path="/SearchPage" element={<SearchPage isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
+            <Route path="/" element={<HomePage rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
-             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
+             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>

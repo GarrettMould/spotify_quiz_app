@@ -13,6 +13,7 @@ const PlaylistSelection = (props) => {
  var popPlaylists = []; 
  var rockPlaylists = []; 
 
+ 
   playlists.forEach((playlist) => { 
     if (playlist.tags.includes("rap")) { 
       rapPlaylists.push(playlist);
@@ -23,7 +24,7 @@ const PlaylistSelection = (props) => {
     }
   })
 
- 
+
   const slicedRap = rapPlaylists.slice(0, 4);
   const slicedPop = popPlaylists.slice(0,4); 
   const slicedRock = rockPlaylists.slice(0,4);
@@ -98,7 +99,7 @@ const PlaylistSelection = (props) => {
     <div className={classes.container} id="playlistsContainer">
       <div className={classes.sectionTitleContainer}>
         <Headline text="Hip Hop Quizzes"></Headline>
-        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Rap" className={classes.showAllLink}>Show All</div></Link>
+        <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Rap" className={classes.showAllLink}>Show All</div></Link>
       </div>
       <section className={classes.section}>
       <Spacer></Spacer>
@@ -112,7 +113,7 @@ const PlaylistSelection = (props) => {
       </section>
       <div className={classes.sectionTitleContainer}>
         <Headline text="Pop Quizzes"></Headline>
-        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Pop" className={classes.showAllLink}>Show All</div></Link>
+        <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Pop" className={classes.showAllLink}>Show All</div></Link>
       </div>
       <section  className={classes.section}>
       <Spacer></Spacer>
@@ -126,7 +127,7 @@ const PlaylistSelection = (props) => {
       </section>
       <div className={classes.sectionTitleContainer}>
         <Headline text="Rock Quizzes"></Headline>
-        <Link to="/ViewAllPage"><div onClick={props.handleViewAllGenre} id="Rock" className={classes.showAllLink}>Show All</div></Link>
+        <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Rock" className={classes.showAllLink}>Show All</div></Link>
       </div>
       <section  className={classes.section}>
       <Spacer></Spacer>
