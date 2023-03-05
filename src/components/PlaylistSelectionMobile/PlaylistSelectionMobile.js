@@ -79,7 +79,7 @@ var rapPlaylists = [];
   return (
     <div>
         <div className={classes.container}>
-            <Headline text="Hip Hop & Rap"></Headline>
+            <Headline text="Hip Hop Quizzes"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRapPlaylists}
@@ -92,7 +92,7 @@ var rapPlaylists = [];
             </Link>
             </div>
             </section>
-            <Headline text="Pop"></Headline>
+            <Headline text="Pop Quizzes"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedPopPlaylists}
@@ -105,7 +105,7 @@ var rapPlaylists = [];
             </Link>
             </div>
             </section>
-            <Headline text="Rock"></Headline>
+            <Headline text="Rock Quizzes"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRockPlaylists}

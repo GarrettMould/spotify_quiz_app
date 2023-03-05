@@ -16,19 +16,28 @@ const SearchPage = (props) => {
       setSearchTerm(searchTerm);
     };
   
-    const playlists = props.rapPlaylists.concat(props.rockPlaylists, props.popPlaylists); 
+    const rapPlaylists = props.rapPlaylists; 
+    const rockPlaylists = props.rockPlaylists; 
+    const popPlaylists = props.popPlaylists; 
+    const concatPlaylists = rapPlaylists.concat(rockPlaylists, popPlaylists); 
+    console.log(concatPlaylists)
+   // const playlists = props.rapPlaylists.concat(props.rockPlaylists, props.popPlaylists); 
 
+    
     const removeDuplicates = (arr) => {
       return arr.filter((item,
           index) => arr.indexOf(item) === index);
   }
 
-  removeDuplicates(playlists); 
+  removeDuplicates(concatPlaylists);  
+
+
   
-    const filteredList = playlists.filter((playlist) =>
+    const filteredList = concatPlaylists.filter((playlist) =>
       playlist.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    console.log(filteredList)
    
 
     const mappedPlaylists = filteredList.map((playlist) => { 
