@@ -65,6 +65,7 @@ const SearchPage = (props) => {
     
       const mappedPlaylistsMobile = filteredList.map((playlist) => { 
         return (
+          <Col xs={4}>
           <Link to={props.userID ? "/PlayPage" : "/"}>
                 <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                     <div className={classes.imageContainer}>
@@ -76,6 +77,7 @@ const SearchPage = (props) => {
                     </div>
                     </button>
           </Link>
+          </Col>
         )
       })
 
@@ -83,9 +85,9 @@ const SearchPage = (props) => {
       var display; 
 
       if ((searchTerm.length > 2) && filteredList.length === 0) { 
-        display = <div className={classes.noResultsContainer}><div className={classes.noResultsMessage}>No results found. Try another artist.</div></div>
+        display = <div className={classes.noResultsContainer}><div className={classes.noResultsMessage}>No results found. Make sure you are logged into Spotify!</div></div>
       } else { 
-        display = (searchTerm === "" ? null : props.isMobile ? mappedPlaylistsMobile : <Row>{mappedPlaylists}</Row>)
+        display = (searchTerm === "" ? null : props.isMobile ? <Row>{mappedPlaylistsMobile}</Row>  : <Row>{mappedPlaylists}</Row>)
       }
 
 
@@ -98,12 +100,15 @@ const SearchPage = (props) => {
               <div className={classes.xIcon}><Link to="/"><X size={35}></X></Link></div>
               <SearchBarEl handleSearch={handleSearch}></SearchBarEl>
             </div>
+            
             <Spacer></Spacer>
+            <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
                 <Container fluid={true} className={classes.container}>
                   {display}
                 </Container>
-            </div>  
+            </div> 
+            </section> 
             </div>
 
         </div>

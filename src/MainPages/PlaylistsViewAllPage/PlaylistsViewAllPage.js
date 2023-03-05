@@ -42,7 +42,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
 
   const mappedPlaylistsMobile = playlistsAll.map((playlist) => { 
     return ( 
-      
+      <Col xs={4}>
       <Link to={props.userID ? "/PlayPage" : "/"}>
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                 <div className={classes.imageContainer}>
@@ -54,6 +54,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
                 </div>
                 </button>
        </Link>
+       </Col>
        
     )
   })
@@ -66,11 +67,12 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
     <Headline text={headlineTitle}></Headline>
     
     </div>
-    <section className={classes.section}>
+    
     <Spacer></Spacer>
+    <section className={classes.section}>
     <div className={classes.allPlaylistsContainer}>
     <Container fluid={true} className={classes.container}>
-    {props.isMobile ? mappedPlaylistsMobile : <Row> {mappedPlaylistsDesktop} </Row> }
+    {props.isMobile ? <Row>{mappedPlaylistsMobile}</Row> : <Row> {mappedPlaylistsDesktop} </Row> }
     </Container>
     </div>
     </section>
