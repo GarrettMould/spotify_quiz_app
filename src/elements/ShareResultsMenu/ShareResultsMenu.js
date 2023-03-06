@@ -14,9 +14,9 @@ const ShareResultsMenu = (props) => {
 
     
     const link = "https://sweet-kitten-2dc72c.netlify.app";
-    const message = `I just scored ${props.userScore} on Quizify's ${props.thisIsName} quiz. Can you beat my score?` 
+    const message = `I just scored ${props.userScore} on Quizify's "${props.thisIsName}" quiz. Can you beat my score?` 
   return (
-    <Menu menuClassName={classes.myMenu} menuButton={<MenuButton onClick={() => setCopied(false)}className={classes.menuBtn}><Share2 className={classes.shareIcon} size={20}/></MenuButton>} transition>
+    <Menu menuClassName={classes.myMenu} menuButton={<MenuButton onClick={() => setCopied(false)} className={classes.menuBtn}><Share2 className={classes.shareIcon} size={20}/></MenuButton>} transition>
   <MenuItem className={classes.menuItem}><TwitterShareButton title={message} url="https://sweet-kitten-2dc72c.netlify.app">
                       Twitter
                     </TwitterShareButton></MenuItem>

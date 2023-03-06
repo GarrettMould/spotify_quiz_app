@@ -5,7 +5,10 @@
 
 .menuBtn { 
     background-color: transparent;
-    margin-bottom: 2px;
+    color: var(--grey);
+    font-size: 100%;
+    font-family: CircularBold;
+    margin-right: 30px;
 }
 .menuItem { 
     font-family: CircularBook !important;
@@ -18,3 +21,12 @@
 .shareIcon { 
     margin-left: 10px !important;
 }
+
+@media screen and (max-width: 768px) {
+
+    .menuBtn { 
+        margin-right: 0px;
+    }
+   
+
+} 

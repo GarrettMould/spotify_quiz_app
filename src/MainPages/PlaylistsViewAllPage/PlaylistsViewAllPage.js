@@ -1,20 +1,49 @@
 import React from 'react'
+import { useState } from 'react'
 import Headline from '../../elements/Headline/Headline'
 import { Spacer } from '../../elements/Spacer/Spacer'
 import { Container, Row, Col } from 'react-bootstrap'
 import classes from "./PlaylistsViewAllPage.module.css"
 import { Link } from 'react-router-dom'
 import { playlists } from '../../Playlists'
+import SortByDropdown from '../../elements/SortByDropdown/SortByDropdown'
+
 
 const PlaylistsViewAllPage = (props) => {
+
+  const [sortBy, setSortBy] = useState("popularity");
+
+  const handleSortByUpdate = (sortByTerm) => {
+    setSortBy(sortByTerm) 
+  }
+
+  console.log(sortBy)
 
 var playlistsAll  = playlists;
 var headlineTitle = `${props.viewAllGenre} Quizzes` 
 
-var rapPlaylists = props.rapPlaylists;
-var popPlaylists = props.popPlaylists; 
-var rockPlaylists = props.rockPlaylists; 
-var rbPlaylists = props.rbPlaylists;
+
+var rapPlaylists; 
+var popPlaylists; 
+var rockPlaylists;
+var rbPlaylists;
+
+sortBy === "popularity" ? rapPlaylists = props.rapPlaylists.sort(function(a, b) { 
+  return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
+}) : rapPlaylists = props.rapPlaylists.sort((a, b) => a.artist.localeCompare(b.artist))
+
+sortBy === "popularity" ? popPlaylists = props.popPlaylists.sort(function(a, b) { 
+  return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
+}) : popPlaylists = props.popPlaylists.sort((a, b) => a.artist.localeCompare(b.artist))
+
+sortBy === "popularity" ? rockPlaylists = props.rockPlaylists.sort(function(a, b) { 
+  return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
+}) : rockPlaylists = props.rockPlaylists.sort((a, b) => a.artist.localeCompare(b.artist))
+
+sortBy === "popularity" ? rbPlaylists = props.rbPlaylists.sort(function(a, b) { 
+  return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
+}) : rbPlaylists = props.rbPlaylists.sort((a, b) => a.artist.localeCompare(b.artist))
+
 
   
 {props.viewAllGenre === "Hip Hop" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : props.viewAllGenre === "Rock" ? playlistsAll = rockPlaylists : playlistsAll = rbPlaylists}
@@ -66,7 +95,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
     <div className={classes.wrapper}>
     <div className={classes.sectionTitleContainer}>
     <Headline text={headlineTitle}></Headline>
-    
+    <SortByDropdown handleSortByUpdate={handleSortByUpdate} setSortBy={setSortBy}></SortByDropdown>
     </div>
     
     <Spacer></Spacer>

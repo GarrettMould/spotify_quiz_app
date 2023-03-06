@@ -29,11 +29,11 @@ const Footer = (props) => {
   </div></>) : footer = <Row>
     <Col xs={5} className={classes.column}>
       <div className={classes.columnTitle}>About</div>
-      <div className={classes.columnText}>RapQuiz is a project created by Spotify user and rap enthusiast, Garrett Mould. It uses Spotify's free Web API.</div>
+      <div className={classes.columnText}>Quizify is a project created by Spotify user and music enthusiast, Garrett Mould. It uses Spotify's web API services.</div>
     </Col>
     <Col xs={5} className={classes.column}>
       <div className={classes.columnTitle}>Get Updates</div>
-      <div className={classes.columnText}>Join the email list to get notified about updates and few features.</div>
+      <div className={classes.columnText}>Join the email list to get notified about updates and new features.</div>
       <div className={classes.inputContainer}><input placeholder="Email Address" className={classes.input}></input><button className={classes.btn}>Join</button></div>
     </Col>
     <Col xs={2} className={classes.column}>

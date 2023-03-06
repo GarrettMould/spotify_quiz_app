@@ -31,8 +31,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -435,7 +435,7 @@ var rapPlaylistIDs = [
   "37i9dQZF1DX7QOv5kjbU68", "37i9dQZF1DX8IzjtXj8ThV", "37i9dQZF1DZ06evO3nMr04", "37i9dQZF1DZ06evO2Kixmg",
    "37i9dQZF1DZ06evO0Wc5ry", "37i9dQZF1DX1clOuib1KtQ", "37i9dQZF1DZ06evO3CRVnO", "37i9dQZF1DZ06evO1nxlXq", 
   "37i9dQZF1DX5EkyRFIV92g","37i9dQZF1DWUgX5cUT0GbU", "37i9dQZF1DZ06evO1aBeik", "37i9dQZF1DZ06evO06Ki7m",
-  "37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO", "37i9dQZF1DX4hL5ZGneVGr", 
+  "37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO",  
   "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DX4sqNyKH13qY", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", 
   "37i9dQZF1DXbyJ08AYfIHF", "37i9dQZF1DX7jGZjyDa8rI",   "37i9dQZF1DZ06evO3DtS8g", "37i9dQZF1DX3F3EumJCPca", 
   "37i9dQZF1DWYojpWKpDMGi", "37i9dQZF1DZ06evO28Vxx6","37i9dQZF1DZ06evNZWDBEQ", "37i9dQZF1DZ06evO1JAInW", "37i9dQZF1DWUuiucxQQIC1", 
@@ -475,6 +475,7 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
   const newPlaylist = {
     artist: artistName,
     playlistName: data.name,
+    followers: data.followers.total,
     img: data.images[0].url,
     id: data.id,
     description: data.description,
@@ -496,6 +497,8 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
   console.log(rapPlaylists)
 
 }
+
+console.log(rapPlaylists[0])
 
 
 const createPlaylists = () => { 

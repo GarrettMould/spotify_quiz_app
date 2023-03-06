@@ -26,15 +26,16 @@ const SearchPage = (props) => {
 
     
     const removeDuplicates = (arr) => {
-      return arr.filter((item,
-          index) => arr.indexOf(item) === index);
+      return arr.filter(
+        (item, index) => arr.findIndex((i) => i.artist === item.artist) === index
+      );
   }
 
-  removeDuplicates(concatPlaylists);  
+  const uniquePlaylists = removeDuplicates(concatPlaylists);  
 
 
   
-    const filteredList = removeDuplicates(concatPlaylists).filter((playlist) =>
+    const filteredList = uniquePlaylists.filter((playlist) =>
       playlist.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
