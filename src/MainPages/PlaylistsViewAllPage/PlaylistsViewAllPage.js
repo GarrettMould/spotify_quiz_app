@@ -14,9 +14,10 @@ var headlineTitle = `${props.viewAllGenre} Quizzes`
 var rapPlaylists = props.rapPlaylists;
 var popPlaylists = props.popPlaylists; 
 var rockPlaylists = props.rockPlaylists; 
+var rbPlaylists = props.rbPlaylists;
 
   
-{props.viewAllGenre === "Rap" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : playlistsAll = rockPlaylists}
+{props.viewAllGenre === "Hip Hop" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : props.viewAllGenre === "Rock" ? playlistsAll = rockPlaylists : playlistsAll = rbPlaylists}
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 
     return (    
@@ -42,7 +43,7 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
 
   const mappedPlaylistsMobile = playlistsAll.map((playlist) => { 
     return ( 
-      <Col xs={4}>
+      <Col xs={4} className={classes.col}>
       <Link to={props.userID ? "/PlayPage" : "/"}>
             <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                 <div className={classes.imageContainer}>

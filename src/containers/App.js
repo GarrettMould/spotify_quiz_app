@@ -31,8 +31,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -487,7 +487,9 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
     setPopPlaylists(prevState => [...prevState, newPlaylist])
   } else if (tag === "rock") { 
     setRockPlaylists(prevState => [...prevState, newPlaylist])
-  } else { 
+  } else if (tag === "rb") { 
+    setRbPlaylists(prevState => [...prevState, newPlaylist])
+  } else {
     console.log("Oops. You are missing a tag and these playlist won't be rendered!")
   }
 
@@ -512,7 +514,7 @@ const createPlaylists = () => {
 }
 // ONLY USING TO USEEFFCT TO AVOID THE 429 ERROR (FIGURE THIS PROBLEM OUT!)
 useEffect(() => {
-   createPlaylists();
+  createPlaylists();
 }, [token]);
 
 

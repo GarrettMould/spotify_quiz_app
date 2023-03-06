@@ -25,9 +25,10 @@ const DropDownMenu = (props) => {
            <Link to="/HowToPlay"><li className={classes.listItem} onClick={props.handleMenu}>How to Play</li></Link>
            <Link to="/SearchPage"><li className={classes.listItem} onClick={props.handleMenu}>Search by Artist</li></Link>
             <Collapsible contentInnerClassName={classes.customContent} trigger={<CategoriesSliderClosed></CategoriesSliderClosed>} triggerWhenOpen={<CategoriesSliderOpened></CategoriesSliderOpened>} className={classes.listItem}>
-               <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="Rap">Hip Hop Quizzes</li></Link> 
+               <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="Hip Hop">Hip Hop Quizzes</li></Link> 
                <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="Pop">Pop Quizzes</li></Link> 
-               <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="Rock">Rock Quizzes</li></Link> 
+               <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="Rock">Rock Quizzes</li></Link>
+               <Link to="/ViewAllPage"><li className={classes.customContent} onClick={props.handleViewAllGenre} id="R&B">R&B Quizzes</li></Link> 
             </Collapsible>
             
         </ul>

@@ -38,7 +38,7 @@ export var playlists = [
         img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO2Kixmg-large.jpg",
         id: "37i9dQZF1DZ06evO2Kixmg",
         description: "The essential tracks, all in one playlist.",
-        tags: [ "rap"]
+        tags: [ "rap", "rb"]
       },
       {
         artist: "Lil Uzi Vert",
@@ -102,7 +102,7 @@ export var playlists = [
         img: "https://i.scdn.co/image/ab67706f00000003387c0ddfa4c7553ce24edba5", 
         id: "37i9dQZF1DX6bnzK9KPvrz",
         description: "This is The Weeknd. Essential tracks all in one playlist.", 
-        tags: ["pop", "popular"]
+        tags: ["rb"]
     }, 
     { 
         artist: "Dua Lipa",
@@ -126,7 +126,7 @@ export var playlists = [
         img: "https://i.scdn.co/image/ab67706f000000033fc91b90ebec9607f4c0b5ab", 
         id: "37i9dQZF1DXdyjMX5o2vCq",
         description: "Get to know the shape-shifting, forward thinking, the one and only, Frank Ocean.", 
-        tags: ["pop"]
+        tags: ["rb"]
     }, 
     { 
         artist: "Den Vau",
@@ -256,6 +256,31 @@ export var playlists = [
         description: "This is Wu Tang Clan. The essential tracks, all in one playlist.", 
         tags: ["rap"]
     },  
+    { 
+        artist: "Aminé",
+        name: "This is Aminé",
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO28Vxx6-large.jpg", 
+        id: "37i9dQZF1DZ06evO28Vxx6",
+        description: "This is Aminé. Essential tracks all in one playlist.", 
+        tags: ["rb"]
+    }, 
+    { 
+        artist: "Brent Faiyaz",
+        name: "This is Brent Faiyaz",
+        img: "https://thisis-images.scdn.co/37i9dQZF1DZ06evO216tjq-large.jpg", 
+        id: "37i9dQZF1DZ06evO216tjq",
+        description: "This is Brent Faiyaz. Essential tracks all in one playlist.", 
+        tags: ["rb"]
+    }, 
+    { 
+        artist: "Beyoncé",
+        name: "This Is Beyoncé",
+        img: "https://i.scdn.co/image/ab67706f00000003cbcf7a50a7e7240425eb3312", 
+        id: "37i9dQZF1DX2oU49YwtXI2",
+        description: "Queen Bey's most essential tracks, all in one playlist.", 
+        tags: ["rb"]
+    }, 
+
 
 
 

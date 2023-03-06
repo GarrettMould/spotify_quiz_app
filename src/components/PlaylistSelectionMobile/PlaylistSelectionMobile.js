@@ -11,6 +11,7 @@ const PlaylistSelectionMobile = (props) => {
 var rapPlaylists = [];
  var popPlaylists = []; 
  var rockPlaylists = []; 
+ var rbPlaylists = []
 
   playlists.forEach((playlist) => { 
     if (playlist.tags.includes("rap")) { 
@@ -19,6 +20,8 @@ var rapPlaylists = [];
       popPlaylists.push(playlist)
     } else if (playlist.tags.includes("rock")) { 
       rockPlaylists.push(playlist)
+    } else if (playlist.tags.includes("rb")) { 
+      rbPlaylists.push(playlist);
     }
   })
 
@@ -26,6 +29,7 @@ var rapPlaylists = [];
   const slicedRap = rapPlaylists.slice(0, 8);
   const slicedPop = popPlaylists.slice(0,8); 
   const slicedRock = rockPlaylists.slice(0,8);
+  const slicedRb = rbPlaylists.slice(0,8);
  
 
 
@@ -76,6 +80,22 @@ var rapPlaylists = [];
           </Link>
     )
   })
+
+  const mappedRbPlaylists = slicedRb.map((playlist) => { 
+    return ( 
+      <Link to={props.userID ? "/PlayPage" : "/"}>
+            <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+                <div className={classes.imageContainer}>
+                  <img
+                    src={playlist.img}
+                    className={classes.image}
+                    alt="playlistimage"
+                  ></img>
+                </div>
+                </button>
+       </Link>
+    )
+  })
   return (
     <div>
         <div className={classes.container}>
@@ -83,7 +103,7 @@ var rapPlaylists = [];
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
             {mappedRapPlaylists}
-            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Rap" className={classes.viewAllBtn}>
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Hip Hop" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />
@@ -110,6 +130,19 @@ var rapPlaylists = [];
             <div className={classes.allPlaylistsContainer}>
             {mappedRockPlaylists}
             <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Rock" className={classes.viewAllBtn}>
+            <div className={classes.contentContainer}>
+                <div className={classes.viewAllText}>View All</div>
+                <ArrowCircleRight size={40} color="#c0c0c0" />
+            </div>
+            </button>
+            </Link>
+            </div>
+            </section>
+            <Headline text="R&B Quizzes"></Headline>
+            <section className={classes.section}>
+            <div className={classes.allPlaylistsContainer}>
+            {mappedRbPlaylists}
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="R&B" className={classes.viewAllBtn}>
             <div className={classes.contentContainer}>
                 <div className={classes.viewAllText}>View All</div>
                 <ArrowCircleRight size={40} color="#c0c0c0" />

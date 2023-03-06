@@ -19,7 +19,8 @@ const SearchPage = (props) => {
     const rapPlaylists = props.rapPlaylists; 
     const rockPlaylists = props.rockPlaylists; 
     const popPlaylists = props.popPlaylists; 
-    const concatPlaylists = rapPlaylists.concat(rockPlaylists, popPlaylists); 
+    const rbPlaylists = props.rbPlaylists;
+    const concatPlaylists = rapPlaylists.concat(rockPlaylists, popPlaylists, rbPlaylists); 
     console.log(concatPlaylists)
    // const playlists = props.rapPlaylists.concat(props.rockPlaylists, props.popPlaylists); 
 
@@ -33,7 +34,7 @@ const SearchPage = (props) => {
 
 
   
-    const filteredList = concatPlaylists.filter((playlist) =>
+    const filteredList = removeDuplicates(concatPlaylists).filter((playlist) =>
       playlist.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -65,7 +66,7 @@ const SearchPage = (props) => {
     
       const mappedPlaylistsMobile = filteredList.map((playlist) => { 
         return (
-          <Col xs={4}>
+          <Col xs={4} className={classes.col}>
           <Link to={props.userID ? "/PlayPage" : "/"}>
                 <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
                     <div className={classes.imageContainer}>

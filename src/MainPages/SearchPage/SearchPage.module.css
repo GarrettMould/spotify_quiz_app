@@ -129,6 +129,11 @@
 
 @media screen and (max-width: 768px) {
 
+    .col { 
+        padding-left: 0px !important; 
+        padding-right: 0px !important;
+    }
+
     .container { 
         width: 100%;
         padding-left: 0px !important; 

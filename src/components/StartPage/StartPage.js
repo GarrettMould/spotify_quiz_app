@@ -10,6 +10,7 @@ const StartPage = (props) => {
         <div className={classes.mainBlockContainer}>
             <div className={classes.mainLineOne}>Spotify Quizzes.</div>
             <div className={classes.mainLineTwo}>How well do you know your favorite artists?</div>
+            
             {props.isMobile ? 
             <LoginButton 
             isMobile={props.isMobile}

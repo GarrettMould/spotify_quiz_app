@@ -57,6 +57,31 @@
     cursor: pointer;
 }
 
+.inputContainer { 
+    margin-top: 10px;
+    width: 100%;
+}
+
+.input { 
+    padding: 5px 10px;
+    color: black;
+    width: 60%;
+    height: 40px;
+}
+
+.btn { 
+    font-family: CircularBook !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  background-color: var(--primary-green) !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-left: 10px;
+    width: 80px;
+    height: 40px;
+}
+
 @media screen and (max-width: 768px) {
     .logo { 
         max-width: 120px;
