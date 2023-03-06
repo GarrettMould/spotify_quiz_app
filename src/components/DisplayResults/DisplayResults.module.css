@@ -1,4 +1,11 @@
-/*Social Row*/ 
+/*Social Row*/
+
+.shareIcon { 
+    margin-left: 10px;
+}
+.shareIcon:hover { 
+    cursor: pointer;
+}
 
 .thirdRow { 
     display: flex;

@@ -1,0 +1,19 @@
+.myMenu { 
+    background-color: #343434 !important;
+    
+}
+
+.menuBtn { 
+    background-color: transparent;
+}
+.menuItem { 
+    font-family: CircularBook !important;
+}
+
+.menuItem:hover { 
+    background-color: var(--darkGrey) !important;
+}
+
+.shareIcon { 
+    margin-left: 10px !important;
+}

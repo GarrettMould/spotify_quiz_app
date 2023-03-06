@@ -1,19 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import Slider from "react-slick";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import classes from "./DisplayResults.module.css"
-import Modal from 'react-modal';
-import share from "../../photos/share.png"
-import { TwitterLogo, FacebookLogo, Copy } from 'phosphor-react';
-import { TwitterShareButton, FacebookMessengerShareButton, FacebookShareButton} from 'react-share';
 import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
-
+import ShareResultsMenu from '../../elements/ShareResultsMenu/ShareResultsMenu';
 export const DisplayResults = (props) => {
 
+ 
 
   const sum = props.averageAnswerTime.reduce((partialSum, a) => partialSum + a, 0);
   const avg = (sum / props.averageAnswerTime.length)
@@ -48,7 +39,7 @@ export const DisplayResults = (props) => {
                 </div>
                 
         <div className={classes.statsDisplayContainer}>
-        <div className={classes.titleContainer}><div className={classes.title}>Quick Stats </div></div>
+        <div className={classes.titleContainer}><div className={classes.title}>Quick Stats </div> <ShareResultsMenu userScore={props.userScore} thisIsName={props.thisIsName}></ShareResultsMenu></div>
           <div className={classes.statsContainer}>
             <div className={classes.statLine}><span>Score:</span>  {props.userScore}</div>
             <div className={classes.statLine}><span>Missed Questions:</span>  {10 - props.correctTally}</div>
