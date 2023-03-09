@@ -31,8 +31,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  //const REDIRECT_URI = "http://localhost:3000/";
-  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  const REDIRECT_URI = "http://localhost:3000/";
+  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -91,6 +91,7 @@ const App = (props) => {
   const [popPlaylists, setPopPlaylists] = useState([]);
   const [rockPlaylists, setRockPlaylists] = useState([]);
   const [rbPlaylists, setRbPlaylists] = useState([]);
+  const [userPlaylists, setUserPlaylists] = useState([]);
 
 
 
@@ -162,10 +163,38 @@ async function getUserPlaylists() {
 
 
 
+const getUserPlaylists = async () => { 
+  const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
 
+    const playlists = data.items
+   
+    playlists.forEach(playlist => { 
+      const playlistName = `Garrett's ${playlist.name}`
 
+  const newPlaylist = {
+    artist: playlist.name,
+    playlistName: playlistName,
+    img: playlist.images[0].url,
+    id: playlist.id,
+    description: playlist.description,
+    tags: ["user"]
+  };
 
- 
+  setUserPlaylists(prevState => [...prevState, newPlaylist])
+  })
+
+    
+
+  
+
+};
+
+console.log(userPlaylists)
  
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
@@ -430,6 +459,7 @@ const getPlaylistSongs = async () => {
 }
 
 
+
 // Rap Playlist IDs 
 var rapPlaylistIDs = [ 
   "37i9dQZF1DX7QOv5kjbU68", "37i9dQZF1DX8IzjtXj8ThV", "37i9dQZF1DZ06evO3nMr04", "37i9dQZF1DZ06evO2Kixmg",
@@ -553,7 +583,7 @@ const getPlaylistInfo = async () => {
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
     <div className={searchOpen ? `${classes.noWrapper}` : modalOpen ?  `${classes.wrapper} ${classes.blur}` : `${classes.wrapper}`}>
-      
+      <button onClick={getUserPlaylists}>GET PLAYLISTS </button>
       {menuIsOpen && (
           <DropDownMenu handleViewAllGenre={handleViewAllGenre} menuIsOpen={menuIsOpen} handleMenu={handleMenu}></DropDownMenu>
       )}
@@ -578,7 +608,7 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/" element={<HomePage userPlaylists={userPlaylists} rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>

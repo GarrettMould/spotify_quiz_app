@@ -32,6 +32,31 @@ const PlaylistSelection = (props) => {
   const slicedPop = popPlaylists.slice(0,4); 
   const slicedRock = rockPlaylists.slice(0,4);
   const slicedRb = rbPlaylists.slice(0,4);
+  const slicedUser = props.userPlaylists.slice(0,4); 
+
+
+
+const mappedUserPlaylists = slicedUser.map((playlist) => { 
+    return (    
+    <Col xs={3}>
+    <div className={classes.playlistContainer}>
+      <Link to={props.userID ? "/PlayPage" : "/"} >
+      <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+        <div className={classes.contentContainer}>
+          
+              <img src={playlist.img} alt="playlist" className={classes.img}></img>
+          
+          <div className={classes.textContainer}>
+            <div className={classes.name}>{playlist.artist}</div>
+            <div className={classes.description}>{playlist.description}</div>
+          </div>
+        </div>
+      </button>
+      </Link>
+    </div>
+    </Col>
+    )
+  })
 
   const mappedRapPlaylists = slicedRap.map((playlist) => { 
     return (    
@@ -122,6 +147,20 @@ const PlaylistSelection = (props) => {
   })
   return (
     <div className={classes.container} id="playlistsContainer">
+      <div className={classes.sectionTitleContainer}>
+        <Headline text="User Quizzes"></Headline>
+        <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Hip Hop" className={classes.showAllLink}>Show All</div></Link>
+      </div>
+      <section className={classes.section}>
+      <Spacer></Spacer>
+      <div className={classes.allPlaylistsContainer}>
+      <Container fluid={true}>
+        <Row >
+      {mappedUserPlaylists}
+        </Row>
+      </Container>
+      </div>
+      </section>
       <div className={classes.sectionTitleContainer}>
         <Headline text="Hip Hop Quizzes"></Headline>
         <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Hip Hop" className={classes.showAllLink}>Show All</div></Link>

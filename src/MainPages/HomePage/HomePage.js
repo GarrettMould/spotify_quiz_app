@@ -19,7 +19,7 @@ const HomePage = (props) => {
       SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}  
     ></StartPage>
     {/*{props.isMobile ? null : <StartPageBackdrop></StartPageBackdrop>}*/}
-    {props.isMobile ? <PlaylistSelectionMobile rbPlaylists={props.rbPlaylists} rockPlaylists={props.rockPlaylists} popPlaylists={props.popPlaylists} rapPlaylists={props.rapPlaylists} shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection rbPlaylists={props.rbPlaylists} rockPlaylists={props.rockPlaylists} popPlaylists={props.popPlaylists} rapPlaylists={props.rapPlaylists} shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
+    {props.isMobile ? <PlaylistSelectionMobile userPlaylists={props.userPlaylists} rbPlaylists={props.rbPlaylists} rockPlaylists={props.rockPlaylists} popPlaylists={props.popPlaylists} rapPlaylists={props.rapPlaylists} shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelectionMobile> : <PlaylistSelection userPlaylists={props.userPlaylists} rbPlaylists={props.rbPlaylists} rockPlaylists={props.rockPlaylists} popPlaylists={props.popPlaylists} rapPlaylists={props.rapPlaylists} shuffle={props.shuffle} handleViewAllGenre={props.handleViewAllGenre} userID={props.userID} handlePlaylistChange={props.handlePlaylistChange}></PlaylistSelection>}
     </>
   )
 }
