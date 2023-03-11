@@ -175,22 +175,19 @@ const handleModalOpen = () => {
   axios.get(API_ENDPOINT, config)
     .then(response => {
       const topArtists = response.data.items;
-      topArtists.forEach(artist => setUserTopArtists(prevState => [...prevState, artist.name]));
+      const userTopArtists = topArtists.map(artist => artist.name);
+      setUserTopArtists(userTopArtists);
 
-      // Move the function call here
+      // Call createUserRecommendations here, after userTopArtists has been updated
       createUserRecommendations();
     })
     .catch(error => console.error('Failed to fetch top artists:', error));
 }
 
-console.log(userTopArtists)
-const matchingArtists = [];
 const createUserRecommendations = () => { 
-  const allPlaylists = new Set([...rapPlaylists, ...popPlaylists, ...rockPlaylists, ...rbPlaylists]);
+  const matchingArtists = [];
+  const allPlaylists = [...new Set([...rapPlaylists, ...popPlaylists, ...rockPlaylists, ...rbPlaylists])];
 
-
-  console.log(allPlaylists)
- 
 
   allPlaylists.forEach(playlist => {
     if (userTopArtists.includes(playlist.artist)) {
@@ -198,12 +195,12 @@ const createUserRecommendations = () => {
     }
   });
 
-  console.log(matchingArtists)
-  setUserRecommendations(matchingArtists)
+  setUserRecommendations(matchingArtists);
 }
-
-getUserTopArtists();
 */}
+
+
+
 // Spotify API call to get the user's custom  playlists (include only Spotify made playlists)
 const getUserPlaylists = async () => { 
   const response = await fetch('https://api.spotify.com/v1/me/playlists', {
@@ -254,17 +251,29 @@ const getUserPlaylists = async () => {
 
 };
 
+
+
  
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
     if (userID) {
-      setViewAllGenre(e.currentTarget.id);
+      const genre = e.currentTarget.id;
+      setViewAllGenre(genre);
+      // Store the value of viewAllGenre in local storage
+      localStorage.setItem('viewAllGenre', genre);
     setMenuIsOpen(false);
     console.log(e.currentTarget.id)
     } else { 
       setModalOpen(true);
     }
     
+  }
+
+  const getViewAllGenre = () => { 
+    const storedViewAllGenre = localStorage.getItem('viewAllGenre');
+    if (storedViewAllGenre) {
+      setViewAllGenre(storedViewAllGenre);
+    }
   }
  
   // Reading device width and updating state on change
@@ -630,10 +639,12 @@ const createPlaylists = () => {
     return gatherPlaylistInfo(playlist, "rb")
   })
 }
+
 // ONLY USING TO USEEFFCT TO AVOID THE 429 ERROR (FIGURE THIS PROBLEM OUT!)
 useEffect(() => {
   createPlaylists();
   getUserPlaylists();
+  
   
 }, [token]);
 
@@ -642,7 +653,7 @@ useEffect(() => {
 
 
 
-
+console.log(userRecommendations)
 
 // Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist
 const getPlaylistInfo = async () => { 
@@ -697,7 +708,7 @@ const getPlaylistInfo = async () => {
             <Route path="/" element={<HomePage  getPlaylistInfo={getPlaylistInfo} userDisplayName={userDisplayName} handleModalOpen={handleModalOpen} userShareablePlaylists={userShareablePlaylists} token={token} userRecommendations={userRecommendations} rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
-             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
+             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage getViewAllGenre={getViewAllGenre} userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
              <Route path="/PlayPage/:playlistID" element={<PlayPage getPlaylistInfo={getPlaylistInfo} handleQuizCreation={handleQuizCreation} changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>

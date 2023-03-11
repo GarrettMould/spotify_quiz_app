@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from "./LinkCopiedPopUp.module.css"
 
-const LinkCopiedPopUp = () => {
+const LinkCopiedPopUp = (props) => {
   return (
-    <div className={classes.container}>Link Copied!</div>
+    <div className={classes.container}>{props.text}</div>
   )
 }
 

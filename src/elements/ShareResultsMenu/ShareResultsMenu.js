@@ -23,7 +23,7 @@ const ShareResultsMenu = (props) => {
   <MenuItem className={classes.menuItem}><FacebookShareButton quote={message} url="https://sweet-kitten-2dc72c.netlify.app">
                       Facebook
                     </FacebookShareButton></MenuItem>
-  <MenuItem className={classes.menuItem} onClick={()=> setCopied(true)}><CopyToClipboard text={link}>
+  <MenuItem className={classes.menuItem} onClick={()=> setCopied(true)}><CopyToClipboard text={`${message} ${link}`}>
                       <div>{copied ? "Copied!" : "Copy to Clipboard"}</div>
                     </CopyToClipboard></MenuItem>
 </Menu> 

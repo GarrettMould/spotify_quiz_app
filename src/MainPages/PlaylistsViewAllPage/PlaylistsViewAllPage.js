@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import Headline from '../../elements/Headline/Headline'
 import { Spacer } from '../../elements/Spacer/Spacer'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -17,7 +17,11 @@ const PlaylistsViewAllPage = (props) => {
     setSortBy(sortByTerm) 
   }
 
-  console.log(sortBy)
+  useEffect(() => {
+    // Get the stored value of viewAllGenre from local storage
+    props.getViewAllGenre();
+  }, []);
+
 
 var playlistsAll  = playlists;
 var headlineTitle = `${props.viewAllGenre} Quizzes` 
@@ -51,6 +55,7 @@ sortBy === "popularity" ? userRecommendations = props.userRecommendations.sort(f
 
   
 {props.viewAllGenre === "Hip Hop" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : props.viewAllGenre === "Rock" ? playlistsAll = rockPlaylists : props.viewAllGenre === "Your Recommended" ? playlistsAll = userRecommendations : playlistsAll = rbPlaylists}
+
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 
     return (    
