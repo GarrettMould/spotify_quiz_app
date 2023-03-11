@@ -31,7 +31,7 @@ const SocialShareModal = (props) => {
                   <FacebookMessengerShareButton appId={appID} redirectUri={link}>
                     <i class='fab fa-facebook-messenger icon'></i>
                   </FacebookMessengerShareButton>
-                  <CopyToClipboard text={link}>
+                  <CopyToClipboard text={`${message} ${link}`}>
                     <i class="fa fa-copy"></i>
                   </CopyToClipboard>
                 

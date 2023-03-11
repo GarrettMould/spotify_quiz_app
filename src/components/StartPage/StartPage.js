@@ -15,6 +15,7 @@ const StartPage = (props) => {
                   <i className={`fa fa-angle-down fa-3x ${classes.animated}`}></i>
               </a>
             </div>}
+            
             {props.isMobile ? 
             <LoginButton 
             isMobile={props.isMobile}
@@ -26,7 +27,6 @@ const StartPage = (props) => {
             RESPONSE_TYPE={props.RESPONSE_TYPE}
             SCOPES_URL_PARAM={props.SCOPES_URL_PARAM}></LoginButton> : null}
         </div>
-        
     </div>
   )
 }

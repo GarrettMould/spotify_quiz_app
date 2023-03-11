@@ -1,4 +1,5 @@
 import { Routes, Route} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,8 +32,8 @@ const App = (props) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
-  const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -51,6 +52,7 @@ const App = (props) => {
   // User ID
   const [userID, setUserID] = useState(false);
   // Boolean - true if a artist has been selected 
+  const [userDisplayName, setUserDisplayName] = useState("")
   const [topSongs, setTopSongs] = useState(null);
   // Boolean - true if a playlist has been selected
   const [gotThisIs, setGotThisIs] = useState(false); 
@@ -91,9 +93,25 @@ const App = (props) => {
   const [popPlaylists, setPopPlaylists] = useState([]);
   const [rockPlaylists, setRockPlaylists] = useState([]);
   const [rbPlaylists, setRbPlaylists] = useState([]);
-  const [userPlaylists, setUserPlaylists] = useState([]);
+  const [userShareablePlaylists, setUserShareablePlaylists] = useState([]);
+  const [userTopArtists, setUserTopArtists] = useState([])
+  const [userRecommendations, setUserRecommendations] = useState([]);
 
-
+// useEffect hook to ... idk
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const playlistId = searchParams.get('playlistId');
+    console.log(playlistID)
+    if (playlistId) {
+      
+      getPlaylistSongs(playlistID);
+      setPlaylistID(playlistID); 
+      
+    resetQuiz();
+    setRound(0);
+      
+    }
+  }, []);
 
   // Handle Menu Open 
   const handleMenu = () => { 
@@ -137,32 +155,56 @@ const App = (props) => {
     scoreCompPerc = 0
   }
 
-  //THIS CODE WILL BE USED TO IMPLEMENT THE 'QUIZ A FRIEND' FEATURE --> CREATE QUIZ BASED ON YOUR PLAYLISTS AND CHALLENGE A FRIEND
-{/*
-const spotifyApi = new SpotifyWebApi();
-
-// Set the access token
-spotifyApi.setAccessToken(token);
-
-async function getUserPlaylists() {
-  try {
-    // Get information about the authenticated user
-    const user = await spotifyApi.getMe();
-    
-    // Get the user's playlists
-    const playlists = await spotifyApi.getUserPlaylists(user.id);
-    
-    console.log(playlists);
-    
-  } catch (error) {
-    console.log(error);
-  }
+// Function to open to log in modal
+const handleModalOpen = () => { 
+  setModalOpen(true)
 }
 
+{/*const getUserTopArtists = () => { 
+
+  const API_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists';
+
+  const config = {
+    headers: { 'Authorization': `Bearer ${token}` },
+    params: { 
+      'time_range': 'short_term', // Can be short_term, medium_term or long_term
+      'limit': 20 // Max is 50
+    }
+  };
+  
+  axios.get(API_ENDPOINT, config)
+    .then(response => {
+      const topArtists = response.data.items;
+      topArtists.forEach(artist => setUserTopArtists(prevState => [...prevState, artist.name]));
+
+      // Move the function call here
+      createUserRecommendations();
+    })
+    .catch(error => console.error('Failed to fetch top artists:', error));
+}
+
+console.log(userTopArtists)
+const matchingArtists = [];
+const createUserRecommendations = () => { 
+  const allPlaylists = new Set([...rapPlaylists, ...popPlaylists, ...rockPlaylists, ...rbPlaylists]);
+
+
+  console.log(allPlaylists)
+ 
+
+  allPlaylists.forEach(playlist => {
+    if (userTopArtists.includes(playlist.artist)) {
+      matchingArtists.push(playlist);
+    }
+  });
+
+  console.log(matchingArtists)
+  setUserRecommendations(matchingArtists)
+}
+
+getUserTopArtists();
 */}
-
-
-
+// Spotify API call to get the user's custom  playlists (include only Spotify made playlists)
 const getUserPlaylists = async () => { 
   const response = await fetch('https://api.spotify.com/v1/me/playlists', {
       headers: {
@@ -171,30 +213,47 @@ const getUserPlaylists = async () => {
     });
     const data = await response.json();
 
+    console.log(data)
+
     const playlists = data.items
    
     playlists.forEach(playlist => { 
-      const playlistName = `Garrett's ${playlist.name}`
-
-  const newPlaylist = {
-    artist: playlist.name,
-    playlistName: playlistName,
-    img: playlist.images[0].url,
-    id: playlist.id,
-    description: playlist.description,
-    tags: ["user"]
-  };
-
-  setUserPlaylists(prevState => [...prevState, newPlaylist])
-  })
-
-    
-
+      // if-statement to include only the playlists authored by Spotify
+      {/*if (playlist.owner.display_name === "Spotify") {
+      
+        const playlistName = `${userDisplayName}'s ${playlist.name}`
   
+    const newPlaylist = {
+      artist: playlist.name,
+      playlistName: playlistName,
+      img: playlist.images[0].url,
+      id: playlist.id,
+      // Removes the </a> tag bug from Spotify playlist descriptions
+      description: playlist.description.includes("</a>") ? "A Spotify playlist catered to your listening needs." : playlist.description,
+      tags: ["user"]
+    };
+  
+    setUserPlaylists(prevState => [...prevState, newPlaylist])
+    }*/}
+
+    //if-statement to include "on-repeat" and "wrapped" playlists in userShareable array
+    if (playlist.owner.display_name === "Spotify" && (playlist.name === "On Repeat" || playlist.name.includes("Your Top Songs"))) {
+      const newPlaylist = {
+        artist: playlist.name,
+        playlistName: playlist.name,
+        img: playlist.images[0].url,
+        id: playlist.id,
+        // Removes the </a> tag bug from Spotify playlist descriptions
+        description: playlist.description.includes("</a>") ? "A Spotify playlist catered to your listening needs." : playlist.description,
+        tags: ["user"]
+      };
+      setUserShareablePlaylists(prevState => [...prevState, newPlaylist])
+    }
+      
+  })
 
 };
 
-console.log(userPlaylists)
  
   //Set view all genre 
   const handleViewAllGenre = (e) => { 
@@ -281,6 +340,19 @@ const handleAnswer = (value) => {
   
 }
 
+
+
+console.log(playlistID);
+
+//NEW FUNCTION FOR PLAYLIST CHANGE
+const handleQuizCreation = async (id) => { 
+  await getPlaylistSongs(id); 
+  setPlaylistID(id);
+  resetQuiz(); 
+  setRound(0);
+  console.log("quiz function executred")
+}
+
 // Function to update the playlist ID 
   const handlePlaylistChange = (e) => { 
     setStartMenu(true);
@@ -289,6 +361,7 @@ const handleAnswer = (value) => {
         getPlaylistSongs(playlistID);
       }
       setPlaylistID(e.currentTarget.id); 
+    
       
     resetQuiz();
     setRound(0);
@@ -324,7 +397,8 @@ const handleAnswer = (value) => {
     });
 
     console.log(data);
-
+    setUserDisplayName(data.display_name);
+    console.log(data.display_name);
     setUserID(data.id);
   };
 
@@ -353,8 +427,18 @@ const handleAnswer = (value) => {
     console.log(token);
   });
   
+  const clearPlaylists = () => { 
+    setRapPlaylists([])
+    setPopPlaylists([])
+    setRockPlaylists([])
+    setRbPlaylists([])
+    setUserShareablePlaylists([])
+    setUserRecommendations([])
+  }
+
   // Function to clear token and clear results display
   const logout = () => {
+    clearPlaylists();
     setToken("");
     setUserID(false);
     window.localStorage.removeItem("token"); 
@@ -477,7 +561,7 @@ var rbPlaylistIDs = ["37i9dQZF1DZ06evO28Vxx6", "37i9dQZF1DZ06evO216tjq", "37i9dQ
 "37i9dQZF1DX6bnzK9KPvrz", "37i9dQZF1DX2oU49YwtXI2", "37i9dQZF1DZ06evO2u61Y4", "37i9dQZF1DZ06evO2LMnXG", 
 "37i9dQZF1DZ06evO241prq", "37i9dQZF1DZ06evO4aKvZe", "37i9dQZF1DZ06evO1yvnUc", "37i9dQZF1DZ06evO1N3Bn2", "37i9dQZF1DZ06evO2fgLDY", "37i9dQZF1DZ06evO1erDHi"];
 
-var popPlaylistIDs = ["37i9dQZF1DZ06evO3by276", "37i9dQZF1DX1PfYnYcpw8w", "37i9dQZF1DX55yuR78Invt", "37i9dQZF1DX6bnzK9KPvrz", "37i9dQZF1DX3fRquEp6m8D",
+var popPlaylistIDs = ["37i9dQZF1DZ06evO3by276", "37i9dQZF1DX08mhnhv6g9b", "37i9dQZF1DX1PfYnYcpw8w", "37i9dQZF1DX55yuR78Invt", "37i9dQZF1DX6bnzK9KPvrz", "37i9dQZF1DX3fRquEp6m8D",
 "37i9dQZF1DZ06evO2FvyO4", "37i9dQZF1DX2apWzyECwyZ","37i9dQZF1DWZUozJiHy44Y", "37i9dQZF1DXc2aPBXGmXrt", "37i9dQZF1DWZ8Cy8eCcjXW", "37i9dQZF1DXdyjMX5o2vCq", 
 "37i9dQZF1DZ06evO2iBPiw", "37i9dQZF1DZ06evO25rXbO", "37i9dQZF1DX9tzt7g58Xlh","37i9dQZF1DXa0PTjSQ7AeJ", "37i9dQZF1DZ06evO30zJ7i", "37i9dQZF1DX29brXfjEm5q", "37i9dQZF1DZ06evO3YTug0", "37i9dQZF1DZ06evO0jO79m", ]; 
 
@@ -508,7 +592,8 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
     followers: data.followers.total,
     img: data.images[0].url,
     id: data.id,
-    description: data.description,
+    //Some Spotify playlists have a bug that includes "</a>" in the description. This removes that.
+    description: data.description.includes("</a>") ? "The essential tracks, all in one place." : data.description,
     tags: [tag]
   };
 
@@ -548,6 +633,8 @@ const createPlaylists = () => {
 // ONLY USING TO USEEFFCT TO AVOID THE 429 ERROR (FIGURE THIS PROBLEM OUT!)
 useEffect(() => {
   createPlaylists();
+  getUserPlaylists();
+  
 }, [token]);
 
 
@@ -583,7 +670,6 @@ const getPlaylistInfo = async () => {
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}
               ></LoginPromptPopUp> : null}
     <div className={searchOpen ? `${classes.noWrapper}` : modalOpen ?  `${classes.wrapper} ${classes.blur}` : `${classes.wrapper}`}>
-      <button onClick={getUserPlaylists}>GET PLAYLISTS </button>
       {menuIsOpen && (
           <DropDownMenu handleViewAllGenre={handleViewAllGenre} menuIsOpen={menuIsOpen} handleMenu={handleMenu}></DropDownMenu>
       )}
@@ -608,11 +694,11 @@ const getPlaylistInfo = async () => {
          
       <Routes>
             <>
-            <Route path="/" element={<HomePage userPlaylists={userPlaylists} rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
+            <Route path="/" element={<HomePage  getPlaylistInfo={getPlaylistInfo} userDisplayName={userDisplayName} handleModalOpen={handleModalOpen} userShareablePlaylists={userShareablePlaylists} token={token} userRecommendations={userRecommendations} rockPlaylists={rockPlaylists} popPlaylists={popPlaylists} rapPlaylists={rapPlaylists} isMobile={isMobile} resetQuiz={resetQuiz} userID={userID} logout={logout} AUTH_ENDPOINT={AUTH_ENDPOINT} CLIENT_ID={CLIENT_ID} REDIRECT_URI={REDIRECT_URI} RESPONSE_TYPE={RESPONSE_TYPE} SCOPES_URL_PARAM={SCOPES_URL_PARAM} shuffle={shuffle} handleViewAllGenre={handleViewAllGenre} viewAllGenre={viewAllGenre}  handlePlaylistChange={handlePlaylistChange}></HomePage>}></Route>   
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
-             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
-             <Route path="/PlayPage" element={<PlayPage changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
+             <Route path="/ViewAllPage" element={<PlaylistsViewAllPage userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
+             <Route path="/PlayPage/:playlistID" element={<PlayPage getPlaylistInfo={getPlaylistInfo} handleQuizCreation={handleQuizCreation} changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>
         <Spacer></Spacer>

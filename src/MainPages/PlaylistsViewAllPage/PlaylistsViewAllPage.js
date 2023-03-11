@@ -27,6 +27,7 @@ var rapPlaylists;
 var popPlaylists; 
 var rockPlaylists;
 var rbPlaylists;
+var userRecommendations;
 
 sortBy === "popularity" ? rapPlaylists = props.rapPlaylists.sort(function(a, b) { 
   return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
@@ -44,16 +45,19 @@ sortBy === "popularity" ? rbPlaylists = props.rbPlaylists.sort(function(a, b) {
   return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
 }) : rbPlaylists = props.rbPlaylists.sort((a, b) => a.artist.localeCompare(b.artist))
 
+sortBy === "popularity" ? userRecommendations = props.userRecommendations.sort(function(a, b) { 
+  return b.followers - a.followers  ||  b.artist.localeCompare(a.artist);
+}) : userRecommendations = props.userRecommendations.sort((a, b) => a.artist.localeCompare(b.artist))
 
   
-{props.viewAllGenre === "Hip Hop" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : props.viewAllGenre === "Rock" ? playlistsAll = rockPlaylists : playlistsAll = rbPlaylists}
+{props.viewAllGenre === "Hip Hop" ? playlistsAll = rapPlaylists : props.viewAllGenre === "Pop" ? playlistsAll = popPlaylists : props.viewAllGenre === "Rock" ? playlistsAll = rockPlaylists : props.viewAllGenre === "Your Recommended" ? playlistsAll = userRecommendations : playlistsAll = rbPlaylists}
 
 const mappedPlaylistsDesktop = playlistsAll.map((playlist) => { 
     return (    
     <Col xs={3}>
     <div className={classes.playlistContainer}>
-      <Link to={props.userID ? "/PlayPage" : "/"} >
-      <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+    <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+      <button className={classes.btn} id={playlist.id}>
         <div className={classes.contentContainer}>
           
               <img src={playlist.img} alt="playlist" className={classes.img}></img>
@@ -73,8 +77,8 @@ const mappedPlaylistsDesktop = playlistsAll.map((playlist) => {
   const mappedPlaylistsMobile = playlistsAll.map((playlist) => { 
     return ( 
       <Col xs={4} className={classes.col}>
-      <Link to={props.userID ? "/PlayPage" : "/"}>
-            <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+            <button className={classes.btn} id={playlist.id}>
                 <div className={classes.imageContainer}>
                   <img
                     src={playlist.img}

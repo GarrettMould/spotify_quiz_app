@@ -1,6 +1,7 @@
 
 .container { 
     display: flex;
+    position: relative;
     flex-direction: column;
     max-width: 100%;
     overflow-x: hidden;

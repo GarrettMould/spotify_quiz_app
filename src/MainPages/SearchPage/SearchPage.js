@@ -46,8 +46,8 @@ const SearchPage = (props) => {
         return (    
         <Col xs={3}>
         <div className={classes.playlistContainer}>
-          <Link to={props.userID ? "/PlayPage" : "/SearchPage"} >
-          <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+        <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/SearchPage"} >
+          <button className={classes.btn} id={playlist.id} >
             <div className={classes.contentContainer}>
               
                   <img src={playlist.img} alt="playlist" className={classes.img}></img>
@@ -68,8 +68,8 @@ const SearchPage = (props) => {
       const mappedPlaylistsMobile = filteredList.map((playlist) => { 
         return (
           <Col xs={4} className={classes.col}>
-          <Link to={props.userID ? "/PlayPage" : "/"}>
-                <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+           <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/SearchPage"} >
+                <button className={classes.btn} id={playlist.id}>
                     <div className={classes.imageContainer}>
                       <img
                         src={playlist.img}

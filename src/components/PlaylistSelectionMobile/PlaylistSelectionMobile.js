@@ -30,13 +30,29 @@ var rapPlaylists = [];
   const slicedPop = popPlaylists.slice(0,8); 
   const slicedRock = rockPlaylists.slice(0,8);
   const slicedRb = rbPlaylists.slice(0,8);
- 
+  const slicedUser = props.userRecommendations.slice(0,8);
 
+
+  const mappedUserPlaylists = slicedUser.map((playlist) => { 
+    return ( 
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+            <button className={classes.btn} id={playlist.id} onClick={props.userID ? null : () => props.handleModalOpen()}>
+                <div className={classes.imageContainer}>
+                  <img
+                    src={playlist.img}
+                    className={classes.image}
+                    alt="playlistimage"
+                  ></img>
+                </div>
+                </button>
+       </Link>
+    )
+  })
 
   const mappedRapPlaylists = slicedRap.map((playlist) => { 
     return ( 
-      <Link to={props.userID ? "/PlayPage" : "/"}>
-            <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+            <button className={classes.btn} id={playlist.id} onClick={props.userID ? null : () => props.handleModalOpen()}>
                 <div className={classes.imageContainer}>
                   <img
                     src={playlist.img}
@@ -51,8 +67,8 @@ var rapPlaylists = [];
 
   const mappedPopPlaylists = slicedPop.map((playlist) => { 
     return ( 
-      <Link to={props.userID ? "/PlayPage" : "/"}>  
-          <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} > 
+          <button className={classes.btn} id={playlist.id} onClick={props.userID ? null : () => props.handleModalOpen()}>
           <div className={classes.imageContainer}>
             <img
               src={playlist.img}
@@ -67,8 +83,8 @@ var rapPlaylists = [];
 
   const mappedRockPlaylists = slicedRock.map((playlist) => { 
     return (    
-      <Link to={props.userID ? "/PlayPage" : "/"}>
-          <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+          <button className={classes.btn} id={playlist.id} onClick={props.userID ? null : () => props.handleModalOpen()}>
           <div className={classes.imageContainer}>
             <img
               src={playlist.img}
@@ -83,8 +99,8 @@ var rapPlaylists = [];
 
   const mappedRbPlaylists = slicedRb.map((playlist) => { 
     return ( 
-      <Link to={props.userID ? "/PlayPage" : "/"}>
-            <button className={classes.btn} id={playlist.id} onClick={props.handlePlaylistChange}>
+      <Link to={props.userID ? `/PlayPage/${playlist.id}` : "/"} >
+            <button className={classes.btn} id={playlist.id} onClick={props.userID ? null : () => props.handleModalOpen()}>
                 <div className={classes.imageContainer}>
                   <img
                     src={playlist.img}
@@ -99,6 +115,19 @@ var rapPlaylists = [];
   return (
     <div>
         <div className={classes.container}>
+        {props.userRecommendations.length > 3 ? <> <Headline text="Recommended For You"></Headline>
+            <section className={classes.section}>
+            <div className={classes.allPlaylistsContainer}>
+            {mappedUserPlaylists}
+            <Link to={props.userID ? "/ViewAllPage" : "/"}><button onClick={props.handleViewAllGenre} id="Your Recommended" className={classes.viewAllBtn}>
+            <div className={classes.contentContainer}>
+                <div className={classes.viewAllText}>View All</div>
+                <ArrowCircleRight size={40} color="#c0c0c0" />
+            </div>
+            </button>
+            </Link>
+            </div>
+            </section> </> : null}
             <Headline text="Hip Hop Quizzes"></Headline>
             <section className={classes.section}>
             <div className={classes.allPlaylistsContainer}>
