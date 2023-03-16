@@ -359,11 +359,13 @@ console.log(playlistID);
 
 //NEW FUNCTION FOR PLAYLIST CHANGE
 const handleQuizCreation = async (id) => { 
+  console.log("handle quiz creation function executed")
   await getPlaylistSongs(id); 
   setPlaylistID(id);
+  console.log(playlistID)
   resetQuiz(); 
   setRound(0);
-  console.log("quiz function executred")
+ 
 }
 
 // Function to update the playlist ID 
@@ -502,9 +504,7 @@ const getPlaylistSongs = async () => {
       
   })
 
-  console.log(data);
-
-  getPlaylistInfo();
+  
   setGotThisIs(true);
 
   // Shuffles the This Is playlist songs
@@ -516,7 +516,7 @@ const getPlaylistSongs = async () => {
 
   // Selects ten songs from the array of playlist songs 
   let selected = noURIRemoved.slice(0, 10);
-  console.log(selected);
+  
   var selectedSongs = [];
   var items = data.items 
 
@@ -528,7 +528,7 @@ const getPlaylistSongs = async () => {
     allSongs.push(i);
   });
 
-  console.log(allSongs);
+ 
 
   setThisIsFullSongList(allSongs);
 
@@ -541,7 +541,7 @@ const getPlaylistSongs = async () => {
     });
 
     let select = songRemoved.slice(0,3);
-    console.log(select)
+    
     
     var iSong = new SongThisIs(item.track.name, item.track.album.images[0], item.track.preview_url)
     select.push(iSong);
@@ -553,8 +553,9 @@ const getPlaylistSongs = async () => {
    
   }) 
 
-  console.log(selectedSongs)
+  
   setSelectedThisIsSongs(selectedSongs);
+  getPlaylistInfo();
 
 
 }
@@ -626,11 +627,7 @@ const gatherPlaylistInfo = async (playlistID, tag) => {
     console.log("Oops. You are missing a tag and these playlist won't be rendered!")
   }
 
-  console.log(rapPlaylists)
-
 }
-
-console.log(rapPlaylists[0])
 
 
 const createPlaylists = () => { 
@@ -658,11 +655,6 @@ useEffect(() => {
 
 
 
-
-
-
-console.log(userRecommendations)
-
 // Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist
 const getPlaylistInfo = async () => { 
 
@@ -675,6 +667,7 @@ const getPlaylistInfo = async () => {
   
   setThisIsName(data.name); 
   setThisIsImage(data.images[0].url)
+  console.log(thisIsName)
 }
 
   return (
