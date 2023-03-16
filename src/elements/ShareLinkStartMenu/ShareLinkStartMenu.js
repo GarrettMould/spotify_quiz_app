@@ -1,49 +1,39 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import classes from "./ShareLinkStartMenu.module.css"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LoginButton from '../LoginButton/LoginButton'
+import { Button } from 'react-bootstrap'
 
 const ShareLinkStartMenu = (props) => {
-
-  const [playlistID, setPlaylistID] = useState(null);
+  
+  const { playlistID } = useParams();
   const [playlistName, setPlaylistName] = useState("")
   const [playlistImage, setPlaylistImage] = useState(null);
 
-  useEffect(() => {
-    setPlaylistID(props.playlistID)
-  }, []);
 
-  useEffect(() => { 
-    const getPlaylist = async () => { 
+  const REDIRECT_URI = `${props.REDIRECT_URI}Shareable/`
 
-      const {data} = await axios.get(`https://api.spotify.com/v1/playlists/${playlistID}`, {
-          headers: {
-              Authorization: `Bearer ${props.token}` //MaKE token available
-          },
-          
-      })
-      
-      setPlaylistName(data.name); 
-      setPlaylistImage(data.images[0].url)
-    }
-  }, [playlistID])
-  
+const PLAYLIST_PARAM = `&playlist_id=${playlistID}`
 
+const FRESH_ID = new URLSearchParams(window.location.hash.slice(1)).get("playlistID");
+
+
+console.log(FRESH_ID)
   return (
     <div className={classes.wrapper}>
       <div className={classes.quizPanelWrapper}>
         <div className={classes.quizSectionContainer}>
-          <div className={classes.quizInfoContainer}>
-            <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
-            <div className={classes.infoTextContainer}>
-              <div className={classes.thisIsName}>{props.thisIsName}</div>
-            </div>
-          </div>
+          
           
          <div className={classes.rowButtons}>
-           <button onClick={() => props.handleQuizCreation(props.playlistID)} className={classes.btn}>Close</button>
+         <a
+            className={classes.link} href={`${props.AUTH_ENDPOINT}?client_id=${props.CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${props.RESPONSE_TYPE}&scope=${props.SCOPES_URL_PARAM}&playlistID=${PLAYLIST_PARAM}`}
+          >
+            <Button  onClick={props.logout} className={classes.btn}>Login to Spotify</Button>
+          </a>
           </div>
           
         </div>

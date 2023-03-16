@@ -20,7 +20,6 @@ const ChallengeBar = (props) => {
     document.execCommand('copy');
     document.body.removeChild(tempInput);
     props.handleClick();
-    
   };
 
 

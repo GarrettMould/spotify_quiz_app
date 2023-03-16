@@ -24,6 +24,7 @@ import HowToPlayPage from "../components/HowToPlayPage/HowToPlayPage";
 import SearchPage from "../MainPages/SearchPage/SearchPage";
 import DropDownMenu from "../elements/DropDownMenu/DropDownMenu";
 import { StartPageBackdrop } from "../elements/MainPageBackdrop/StartPageBackdrop";
+import ShareLinkStartMenu from "../elements/ShareLinkStartMenu/ShareLinkStartMenu";
 
 
 
@@ -97,8 +98,8 @@ const App = (props) => {
   const [userTopArtists, setUserTopArtists] = useState([])
   const [userRecommendations, setUserRecommendations] = useState([]);
 
-// useEffect hook to ... idk
-  useEffect(() => {
+// useEffect hook to ... idk (DELETED ON MARCH 14th ... seems to have no impact ... quizzes still rendering without it)
+  {/*useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const playlistId = searchParams.get('playlistId');
     console.log(playlistID)
@@ -112,11 +113,14 @@ const App = (props) => {
       
     }
   }, []);
+*/}
 
   // Handle Menu Open 
   const handleMenu = () => { 
     setMenuIsOpen(!menuIsOpen);
   }
+
+  console.log(userID)
 
   // Determine the percentile based on userScore 
   if (userScore >= 750) { 
@@ -417,8 +421,8 @@ const handleQuizCreation = async (id) => {
   }, [token]);
 
   
-  // Fetches the token from the spotify url
-  useEffect(() => {
+
+  const updateToken = () => { 
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
 
@@ -434,6 +438,10 @@ const handleQuizCreation = async (id) => {
     }
     setToken(token);
     console.log(token);
+  }
+  // Fetches the token from the spotify url
+  useEffect(() => {
+    updateToken();
   });
   
   const clearPlaylists = () => { 
@@ -709,7 +717,11 @@ const getPlaylistInfo = async () => {
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage getViewAllGenre={getViewAllGenre} userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
-             <Route path="/PlayPage/:playlistID" element={<PlayPage getPlaylistInfo={getPlaylistInfo} handleQuizCreation={handleQuizCreation} changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
+             <Route path="/PlayPage/:playlistID?" element={<PlayPage setPlaylistID={setPlaylistID} updateToken={updateToken} logout={logout} getUserID={getUserID} token={token} userID={userID} AUTH_ENDPOINT={AUTH_ENDPOINT}
+                CLIENT_ID={CLIENT_ID}
+                RESPONSE_TYPE={RESPONSE_TYPE}
+                SCOPES_URL_PARAM={SCOPES_URL_PARAM}
+             getPlaylistInfo={getPlaylistInfo} handleQuizCreation={handleQuizCreation} changeSrc={changeSrc} scoreCompPerc={scoreCompPerc} averageAnswerTime={averageAnswerTime} setAverageAnswerTime={setAverageAnswerTime}  gotThisIs={gotThisIs} round={round} correctTally={correctTally} setCorrectTally={setCorrectTally} setUserScore={setUserScore} setRound={setRound} setStartMenu={setStartMenu} startMenu={startMenu} roundOne={roundOne} selectedThisIsSongs={selectedThisIsSongs}  userScore={userScore} thisIsImage={thisIsImage} thisIsName={thisIsName} handleAnswer={handleAnswer}  ></PlayPage>}></Route> 
             </>     
         </Routes>
         <Spacer></Spacer>

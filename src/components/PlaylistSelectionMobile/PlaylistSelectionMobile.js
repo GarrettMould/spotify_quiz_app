@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Headline from "../../elements/Headline/Headline";
 import { Spacer } from "../../elements/Spacer/Spacer";
 import React from 'react'
+import ChallengeBarMobile from "../../elements/ChallengeBarMobile/ChallengeBarMobile";
 
 const PlaylistSelectionMobile = (props) => {
 
