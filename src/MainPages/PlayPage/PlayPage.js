@@ -74,15 +74,20 @@ var extractedPlaylistID;
 
  
 var userName; 
+var playlistName;
     useEffect(() => {
       const params = new URLSearchParams(window.location.search);
       const shareParam = params.get("share")
       const nameParam = params.get("name"); 
-      if (nameParam) { 
+      const playlistParam = params.get("playlist")
+      if (nameParam && playlistParam) { 
         userName = nameParam.replace(/_/g, ' ')
+        playlistName = playlistParam
         props.setUserQuizName(userName);
+        props.setSharedPlaylistName(playlistName);
       }  else { 
         props.setUserQuizName(null)
+        props.setSharedPlaylistName(null)
       }
 
       console.log(userName)
@@ -99,11 +104,34 @@ var userName;
     
     var button; 
 
-    {props.userID ? button =  <button onClick={() => props.handleQuizCreation(playlistID)}>PLAY QUIZ</button> : button = <a className={classes.link} href={`${props.AUTH_ENDPOINT}?client_id=${props.CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${props.RESPONSE_TYPE}&scope=${props.SCOPES_URL_PARAM}&state=${playlistID}`}>
 
-    <Button  className={classes.btn} onClick={() => handleLogin()}>Login to Spotify</Button>
-  </a>}
+
+
+
+    button =  <>
+        <div className={classes.challengeWrapper}>
+          <div className={classes.challengePanelWrapper}>
+            <div className={classes.challengeSectionContainer}>
+              <div className={classes.challengeInfoContainer}>
+                <img src={props.thisIsImage} alt="playlist" className={classes.challengeImage}></img>
+                <div className={classes.challengeTextContainer}>
+                  <div className={classes.challengeText}>Quiz Challenge:</div>
+                  <div className={classes.challengeName}>{`${props.userQuizName}'s ${props.sharedPlaylistName} Quiz`}</div>
+                </div>
+                <a className={classes.link} href={`${props.AUTH_ENDPOINT}?client_id=${props.CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${props.RESPONSE_TYPE}&scope=${props.SCOPES_URL_PARAM}&state=${playlistID}`}>
+
+                <Button  className={classes.btn} onClick={() => handleLogin()}>Login to Spotify</Button>
+
+                </a> 
+              </div>
+              
+             
+            </div>
+          </div>
+          </div>
+</>
     
+
 
     useEffect(() => {
 
@@ -117,9 +145,8 @@ var userName;
 
   return (
     <>
-    {!playlistID ? <button onClick={() => props.handleQuizCreation(extractedPlaylistID, userName )}>PLAY QUIZ</button> : null}
     <div className={classes.wrapper}>
-     {showButton ? button : null} 
+    {props.userID ? null : button}
     {props.gotThisIs && props.round < 10 ? <DisplayThisIs userQuizName={props.userQuizName} changeSrc={props.changeSrc} handleSrcChange={props.handleSrcChange} setAverageAnswerTime={props.setAverageAnswerTime} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} setCorrectTally={props.setCorrectTally} setUserScore={props.setUserScore} setRound={props.setRound}  setStartMenu={props.setStartMenu} startMenu={props.startMenu} roundOne={props.roundOne} selectedThisIsSongs={props.selectedThisIsSongs} round={props.round} userScore={props.userScore} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName} handleAnswer={props.handleAnswer}></DisplayThisIs> : props.gotThisIs && props.round >= 10 ? <DisplayResults  handleSrcChange={props.handleSrcChange} scoreCompPerc={props.scoreCompPerc} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} userScore={props.userScore} resetQuiz={props.resetQuiz} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName}></DisplayResults> : null}
     </div>
     </>

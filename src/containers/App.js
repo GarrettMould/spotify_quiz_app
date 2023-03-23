@@ -99,6 +99,7 @@ const App = (props) => {
   const [userRecommendations, setUserRecommendations] = useState([]);
   //Display Name to be Used in Personalized Quizzes (like "On Repeat")
   const [userQuizName, setUserQuizName] = useState(null);
+  const [sharedPlaylistName , setSharedPlaylistName] = useState(null);
 
 // useEffect hook to ... idk (DELETED ON MARCH 14th ... seems to have no impact ... quizzes still rendering without it)
   {/*useEffect(() => {
@@ -713,7 +714,7 @@ const getPlaylistInfo = async () => {
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage getViewAllGenre={getViewAllGenre} userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
-             <Route path="/PlayPage/:playlistID?" element={<PlayPage userQuizName={userQuizName} setUserQuizName={setUserQuizName} userDisplayName={userDisplayName} setPlaylistID={setPlaylistID} updateToken={updateToken} logout={logout} getUserID={getUserID} token={token} userID={userID} AUTH_ENDPOINT={AUTH_ENDPOINT}
+             <Route path="/PlayPage/:playlistID?" element={<PlayPage sharedPlaylistName={sharedPlaylistName} setSharedPlaylistName={setSharedPlaylistName} userQuizName={userQuizName} setUserQuizName={setUserQuizName} userDisplayName={userDisplayName} setPlaylistID={setPlaylistID} updateToken={updateToken} logout={logout} getUserID={getUserID} token={token} userID={userID} AUTH_ENDPOINT={AUTH_ENDPOINT}
                 CLIENT_ID={CLIENT_ID}
                 RESPONSE_TYPE={RESPONSE_TYPE}
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}

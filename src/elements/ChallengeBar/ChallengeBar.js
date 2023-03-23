@@ -12,9 +12,10 @@ const ChallengeBar = (props) => {
 
   const [copyText, setCopyText] = useState('Copy Link');
 
-  const handleCopyLinkClick = (id) => {
+  const handleCopyLinkClick = (id, name) => {
     const playlistId = id
-    const quizUrl = `${window.location.origin}/PlayPage/${playlistId}?share=true&name=${newDisplayName}`;
+    const playlistName = name;
+    const quizUrl = `${window.location.origin}/PlayPage/${playlistId}?share=true&name=${newDisplayName}&playlist=${playlistName}`;
     const tempInput = document.createElement('input');
     document.body.appendChild(tempInput);
     tempInput.value = quizUrl;
@@ -26,8 +27,9 @@ const ChallengeBar = (props) => {
 
 
     const mappedUserShareablePlaylists = props.userShareablePlaylists.map((playlist) => { 
+      
         return ( 
-                <button className={classes.btn} id={playlist.id} onClick={() => handleCopyLinkClick(playlist.id)}>
+                <button className={classes.btn} id={playlist.id} onClick={() => handleCopyLinkClick(playlist.id, playlist.playlistName)}>
                     <div className={classes.imageContainer}>
                       <img
                         src={playlist.img}

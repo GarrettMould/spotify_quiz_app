@@ -1,3 +1,52 @@
 .wrapper { 
     margin: 100px 0px;
 }
+
+.challengeWrapper { 
+    margin: 50px 0px;
+    display: flex;
+    justify-content: center ;
+}
+.challengePanelWrapper {
+    width: 50%;
+    border-radius: 4px;
+    background-color: #343434;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+  .challengeSectionContainer{ 
+    padding: 25px 25px 15px 25px;
+    width: 100%;   
+}
+
+
+.challengeImage { 
+    max-width: 90px;
+    margin: 50px 30px 50px 20px;
+    border-radius: 4px;
+}
+
+.challengeName, .challengeText { 
+    margin-bottom: 10px;
+    font-family: CircularBold;
+    font-size: 130%;
+}
+
+.challengeInfoContainer { 
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 4px;
+    height: 160px;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.challengeTextContainer { 
+    display: flex; 
+    flex-direction: column;
+}
+
+
+
