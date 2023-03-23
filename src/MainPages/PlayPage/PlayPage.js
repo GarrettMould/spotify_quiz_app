@@ -73,12 +73,18 @@ var extractedPlaylistID;
 
 
  
-var userName
+var userName; 
     useEffect(() => {
       const params = new URLSearchParams(window.location.search);
       const shareParam = params.get("share")
       const nameParam = params.get("name"); 
-      userName = nameParam.replace(/_/g, ' ');
+      if (nameParam) { 
+        userName = nameParam.replace(/_/g, ' ')
+        props.setUserQuizName(userName);
+      }  else { 
+        props.setUserQuizName(null)
+      }
+
       console.log(userName)
       if (shareParam === "true") {
         setShowButton(true);
@@ -111,10 +117,10 @@ var userName
 
   return (
     <>
-    {!playlistID ? <button onClick={() => props.handleQuizCreation(extractedPlaylistID, userName)}>PLAY QUIZ</button> : null}
+    {!playlistID ? <button onClick={() => props.handleQuizCreation(extractedPlaylistID, userName )}>PLAY QUIZ</button> : null}
     <div className={classes.wrapper}>
      {showButton ? button : null} 
-    {props.gotThisIs && props.round < 10 ? <DisplayThisIs changeSrc={props.changeSrc} handleSrcChange={props.handleSrcChange} setAverageAnswerTime={props.setAverageAnswerTime} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} setCorrectTally={props.setCorrectTally} setUserScore={props.setUserScore} setRound={props.setRound}  setStartMenu={props.setStartMenu} startMenu={props.startMenu} roundOne={props.roundOne} selectedThisIsSongs={props.selectedThisIsSongs} round={props.round} userScore={props.userScore} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName} handleAnswer={props.handleAnswer}></DisplayThisIs> : props.gotThisIs && props.round >= 10 ? <DisplayResults  handleSrcChange={props.handleSrcChange} scoreCompPerc={props.scoreCompPerc} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} userScore={props.userScore} resetQuiz={props.resetQuiz} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName}></DisplayResults> : null}
+    {props.gotThisIs && props.round < 10 ? <DisplayThisIs userQuizName={props.userQuizName} changeSrc={props.changeSrc} handleSrcChange={props.handleSrcChange} setAverageAnswerTime={props.setAverageAnswerTime} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} setCorrectTally={props.setCorrectTally} setUserScore={props.setUserScore} setRound={props.setRound}  setStartMenu={props.setStartMenu} startMenu={props.startMenu} roundOne={props.roundOne} selectedThisIsSongs={props.selectedThisIsSongs} round={props.round} userScore={props.userScore} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName} handleAnswer={props.handleAnswer}></DisplayThisIs> : props.gotThisIs && props.round >= 10 ? <DisplayResults  handleSrcChange={props.handleSrcChange} scoreCompPerc={props.scoreCompPerc} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} userScore={props.userScore} resetQuiz={props.resetQuiz} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName}></DisplayResults> : null}
     </div>
     </>
 
