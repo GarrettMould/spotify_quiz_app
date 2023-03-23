@@ -8,11 +8,13 @@ const ChallengeBar = (props) => {
   const displayName = props.userDisplayName
   const newDisplayName = displayName.replace(/\s+/g, "_");
 
+  console.log(newDisplayName)
+
   const [copyText, setCopyText] = useState('Copy Link');
 
   const handleCopyLinkClick = (id) => {
     const playlistId = id
-    const quizUrl = `${window.location.origin}/PlayPage/${playlistId}?share=true`;
+    const quizUrl = `${window.location.origin}/PlayPage/${playlistId}?share=true&name=${newDisplayName}`;
     const tempInput = document.createElement('input');
     document.body.appendChild(tempInput);
     tempInput.value = quizUrl;

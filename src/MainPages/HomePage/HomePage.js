@@ -8,6 +8,7 @@ const HomePage = (props) => {
   return (
     <>
     <StartPage 
+      userDisplayName={props.userDisplayName}
       isMobile={props.isMobile} 
       resetQuiz={props.resetQuiz}
       userID={props.userID}

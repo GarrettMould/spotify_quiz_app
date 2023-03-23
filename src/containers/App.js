@@ -463,6 +463,7 @@ const handleQuizCreation = async (id) => {
     window.localStorage.removeItem("token"); 
     setGotThisIs(false);
     resetQuiz(); 
+    sessionStorage.removeItem("state");
   
   };
 
@@ -710,7 +711,7 @@ const getPlaylistInfo = async () => {
             <Route path="/SearchPage" element={<SearchPage rbPlaylists={rbPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} popPlaylists={popPlaylists} isMobile={isMobile} userID={userID} handlePlaylistChange={handlePlaylistChange}></SearchPage>}></Route>       
             <Route path="/HowToPlay" element={<HowToPlayPage isMobile={isMobile} shuffle={shuffle}></HowToPlayPage>}></Route>
              <Route path="/ViewAllPage" element={<PlaylistsViewAllPage getViewAllGenre={getViewAllGenre} userRecommendations={userRecommendations} rbPlaylists={rbPlaylists} popPlaylists={popPlaylists} rockPlaylists={rockPlaylists} rapPlaylists={rapPlaylists} shuffle={shuffle} handlePlaylistChange={handlePlaylistChange} userID={userID} isMobile={isMobile} resetQuiz={resetQuiz} viewAllGenre={viewAllGenre}></PlaylistsViewAllPage>}></Route>
-             <Route path="/PlayPage/:playlistID?" element={<PlayPage setPlaylistID={setPlaylistID} updateToken={updateToken} logout={logout} getUserID={getUserID} token={token} userID={userID} AUTH_ENDPOINT={AUTH_ENDPOINT}
+             <Route path="/PlayPage/:playlistID?" element={<PlayPage userDisplayName={userDisplayName} setPlaylistID={setPlaylistID} updateToken={updateToken} logout={logout} getUserID={getUserID} token={token} userID={userID} AUTH_ENDPOINT={AUTH_ENDPOINT}
                 CLIENT_ID={CLIENT_ID}
                 RESPONSE_TYPE={RESPONSE_TYPE}
                 SCOPES_URL_PARAM={SCOPES_URL_PARAM}

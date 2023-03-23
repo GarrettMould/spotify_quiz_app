@@ -35,7 +35,7 @@ var extractedPlaylistID;
 
 // Function to get the set the userID when the token changes
   useEffect(() => {
-    props.getUserID();
+    //props.getUserID(); WHY WAS THIS HERE? IT IS CAUSING PROBLEMS. 
     extractedPlaylistID = sessionStorage.getItem('state');
     if (extractedPlaylistID) {
       console.log("extractedId exists")
@@ -73,10 +73,13 @@ var extractedPlaylistID;
 
 
  
-
+var userName
     useEffect(() => {
       const params = new URLSearchParams(window.location.search);
       const shareParam = params.get("share")
+      const nameParam = params.get("name"); 
+      userName = nameParam.replace(/_/g, ' ');
+      console.log(userName)
       if (shareParam === "true") {
         setShowButton(true);
       } else {
@@ -108,7 +111,7 @@ var extractedPlaylistID;
 
   return (
     <>
-    {!playlistID ? <button onClick={() => props.handleQuizCreation(extractedPlaylistID)}>PLAY QUIZ</button> : null}
+    {!playlistID ? <button onClick={() => props.handleQuizCreation(extractedPlaylistID, userName)}>PLAY QUIZ</button> : null}
     <div className={classes.wrapper}>
      {showButton ? button : null} 
     {props.gotThisIs && props.round < 10 ? <DisplayThisIs changeSrc={props.changeSrc} handleSrcChange={props.handleSrcChange} setAverageAnswerTime={props.setAverageAnswerTime} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} setCorrectTally={props.setCorrectTally} setUserScore={props.setUserScore} setRound={props.setRound}  setStartMenu={props.setStartMenu} startMenu={props.startMenu} roundOne={props.roundOne} selectedThisIsSongs={props.selectedThisIsSongs} round={props.round} userScore={props.userScore} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName} handleAnswer={props.handleAnswer}></DisplayThisIs> : props.gotThisIs && props.round >= 10 ? <DisplayResults  handleSrcChange={props.handleSrcChange} scoreCompPerc={props.scoreCompPerc} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} userScore={props.userScore} resetQuiz={props.resetQuiz} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName}></DisplayResults> : null}
