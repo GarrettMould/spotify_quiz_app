@@ -34,7 +34,7 @@ const App = (props) => {
   //SPOTIFY VARIABLES
   const CLIENT_ID = "8d204535e05d414ba64e3d520690e6a7";
   const REDIRECT_URI = "http://localhost:3000/";
-  //const REDIRECT_URI = "https://sweet-kitten-2dc72c.netlify.app/";
+  //const REDIRECT_URI = "https://spotifyquizzes.netlify.app/";
   const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SPACE_DELIMITER = "%20";
@@ -65,8 +65,8 @@ const App = (props) => {
   // Array of 10 songs from the selected This Is playlist
   const [selectedThisIsSongs, setSelectedThisIsSongs] = useState(null)
   // ID of the selected playlist or artist
-  const [playlistID, setPlaylistID] = useState("37i9dQZF1DX5EkyRFIV92g");
-  const [artistID, setArtistID] = useState("37i9dQZF1DX5EkyRFIV92g");
+  const [playlistID, setPlaylistID] = useState("37i9dQZF1DZ06evO1nxlXq");
+  const [artistID, setArtistID] = useState("37i9dQZF1DZ06evO1nxlXq");
   // Keeps track of User's quiz score
   const [userScore, setUserScore] = useState(0);
   // Keeps track of quiz round 
@@ -167,7 +167,27 @@ const handleModalOpen = () => {
   setModalOpen(true)
 }
 
-{/*const getUserTopArtists = () => { 
+const createUserRecommendations = () => { 
+  console.log("creteUserRec executed")
+  console.log(userTopArtists)
+  const matchingArtists = [];
+  const allPlaylists = [...new Set([...rapPlaylists, ...popPlaylists, ...rockPlaylists, ...rbPlaylists])];
+
+
+  allPlaylists.forEach(playlist => {
+    console.log("allPlaylists filtering")
+    if (userTopArtists.includes(playlist.artist)) {
+      matchingArtists.push(playlist);
+    }
+  });
+
+  setUserRecommendations(matchingArtists);
+}
+
+
+const getUserTopArtists = () => { 
+
+  console.log("userTopArtists executed")
 
   const API_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists';
 
@@ -184,28 +204,19 @@ const handleModalOpen = () => {
       const topArtists = response.data.items;
       const userTopArtists = topArtists.map(artist => artist.name);
       setUserTopArtists(userTopArtists);
+      console.log(userTopArtists)
 
-      // Call createUserRecommendations here, after userTopArtists has been updated
-      createUserRecommendations();
+      // Call createUserRecommendations here, after userTopArtists has been update
     })
     .catch(error => console.error('Failed to fetch top artists:', error));
 }
 
-const createUserRecommendations = () => { 
-  const matchingArtists = [];
-  const allPlaylists = [...new Set([...rapPlaylists, ...popPlaylists, ...rockPlaylists, ...rbPlaylists])];
-
-
-  allPlaylists.forEach(playlist => {
-    if (userTopArtists.includes(playlist.artist)) {
-      matchingArtists.push(playlist);
-    }
-  });
-
-  setUserRecommendations(matchingArtists);
-}
-*/}
-
+// useEffect that invokes the createUserRecommendations fuction whenever the userTopArtists variable changes
+useEffect(() => { 
+  if (userTopArtists) {
+    createUserRecommendations();
+  }
+}, [userTopArtists]);
 
 
 // Spotify API call to get the user's custom  playlists (include only Spotify made playlists)
@@ -455,6 +466,7 @@ const handleQuizCreation = async (id) => {
     setRbPlaylists([])
     setUserShareablePlaylists([])
     setUserRecommendations([])
+    setUserTopArtists([])
   }
 
   // Function to clear token and clear results display
@@ -572,7 +584,7 @@ var rapPlaylistIDs = [
    "37i9dQZF1DZ06evO0Wc5ry", "37i9dQZF1DX1clOuib1KtQ", "37i9dQZF1DZ06evO3CRVnO", "37i9dQZF1DZ06evO1nxlXq", 
   "37i9dQZF1DX5EkyRFIV92g","37i9dQZF1DWUgX5cUT0GbU", "37i9dQZF1DZ06evO1aBeik", "37i9dQZF1DZ06evO06Ki7m",
   "37i9dQZF1DZ06evO0X1exy", "37i9dQZF1DZ06evO1ZgD0Q", "37i9dQZF1DZ06evO2ckaZO",  
-  "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DX4sqNyKH13qY", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", 
+  "37i9dQZF1DZ06evO1iznkj", "37i9dQZF1DZ06evO0vFpVC", "37i9dQZF1DX4sqNyKH13qY", "37i9dQZF1DZ06evO0sOBtS", "37i9dQZF1DZ06evO455DFR", 
   "37i9dQZF1DXbyJ08AYfIHF", "37i9dQZF1DX7jGZjyDa8rI",   "37i9dQZF1DZ06evO3DtS8g", "37i9dQZF1DX3F3EumJCPca", 
   "37i9dQZF1DWYojpWKpDMGi", "37i9dQZF1DZ06evO28Vxx6","37i9dQZF1DZ06evNZWDBEQ", "37i9dQZF1DZ06evO1JAInW", "37i9dQZF1DWUuiucxQQIC1", 
   "37i9dQZF1DZ06evO01740o",   "37i9dQZF1DZ06evO3Cn7Uc", "37i9dQZF1DZ06evO2NufN6", "37i9dQZF1DZ06evO259NXG",
@@ -653,11 +665,17 @@ const createPlaylists = () => {
 useEffect(() => {
   createPlaylists();
   getUserPlaylists();
+  getUserTopArtists();
   
   
 }, [token]);
 
+useEffect(() => {
+  getUserTopArtists();
+}, [userDisplayName]);
 
+
+console.log(userRecommendations)
 
 // Function that sets the playlist information (thisIsName and thisIsImage) for the selected playlist
 const getPlaylistInfo = async () => { 

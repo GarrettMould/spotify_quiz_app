@@ -111,7 +111,7 @@ var playlistName;
     }, [location.search]);
 
 
-    const REDIRECT_URI = "http://localhost:3000/PlayPage/"
+    const REDIRECT_URI = "https://spotifyquizzes.netlify.app/PlayPage/"
     
     var button; 
 

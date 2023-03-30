@@ -166,7 +166,7 @@ const mappedUserPlaylists = slicedUser.map((playlist) => {
       {isOpen && (
         <LinkCopiedPopUp text="Link copied!"></LinkCopiedPopUp>
       )}
-      {props.userShareablePlaylists.length > 0 ? <ChallengeBar userDisplayName={props.userDisplayName} handleClick={handleClick} userShareablePlaylists={props.userShareablePlaylists} userRecommendations={props.userRecommendations}></ChallengeBar> : null}
+     {/* {props.userShareablePlaylists.length > 0 ? <ChallengeBar userDisplayName={props.userDisplayName} handleClick={handleClick} userShareablePlaylists={props.userShareablePlaylists} userRecommendations={props.userRecommendations}></ChallengeBar> : null}*/}
       {props.userRecommendations.length > 3 ? <><div className={classes.sectionTitleContainer}>
         <Headline text="Recommended For You"></Headline>
         <Link to={props.userID ? "/ViewAllPage" : "/"}><div onClick={props.handleViewAllGenre} id="Your Recommended" className={classes.showAllLink}>Show All</div></Link>
