@@ -344,6 +344,7 @@ const resetQuiz = () => {
   setGotThisIs(false); 
   setRound(0); 
   setUserScore(0);
+  sessionStorage.removeItem("state")
 }
 // Function that returns boolean for correct / incorrect quiz response and updates userScore state
 const handleAnswer = (value) => { 
@@ -362,13 +363,11 @@ console.log(playlistID);
 
 //NEW FUNCTION FOR PLAYLIST CHANGE
 const handleQuizCreation = async (id) => { 
-  console.log("handle quiz creation function executed")
-  await getPlaylistSongs(id); 
+  console.log("handle quiz creation function executed") 
   setPlaylistID(id);
   console.log(playlistID)
   resetQuiz(); 
   setRound(0);
- 
 }
 
 // Function to update the playlist ID 
@@ -508,6 +507,7 @@ const getPlaylistSongs = async () => {
       
   })
 
+  getPlaylistInfo();
   
   setGotThisIs(true);
 
@@ -559,7 +559,7 @@ const getPlaylistSongs = async () => {
 
   
   setSelectedThisIsSongs(selectedSongs);
-  getPlaylistInfo();
+  
 
 
 }

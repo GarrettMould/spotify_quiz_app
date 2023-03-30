@@ -31,10 +31,19 @@ const handleLogin = () => {
 
 }
 
+
 var extractedPlaylistID; 
+
+
+  useEffect(() => {
+    console.log('Component has mounted');
+    return () => console.log('Component will unmount');
+  }, []);
 
 // Function to get the set the userID when the token changes
   useEffect(() => {
+    
+    console.log("useEffect runs to create playlist with extracted ID")
     //props.getUserID(); WHY WAS THIS HERE? IT IS CAUSING PROBLEMS. 
     extractedPlaylistID = sessionStorage.getItem('state');
     if (extractedPlaylistID) {
@@ -42,6 +51,7 @@ var extractedPlaylistID;
       console.log(extractedPlaylistID)
       props.handleQuizCreation(extractedPlaylistID)
     }
+    
     
   }, [props.token]);
 
@@ -76,6 +86,7 @@ var extractedPlaylistID;
 var userName; 
 var playlistName;
     useEffect(() => {
+      console.log("location search changed")
       const params = new URLSearchParams(window.location.search);
       const shareParam = params.get("share")
       const nameParam = params.get("name"); 
@@ -120,7 +131,7 @@ var playlistName;
                 </div>
                 <a className={classes.link} href={`${props.AUTH_ENDPOINT}?client_id=${props.CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${props.RESPONSE_TYPE}&scope=${props.SCOPES_URL_PARAM}&state=${playlistID}`}>
 
-                <Button  className={classes.btn} onClick={() => handleLogin()}>Login to Spotify</Button>
+                <Button  className={classes.btn} onClick={() => handleLogin()}>{props.userID ? "Play" : "Login to Spotify"}</Button>
 
                 </a> 
               </div>
@@ -146,7 +157,13 @@ var playlistName;
   return (
     <>
     <div className={classes.wrapper}>
-    {props.userID ? null : button}
+  {/*I changed the line of code below ... adding props.gotThisIs seemed to fix the 
+  issue I had of the quiz not rendering after the shareable link page loads, 
+  when the user is already logged in...If this stops working you can have the user log in 
+  even if they are aleady logged in, but just change the button text to "play"...this should force the 
+  quiz to render
+  */}
+    {/*{ props.gotThisIs ? null : button}*/}
     {props.gotThisIs && props.round < 10 ? <DisplayThisIs userQuizName={props.userQuizName} changeSrc={props.changeSrc} handleSrcChange={props.handleSrcChange} setAverageAnswerTime={props.setAverageAnswerTime} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} setCorrectTally={props.setCorrectTally} setUserScore={props.setUserScore} setRound={props.setRound}  setStartMenu={props.setStartMenu} startMenu={props.startMenu} roundOne={props.roundOne} selectedThisIsSongs={props.selectedThisIsSongs} round={props.round} userScore={props.userScore} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName} handleAnswer={props.handleAnswer}></DisplayThisIs> : props.gotThisIs && props.round >= 10 ? <DisplayResults  handleSrcChange={props.handleSrcChange} scoreCompPerc={props.scoreCompPerc} averageAnswerTime={props.averageAnswerTime} correctTally={props.correctTally} userScore={props.userScore} resetQuiz={props.resetQuiz} thisIsImage={props.thisIsImage} thisIsName={props.thisIsName}></DisplayResults> : null}
     </div>
     </>

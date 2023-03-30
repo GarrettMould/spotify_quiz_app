@@ -164,7 +164,7 @@ console.log(selectedSongs)
           <div className={classes.quizInfoContainer}>
             <img src={props.thisIsImage} alt="playlist" className={classes.thisIsImage}></img>
             <div className={classes.infoTextContainer}>
-              <div className={classes.thisIsName}>{props.userQuizName ? `${props.userQuizName}'s "${props.thisIsName}"` : props.thisIsName}</div>
+              <div className={classes.thisIsName}>{props.userQuizName ? `${props.thisIsName} (${props.userQuizName})` : props.thisIsName}</div>
             </div>
           </div>
           <audio id="audioFirst" controls="controls" hidden="hidden">
